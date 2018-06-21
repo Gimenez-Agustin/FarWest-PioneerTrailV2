@@ -7,7 +7,7 @@ import java.util.Scanner;
  *
  * @author Agustin Gimenez 
  */
-public class GameMenuView extends View{
+public class GameMenuView extends View{    
     
     public String menu = "V - View Map\n"
                 + "I - View list inventory items\n"
