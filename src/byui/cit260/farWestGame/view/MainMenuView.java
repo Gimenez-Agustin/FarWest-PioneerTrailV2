@@ -43,8 +43,7 @@ public class MainMenuView extends View{
     }
 
     private void restartGame() {
-        StartExistingGameView startExistingGameView = new StartExistingGameView();
-        startExistingGameView.displayStartExistingGameView();
+        System.out.println("not implemented yet");
     }
 
     private void getHelp() {
