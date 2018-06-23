@@ -59,4 +59,9 @@ public class GameControl {
         return count > 2;
     }
 
+    //author Giovanni
+    public static void hunting(int animal) {
+        animal = 5;
+        System.out.println("you killed something");        
+    }
 }

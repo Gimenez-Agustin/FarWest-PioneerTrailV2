@@ -21,6 +21,7 @@ public class GameMenuView extends View{
                 + "N - Navigate Terrain\n"
                 + "R - Hunt for Resources\n"
                 + "S - Save game\n"
+                + "G - Goodbye: Leave the game\n"
                 + "H - Help\n"
                 + "Q - Quit\n"
                 + "Select an Option: ";
@@ -69,6 +70,9 @@ public class GameMenuView extends View{
                 break;
             case "S":
                 saveGame();
+                break;
+            case "G":
+                exitGame();
                 break;
             case "H":
                 getHelp();
@@ -150,8 +154,10 @@ public class GameMenuView extends View{
         System.out.println("Navigate terrain called");
     }
 
+    //author Giovanni (L09 individual assignment)
     private void huntForResources() {
-        System.out.println("Hunt for resources called");
+        HuntingView huntingView = new HuntingView();
+        huntingView.display(huntingView.menu);
     }
 
     private void saveGame() {
@@ -160,5 +166,10 @@ public class GameMenuView extends View{
 
     private void getHelp() {
         System.out.println("Get help called");
+    }
+    
+    private void exitGame() {
+        ExitGameView exitGameView = new ExitGameView();
+        exitGameView.display(exitGameView.menu);
     }
 }
