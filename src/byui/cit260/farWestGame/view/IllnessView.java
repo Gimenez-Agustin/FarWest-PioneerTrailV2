@@ -71,6 +71,9 @@ public class IllnessView extends View {
         System.out.println("Remaining food amount is displayed");
         /* else {
        System.out.println("You don't have enough food, please select another resource to heal.")*/
+        
+       // else { System.out.prinln("You don't have the resources to heal. Sorry.") }
+     
     }
     
 }
