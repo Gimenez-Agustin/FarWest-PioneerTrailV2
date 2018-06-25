@@ -49,7 +49,7 @@ public class IllnessView extends View {
        //Pull amount of Water.  If (water > 50% == actorHeals){
         System.out.println("You have enough water available.");
         System.out.println("Your water amount has reduced by 5%"); //new water amount
-        System.out.println("Remaining bullet inventory is displayed");
+        System.out.println("Remaining water inventory is displayed");
        /* else {
        System.out.println("You don't have enough water, please select another resource to heal.")*/
     }
