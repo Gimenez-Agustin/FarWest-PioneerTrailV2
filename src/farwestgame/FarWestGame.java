@@ -11,7 +11,7 @@ import byui.cit260.farWestGame.view.StartProgramView;
 public class FarWestGame {
 
     private static Player player;
-    private static Game game;
+    private static Game currentGame;
     
     public static Player getPlayer() {
         return player;
@@ -21,12 +21,12 @@ public class FarWestGame {
         FarWestGame.player = player;
     }
 
-    public static Game getGame() {
-        return game;
+    public static Game getCurrentGame() {
+        return currentGame;
     }
 
-    public static void setGame(Game game) {
-        FarWestGame.game = game;
+    public static void setCurrentGame(Game game) {
+        FarWestGame.currentGame = game;
     }
 
     /**
