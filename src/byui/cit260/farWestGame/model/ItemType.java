@@ -11,25 +11,13 @@ package byui.cit260.farWestGame.model;
  */
 public enum ItemType {
         //keywords and values/descriptions
-    Food(""),
-    Axe(""),
-    Hammer(""),
-    SpareWheels(""),
-    Bullets(""),
-    Wood(""),
-    Rest(""),
-    DrinkingWater("");    
-            
-    //attribute
-    private final String description;
-    
-    //Constructor
-    ItemType(String description) {
-        this.description = description;
-    }
-    
-    //GetterFunction
-    public String getDescription() {
-        return description;
-    }
+    Food,
+    Axe,
+    Hammer,
+    SpareWheels,
+    Bullets,
+    Wood,
+    Rest,
+    DrinkingWater;    
+           
 }
