@@ -1,5 +1,6 @@
 package byui.cit260.farWestGame.model;
 
+import byui.cit260.farWestGame.enums.ActorType;
 import java.io.Serializable;
 import java.util.Objects;
 

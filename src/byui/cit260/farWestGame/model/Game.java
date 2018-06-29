@@ -11,8 +11,8 @@ public class Game implements Serializable{
     
     private Family family;
     private Map map;
-    private boolean seenMap = false;
-    
+    private Player player;
+       
     public Game(){}
 
     public Family getFamily() {
@@ -29,17 +29,22 @@ public class Game implements Serializable{
 
     public void setMap(Map map) {
         this.map = map;
+    }    
+
+    public Player getPlayer() {
+        return player;
     }
-    
-    public void setSeenMap(boolean seenMap) {
-        this.seenMap = seenMap;
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 83 * hash + Objects.hashCode(this.family);
-        hash = 83 * hash + Objects.hashCode(this.map);
+        hash = 71 * hash + Objects.hashCode(this.family);
+        hash = 71 * hash + Objects.hashCode(this.map);        
+        hash = 71 * hash + Objects.hashCode(this.player);
         return hash;
     }
 
@@ -54,15 +59,19 @@ public class Game implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Game other = (Game) obj;
+        final Game other = (Game) obj;       
         if (!Objects.equals(this.family, other.family)) {
             return false;
         }
         if (!Objects.equals(this.map, other.map)) {
             return false;
         }
+        if (!Objects.equals(this.player, other.player)) {
+            return false;
+        }
         return true;
     }
+    
     
     
 }

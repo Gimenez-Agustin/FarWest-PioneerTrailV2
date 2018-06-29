@@ -1,6 +1,8 @@
 package byui.cit260.farWestGame.control;
 
+import byui.cit260.farWestGame.enums.ActorType;
 import byui.cit260.farWestGame.model.Family;
+import byui.cit260.farWestGame.enums.FamilyType;
 import byui.cit260.farWestGame.model.Person;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,28 +13,28 @@ import java.util.List;
  */
 public class FamilyControl {
 
-    public Family createFamily() {
+    public static Family createFamily() {
         Family family = new Family();
-        family.setCurrentWeight(0);
-        family.setIsWagonBroken(false);
-        family.setRest(100);
+        family.setCurrentWeight(0);        
+        family.setTiredness(0);
         family.setCurrentLocation(0);
         family.setFood(0);
+        family.setIsWagonBroken(false);
         family.setFamilyMembers(createFamilyMembers());
         return family;
     }
 
-    private List<Person> createFamilyMembers() {
+    private static List<Person> createFamilyMembers() {
         List<Person> family = new ArrayList<>();
-        Person person = PersonControl.createPerson("Father", "Father");
+        Person person = PersonControl.createPerson(FamilyType.Father.getDescription(), ActorType.Joe);
         family.add(person);
-        person = PersonControl.createPerson("Mother", "Mother");
+        person = PersonControl.createPerson(FamilyType.Mother.getDescription(), ActorType.Cora);
         family.add(person);
-        person = PersonControl.createPerson("Children1", "Children");
+        person = PersonControl.createPerson(FamilyType.Children.getDescription(), ActorType.Billy);
         family.add(person);
-        person = PersonControl.createPerson("Children2", "Children");
+        person = PersonControl.createPerson(FamilyType.Children.getDescription(), ActorType.Steven);
         family.add(person);
-        person = PersonControl.createPerson("Children3", "Children");
+        person = PersonControl.createPerson(FamilyType.Children.getDescription(), ActorType.Jane);
         family.add(person);
         return family;
     }

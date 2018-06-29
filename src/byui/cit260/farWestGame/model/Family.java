@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Family implements Serializable{
     private boolean isWagonBroken;
     private List<Person> familyMembers;
-    private int rest;
+    private int tiredness;
     private int food;
     private List<Item> items;
     private int currentWeight;
@@ -35,13 +35,13 @@ public class Family implements Serializable{
         this.familyMembers = familyMembers;
     }
 
-    public int getRest() {
-        return rest;
+    public int getTiredness() {
+        return tiredness;
     }
 
-    public void setRest(int rest) {
-        this.rest = rest;
-    }
+    public void setTiredness(int tiredness) {
+        this.tiredness = tiredness;
+    }    
 
     public int getFood() {
         return food;
@@ -80,7 +80,7 @@ public class Family implements Serializable{
         int hash = 3;
         hash = 37 * hash + (this.isWagonBroken ? 1 : 0);
         hash = 37 * hash + Objects.hashCode(this.familyMembers);
-        hash = 37 * hash + this.rest;
+        hash = 37 * hash + this.tiredness;
         hash = 37 * hash + this.food;
         hash = 37 * hash + Objects.hashCode(this.items);
         hash = 37 * hash + this.currentWeight;
@@ -103,7 +103,7 @@ public class Family implements Serializable{
         if (this.isWagonBroken != other.isWagonBroken) {
             return false;
         }
-        if (this.rest != other.rest) {
+        if (this.tiredness != other.tiredness) {
             return false;
         }
         if (this.food != other.food) {

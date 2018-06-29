@@ -1,6 +1,8 @@
 package byui.cit260.farWestGame.model;
 
+import byui.cit260.farWestGame.enums.Locations;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -9,27 +11,22 @@ import java.util.Objects;
  * @author Agustin
  */
 public class Location implements Serializable{
-    private String name;
+    private Locations locationDescription;
     private List<Item> items;
     private List<Difficulty> difficulties;
     private boolean visited;
     
     //added by giovanni
-    private int row;
-    private int column;
-    private int fromNauvoo;
-    private Scene scene;
+//    private int row;
+//    private int column;
+//    private int fromNauvoo;
+//    private Scene scene;
     //done
     
-    public Location(){}
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    public Location(){
+        items= new ArrayList<>();
+        difficulties = new ArrayList<>();
+    }  
 
     public List<Item> getItems() {
         return items;
@@ -53,20 +50,70 @@ public class Location implements Serializable{
 
     public void setVisited(boolean visited) {
         this.visited = visited;
+    }    
+
+    @Override
+    public String toString() {
+        return "Location{" + "locationDescription=" + locationDescription + ", items=" + items + ", difficulties=" + difficulties + ", visited=" + visited + '}';
+    }
+    
+    
+    
+//    //added by giovanni
+//    public int getRow() {
+//        return row;
+//    }
+//
+//    public void setRow(int row) {
+//        this.row = row;
+//    }
+//
+//    public int getColumn() {
+//        return column;
+//    }
+//
+//    public void setColumn(int column) {
+//        this.column = column;
+//    }
+//
+//    public boolean getVisited() {
+//        return visited;
+//    }
+//    
+//    public int getFromNauvoo() {
+//        return fromNauvoo;
+//    }
+//
+//    public void setFromNauvoo(int fromNauvoo) {
+//        this.fromNauvoo = fromNauvoo;
+//    }       
+    
+//    public void setScene(Scene scene) {
+//        this.scene = scene;
+//    }
+//    
+//    public Scene getScene() {
+//        return scene;
+//    }   
+    
+    
+    //done
+
+    public Locations getLocationDescription() {
+        return locationDescription;
+    }
+
+    public void setLocationDescription(Locations locationDescription) {
+        this.locationDescription = locationDescription;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 17 * hash + Objects.hashCode(this.name);
-        hash = 17 * hash + Objects.hashCode(this.items);
-        hash = 17 * hash + Objects.hashCode(this.difficulties);
-        hash = 17 * hash + (this.visited ? 1 : 0);
-        //added by giovanni
-        hash = 17 * hash + Objects.hashCode(this.row);
-        hash = 17 * hash + Objects.hashCode(this.column);
-        hash = 17 * hash + Objects.hashCode(this.fromNauvoo);
-        //done
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.locationDescription);
+        hash = 89 * hash + Objects.hashCode(this.items);
+        hash = 89 * hash + Objects.hashCode(this.difficulties);
+        hash = 89 * hash + (this.visited ? 1 : 0);
         return hash;
     }
 
@@ -85,7 +132,7 @@ public class Location implements Serializable{
         if (this.visited != other.visited) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
+        if (this.locationDescription != other.locationDescription) {
             return false;
         }
         if (!Objects.equals(this.items, other.items)) {
@@ -94,63 +141,10 @@ public class Location implements Serializable{
         if (!Objects.equals(this.difficulties, other.difficulties)) {
             return false;
         }
-        //added by Giovanni
-        if (!Objects.equals(this.row, other.row)) {
-            return false;
-        }
-        if (!Objects.equals(this.column, other.column)) {
-            return false;
-        }
-        if (!Objects.equals(this.fromNauvoo, other.fromNauvoo)) {
-            return false;
-        }
-        //done
         return true;
     }
-    
-    //added by giovanni
-    public int getRow() {
-        return row;
-    }
 
-    public void setRow(int row) {
-        this.row = row;
-    }
-
-    public int getColumn() {
-        return column;
-    }
-
-    public void setColumn(int column) {
-        this.column = column;
-    }
-
-    public boolean getVisited() {
-        return visited;
-    }
-    
-    public int getFromNauvoo() {
-        return fromNauvoo;
-    }
-
-    public void setFromNauvoo(int fromNauvoo) {
-        this.fromNauvoo = fromNauvoo;
-    }
-        
-    @Override
-    public String toString() {
-        return "Location{" + "row=" + row + ", column=" + column + ", visited=" + visited + ", fromNauvoo=" + fromNauvoo + '}';
-    }
-    
-    public void setScene(Scene scene) {
-        this.scene = scene;
-    }
-    
-    public Scene getScene() {
-        return scene;
-    }
-    
-    //done
+   
     
     
 }
