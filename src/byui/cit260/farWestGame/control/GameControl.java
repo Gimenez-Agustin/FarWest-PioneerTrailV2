@@ -236,17 +236,21 @@ public class GameControl {
         locationS[0][8].setScene(scenes[MapControl.SceneType.councilBluffs.ordinal()]);
         locationS[0][9].setScene(scenes[MapControl.SceneType.winterQuarters.ordinal()]);
         locationS[0][10].setScene(scenes[MapControl.SceneType.elkhornRiverCrossing.ordinal()]);
-        locationS[0][11].setScene(scenes[MapControl.SceneType.ashHollow.ordinal()]);
-        locationS[0][12].setScene(scenes[MapControl.SceneType.chimneyRock.ordinal()]);
-        locationS[1][0].setScene(scenes[MapControl.SceneType.scottsBluff.ordinal()]);
-        locationS[1][1].setScene(scenes[MapControl.SceneType.fortLaramie.ordinal()]);
-        locationS[1][2].setScene(scenes[MapControl.SceneType.sweetwaterRiver.ordinal()]);
-        locationS[1][3].setScene(scenes[MapControl.SceneType.independenceRock.ordinal()]);
-        locationS[1][4].setScene(scenes[MapControl.SceneType.fortBridger.ordinal()]);
-        locationS[1][5].setScene(scenes[MapControl.SceneType.echoCanyon.ordinal()]);
-        locationS[1][6].setScene(scenes[MapControl.SceneType.goldenPassRoad.ordinal()]);
-        locationS[1][7].setScene(scenes[MapControl.SceneType.emigrationCanyon.ordinal()]);
-        locationS[1][8].setScene(scenes[MapControl.SceneType.zion.ordinal()]);
+        locationS[0][11].setScene(scenes[MapControl.SceneType.platteRiver.ordinal()]);
+        locationS[0][12].setScene(scenes[MapControl.SceneType.fortKearny.ordinal()]);
+        locationS[1][0].setScene(scenes[MapControl.SceneType.confluencePoint.ordinal()]);
+        locationS[1][1].setScene(scenes[MapControl.SceneType.ashHollow.ordinal()]);
+        locationS[1][2].setScene(scenes[MapControl.SceneType.chimneyRock.ordinal()]);
+        locationS[1][3].setScene(scenes[MapControl.SceneType.scottsBluff.ordinal()]);
+        locationS[1][4].setScene(scenes[MapControl.SceneType.fortLaramie.ordinal()]);
+        locationS[1][5].setScene(scenes[MapControl.SceneType.sweetwaterRiver.ordinal()]);
+        locationS[1][6].setScene(scenes[MapControl.SceneType.independenceRock.ordinal()]);
+        locationS[1][7].setScene(scenes[MapControl.SceneType.fortBridger.ordinal()]);
+        locationS[1][8].setScene(scenes[MapControl.SceneType.echoCanyon.ordinal()]);
+        locationS[1][9].setScene(scenes[MapControl.SceneType.goldenPassRoad.ordinal()]);
+        locationS[1][10].setScene(scenes[MapControl.SceneType.emigrationCanyon.ordinal()]);
+        locationS[1][11].setScene(scenes[MapControl.SceneType.zion.ordinal()]);
+        locationS[1][12].setScene(scenes[MapControl.SceneType.zion.ordinal()]);
     }    
     //done
 }

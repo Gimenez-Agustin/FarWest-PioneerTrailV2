@@ -96,11 +96,12 @@ public class GameMenuView extends View{
         String leftChar;
         String rightChar;
         
-        Game game = farwestgame.FarWestGame.getCurrentGame();
-        //game.setSeenMap(true);
-        Map map = game.getMap();
-        Location[][] locationS = map.getLocations();
-        
+       Game game = farwestgame.FarWestGame.getCurrentGame();
+       game.setSeenMap(true);
+       Map map = game.getMap();
+       Location[][] locationS = map.getLocations();
+       
+        System.out.println("       FAR WEST PIONEER TRAIL");
         System.out.println("  |");
           for( int column = 0; column < locationS[0].length; column++){
             if (column < 10)
