@@ -6,6 +6,11 @@ import byui.cit260.farWestGame.model.ActorType;
 import byui.cit260.farWestGame.model.Illness;
 import byui.cit260.farWestGame.model.Item;
 import byui.cit260.farWestGame.model.ItemType;
+import byui.cit260.farWestGame.control.MapControl;
+import byui.cit260.farWestGame.model.Map;
+import byui.cit260.farWestGame.model.Location;
+import byui.cit260.farWestGame.model.Scene;
+
 import java.util.List;
 
 /**
