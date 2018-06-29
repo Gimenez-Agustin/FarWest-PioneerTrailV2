@@ -12,7 +12,7 @@ public class Person implements Serializable{
     private ActorType typePerson;
     private Illness illness;
     private boolean alive;
-    private String description; //add getters and setters
+    private String description; //added, plus getters and setters-Araceli
     
     public Person(){}
 

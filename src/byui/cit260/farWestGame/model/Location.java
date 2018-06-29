@@ -14,6 +14,13 @@ public class Location implements Serializable{
     private List<Difficulty> difficulties;
     private boolean visited;
     
+    //added by giovanni
+    private int row;
+    private int column;
+    private int fromNauvoo;
+    private Scene scene;
+    //done
+    
     public Location(){}
 
     public String getName() {
@@ -55,6 +62,11 @@ public class Location implements Serializable{
         hash = 17 * hash + Objects.hashCode(this.items);
         hash = 17 * hash + Objects.hashCode(this.difficulties);
         hash = 17 * hash + (this.visited ? 1 : 0);
+        //added by giovanni
+        hash = 17 * hash + Objects.hashCode(this.row);
+        hash = 17 * hash + Objects.hashCode(this.column);
+        hash = 17 * hash + Objects.hashCode(this.fromNauvoo);
+        //done
         return hash;
     }
 
@@ -82,9 +94,63 @@ public class Location implements Serializable{
         if (!Objects.equals(this.difficulties, other.difficulties)) {
             return false;
         }
+        //added by Giovanni
+        if (!Objects.equals(this.row, other.row)) {
+            return false;
+        }
+        if (!Objects.equals(this.column, other.column)) {
+            return false;
+        }
+        if (!Objects.equals(this.fromNauvoo, other.fromNauvoo)) {
+            return false;
+        }
+        //done
         return true;
     }
     
+    //added by giovanni
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    public boolean getVisited() {
+        return visited;
+    }
+    
+    public int getFromNauvoo() {
+        return fromNauvoo;
+    }
+
+    public void setFromNauvoo(int fromNauvoo) {
+        this.fromNauvoo = fromNauvoo;
+    }
+        
+    @Override
+    public String toString() {
+        return "Location{" + "row=" + row + ", column=" + column + ", visited=" + visited + ", fromNauvoo=" + fromNauvoo + '}';
+    }
+    
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+    
+    public Scene getScene() {
+        return scene;
+    }
+    
+    //done
     
     
 }

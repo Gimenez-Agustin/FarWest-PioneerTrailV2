@@ -1,7 +1,12 @@
 package byui.cit260.farWestGame.view;
 
 import byui.cit260.farWestGame.control.GameControl;
+import byui.cit260.farWestGame.control.MapControl;
+import byui.cit260.farWestGame.model.Location;
 import java.util.Scanner;
+import byui.cit260.farWestGame.model.Map;
+import byui.cit260.farWestGame.model.Scene;
+import byui.cit260.farWestGame.model.Game;
 
 /**
  *
@@ -85,10 +90,62 @@ public class GameMenuView extends View{
         return false;
     }
     
+    //added by giovanni
     private void viewMap() {
         System.out.println("View map called");
+        String leftChar;
+        String rightChar;
+        
+        Game game = farwestgame.FarWestGame.getCurrentGame();
+        //game.setSeenMap(true);
+        Map map = game.getMap();
+        Location[][] locationS = map.getLocations();
+        
+        System.out.println("  |");
+          for( int column = 0; column < locationS[0].length; column++){
+            if (column < 10)
+                System.out.println("  " + column + " |");
+            else
+                System.out.println(" " + column + " |");
+          }
+          
+          
+        System.out.println();
+          for( int row = 0; row < locationS.length; row++){
+           System.out.println(row + " "); 
+            for( int column = 0; column < locationS[row].length; column++){
+              leftChar = " ";
+              rightChar = " ";
+              if(locationS[row][column] == map.getCurrentLocation()){
+                leftChar = ">>"; 
+                rightChar = "<<"; 
+              } 
+              else if(locationS[row][column].isVisited()){
+                 leftChar = "**"; 
+                 rightChar = "**"; 
+              }
+             System.out.println("|");
+              if(locationS[row][column].getScene() == null)
+              {
+                   System.out.println(leftChar + "XXX" + rightChar);
+              }
+              else
+                System.out.println(leftChar
+                   + locationS[row][column].getScene().getMapSymbol()
+                   + rightChar);
+            }
+           System.out.println("|");
+          } 
+          if (map.getCurrentLocation().getScene() != null)
+              System.out.println("Your current location is: "
+                + map.getCurrentLocation().getScene().getName()
+                + "\nYou are " + map.getCurrentLocation().getScene().getFromNauvoo() + " miles from Nauvoo!"
+                + "\n" + map.getCurrentLocation().getScene().getDescription()
+                + "\nYou only have " + (1297 - map.getCurrentLocation().getScene().getFromNauvoo()) 
+                + " miles left to go. \nKeep it up!!");  
     }
-
+    //done
+    
     private void viewInventoryItems() {
         System.out.println("View inventory items called");
     }

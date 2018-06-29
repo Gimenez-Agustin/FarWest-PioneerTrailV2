@@ -11,6 +11,7 @@ public class Game implements Serializable{
     
     private Family family;
     private Map map;
+    private boolean seenMap = false;
     
     public Game(){}
 
@@ -28,6 +29,10 @@ public class Game implements Serializable{
 
     public void setMap(Map map) {
         this.map = map;
+    }
+    
+    public void setSeenMap(boolean seenMap) {
+        this.seenMap = seenMap;
     }
 
     @Override

@@ -2,6 +2,7 @@ package byui.cit260.farWestGame.view;
 
 import byui.cit260.farWestGame.control.GameControl;
 import farwestgame.FarWestGame;
+import byui.cit260.farWestGame.control.MapControl;
 
 /**
  *
@@ -38,10 +39,21 @@ public class MainMenuView extends View{
 
     private void startNewGame() {
         GameControl.createNewGame(FarWestGame.getPlayer());
+        createLocations();
+        createScenes();
         GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.display(gameMenuView.menu);
     }
 
+    private void createLocations() {
+       System.out.println("createLocations() called");        
+    }
+    
+    private void createScenes() {
+       System.out.println("createScenes() called");        
+    }
+    
+    
     private void restartGame() {
         System.out.println("not implemented yet");
     }

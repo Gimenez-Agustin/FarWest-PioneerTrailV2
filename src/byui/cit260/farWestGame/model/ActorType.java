@@ -29,4 +29,3 @@ public enum ActorType {
         return description;
     }
 }
-//is the player one in specific? or is can it select any?

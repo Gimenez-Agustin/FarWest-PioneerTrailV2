@@ -4,9 +4,8 @@ import byui.cit260.farWestGame.model.Person;
 import byui.cit260.farWestGame.model.Player;
 import byui.cit260.farWestGame.model.ActorType;
 import byui.cit260.farWestGame.model.Illness;
-import byui.cit260.farWestGame.model.Location;
-import byui.cit260.farWestGame.model.Scene;
-import byui.cit260.farWestGame.model.Map;
+import byui.cit260.farWestGame.model.Item;
+import byui.cit260.farWestGame.model.ItemType;
 import java.util.List;
 
 /**
@@ -70,7 +69,7 @@ public class GameControl {
         System.out.println("you killed something");        
     }
     
-    //author Araceli create Actors
+    //author Araceli Camarillo create Actors
     public static Person[] createActors() {
         //actors = create an array Actor objects
         Person[] actors = new Person[4];
@@ -134,6 +133,88 @@ public class GameControl {
         
         return actors;
 }
+    
+    //author Araceli Camarillo create Items
+    public static Item[] createItems() {
+        //items = create an array Item objects
+        Item[] items = new Item[8];
+        
+        //util = new Item object
+        Item resource = new Item();
+        //Assign values to each attribute in the Item object
+        resource.setName("Food");
+        resource.setAmount(1);
+        resource.setTypeItem("Resource");
+        resource.setWeight(250);
+        
+        items [ItemType.Food.ordinal()] = resource;
+        
+        resource = new Item();
+        //Assign values to each attribute in the Item object
+        resource.setName("Axe");
+        resource.setAmount(1);
+        resource.setTypeItem("Tool");
+        resource.setWeight(50);
+        
+        items [ItemType.Axe.ordinal()] = resource;
+        
+        resource = new Item();
+        //Assign values to each attribute in the Item object
+        resource.setName("Hammer");
+        resource.setAmount(1);
+        resource.setTypeItem("Tool");
+        resource.setWeight(50);
+        
+        items [ItemType.Hammer.ordinal()] = resource;
+        
+        resource = new Item();
+        //Assign values to each attribute in the Item object
+        resource.setName("Spare Wheels");
+        resource.setAmount(4);
+        resource.setTypeItem("Resource");
+        resource.setWeight(200);
+        
+        items [ItemType.SpareWheels.ordinal()] = resource;
+        
+        resource = new Item();
+        //Assign values to each attribute in the Item object
+        resource.setName("Bullets");
+        resource.setAmount(1000);
+        resource.setTypeItem("Resource");
+        resource.setWeight(100);
+        
+        items [ItemType.Bullets.ordinal()] = resource;
+        
+        resource = new Item();
+        //Assign values to each attribute in the Item object
+        resource.setName("Wood");
+        resource.setAmount(50);
+        resource.setTypeItem("Resource");
+        resource.setWeight(50);
+        
+        items [ItemType.Wood.ordinal()] = resource;
+        
+        resource = new Item();
+        //Assign values to each attribute in the Item object
+        resource.setName("Rest");
+        resource.setAmount(3);
+        resource.setTypeItem("Resource");
+        resource.setWeight(0);
+        
+        items [ItemType.Rest.ordinal()] = resource;
+        
+        resource = new Item();
+        //Assign values to each attribute in the Item object
+        resource.setName("Drinking Water");
+        resource.setAmount(1);
+        resource.setTypeItem("Resource");
+        resource.setWeight(100);
+        
+        items [ItemType.DrinkingWater.ordinal()] = resource;
+        
+        return items;
+}
+    
     //added by giovanni
     static void assignScenes(Map map, Scene[] scenes){
         Location[][] locationS = map.getLocations();
