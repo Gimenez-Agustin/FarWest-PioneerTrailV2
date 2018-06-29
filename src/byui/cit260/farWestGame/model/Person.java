@@ -9,12 +9,21 @@ import java.util.Objects;
  */
 public class Person implements Serializable{
     private String name;
-    private String typePerson;
+    private ActorType typePerson;
     private Illness illness;
     private boolean alive;
+    private String description; //add getters and setters
     
     public Person(){}
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
     public String getName() {
         return name;
     }
@@ -23,11 +32,11 @@ public class Person implements Serializable{
         this.name = name;
     }
 
-    public String getTypePerson() {
+    public ActorType getTypePerson() {
         return typePerson;
     }
 
-    public void setTypePerson(String typePerson) {
+    public void setTypePerson(ActorType typePerson) {
         this.typePerson = typePerson;
     }
 

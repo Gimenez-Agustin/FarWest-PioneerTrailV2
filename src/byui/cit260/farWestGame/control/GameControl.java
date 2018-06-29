@@ -3,6 +3,7 @@ package byui.cit260.farWestGame.control;
 import byui.cit260.farWestGame.model.Person;
 import byui.cit260.farWestGame.model.Player;
 import byui.cit260.farWestGame.model.ActorType;
+import byui.cit260.farWestGame.model.Illness;
 import java.util.List;
 
 /**
@@ -67,22 +68,68 @@ public class GameControl {
     }
     
     //author Araceli create Actors
-    public static ActorType[] createActors() {
+    public static Person[] createActors() {
         //actors = create an array Actor objects
-        ActorType[] actors;
+        Person[] actors = new Person[4];
+        
         //actor1 = new Actor object
-        ActorType actor1 = actors[ActorType.Joe.ordinal()];
-        ActorType actor2 = actors[ActorType.Cora.ordinal()];
-        ActorType actor3 = actors[ActorType.Billy.ordinal()];
-        ActorType actor4 = actors[ActorType.Gigi.ordinal()];
- //Assign values to each attribute in the Actor object
-            //Assign actor1 to the next position in the actors array
-            //actor2 = new Actor object
-            //Assign values to each attribute in the Actor object
-            //Assign actor2 to the next position in the actors array
-            //…
-            //…
-    //return items;
+        Person actor = new Person();
+        //Assign values to each attribute in the Actor object
+        actor.setName("Joe");
+        //actor.setDescription("Is the Father of Billy and Gigi and husband to Cora");//based on enum
+        actor.setDescription(ActorType.Joe.getDescription());
+        actor.setAlive(true);
+        Illness illness = new Illness();
+        illness.setMortalityRate(50);
+        illness.setTypeIllness("Severe");
+        illness.setName("Hypothermia");
+        actor.setIllness(illness);
+        
+        actors [ActorType.Joe.ordinal()] = actor; //inactors array pos 0 is gonna be this actor
+        
+        actor = new Person();
+        //Assign values to each attribute in the Actor object
+        actor.setName("Cora");
+        //actor.setDescription based on enum
+        actor.setDescription(ActorType.Cora.getDescription());
+        actor.setAlive(true);
+        illness = new Illness();
+        illness.setMortalityRate(50);
+        illness.setTypeIllness("Moderate");
+        illness.setName("Broken Bone");
+        actor.setIllness(illness);
+        
+        actors [ActorType.Cora.ordinal()] = actor;
+               
+        actor = new Person();
+        //Assign values to each attribute in the Actor object
+        actor.setName("Billy");
+        //actor.setDescription based on enum
+        actor.setDescription(ActorType.Billy.getDescription());
+        actor.setAlive(true);
+        illness = new Illness();
+        illness.setMortalityRate(50);
+        illness.setTypeIllness("Moderate");
+        illness.setName("Fever");
+        actor.setIllness(illness);
+        
+        actors [ActorType.Billy.ordinal()] = actor;
+        
+        actor = new Person();
+        //Assign values to each attribute in the Actor object
+        actor.setName("Jane");
+        //actor.setDescription based on enum
+        actor.setDescription(ActorType.Jane.getDescription());
+        actor.setAlive(true);
+        illness = new Illness();
+        illness.setMortalityRate(50);
+        illness.setTypeIllness("Severe");
+        illness.setName("Snake Bite");
+        actor.setIllness(illness);
+        
+        actors [ActorType.Jane.ordinal()] = actor;
+        
+        return actors;
 }
     
 }

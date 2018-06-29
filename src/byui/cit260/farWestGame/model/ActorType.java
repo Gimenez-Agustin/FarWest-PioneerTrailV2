@@ -10,17 +10,21 @@ package byui.cit260.farWestGame.model;
  * @author Araceli Camarillo
  */
 public enum ActorType {
-    Joe("Is the Father of Billy and Gigi and husband to Cora"),
-    Cora("Is the Mother of Billy and Gigi and wife to Joe"),
-    Billy("Is Brother to Gigi and Son to Joe and Cora"),
-    Gigi("Is Sister to Billy and Daughter to Joe and Cora"); 
+    //keywords and values/descriptions
+    Joe("Is the Father of Billy and Jane and husband to Cora"),
+    Cora("Is the Mother of Billy and Jane and wife to Joe"),
+    Billy("Is Brother to Jane and Son to Joe and Cora"),
+    Jane("Is Sister to Billy and Daughter to Joe and Cora"); 
     
+    //attribute
     private final String description;
     
+    //Constructor
     ActorType(String description) {
         this.description = description;
     }
     
+    //GetterFunction
     public String getDescription() {
         return description;
     }
