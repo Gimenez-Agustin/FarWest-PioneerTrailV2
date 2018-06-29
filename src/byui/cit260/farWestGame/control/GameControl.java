@@ -67,7 +67,7 @@ public class GameControl {
         System.out.println("you killed something");        
     }
     
-    //author Araceli create Actors
+    //author Araceli Camarillo create Actors
     public static Person[] createActors() {
         //actors = create an array Actor objects
         Person[] actors = new Person[4];
