@@ -15,6 +15,7 @@ public class Location implements Serializable{
     private List<Item> items;
     private List<Difficulty> difficulties;
     private boolean visited;
+    private boolean explored;
     
     //added by giovanni
 //    private int row;
@@ -26,36 +27,57 @@ public class Location implements Serializable{
     public Location(){
         items= new ArrayList<>();
         difficulties = new ArrayList<>();
+        explored = false;
     }  
 
-    public List<Item> getItems() {
-        return items;
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 23 * hash + Objects.hashCode(this.locationDescription);
+        hash = 23 * hash + Objects.hashCode(this.items);
+        hash = 23 * hash + Objects.hashCode(this.difficulties);
+        hash = 23 * hash + (this.visited ? 1 : 0);
+        hash = 23 * hash + (this.explored ? 1 : 0);
+        return hash;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Location other = (Location) obj;
+        if (this.visited != other.visited) {
+            return false;
+        }
+        if (this.explored != other.explored) {
+            return false;
+        }
+        if (this.locationDescription != other.locationDescription) {
+            return false;
+        }
+        if (!Objects.equals(this.items, other.items)) {
+            return false;
+        }
+        if (!Objects.equals(this.difficulties, other.difficulties)) {
+            return false;
+        }
+        return true;
     }
-
-    public List<Difficulty> getDifficulties() {
-        return difficulties;
-    }
-
-    public void setDifficulties(List<Difficulty> difficulties) {
-        this.difficulties = difficulties;
-    }
-
-    public boolean isVisited() {
-        return visited;
-    }
-
-    public void setVisited(boolean visited) {
-        this.visited = visited;
-    }    
 
     @Override
     public String toString() {
-        return "Location{" + "locationDescription=" + locationDescription + ", items=" + items + ", difficulties=" + difficulties + ", visited=" + visited + '}';
+        return "Location{" + "locationDescription=" + locationDescription + ", items=" + items + ", difficulties=" + difficulties + ", visited=" + visited + ", explored=" + explored + '}';
     }
+
+    
+
     
     
     
@@ -97,7 +119,7 @@ public class Location implements Serializable{
 //    }   
     
     
-    //done
+    //done   
 
     public Locations getLocationDescription() {
         return locationDescription;
@@ -107,45 +129,37 @@ public class Location implements Serializable{
         this.locationDescription = locationDescription;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.locationDescription);
-        hash = 89 * hash + Objects.hashCode(this.items);
-        hash = 89 * hash + Objects.hashCode(this.difficulties);
-        hash = 89 * hash + (this.visited ? 1 : 0);
-        return hash;
+    public List<Item> getItems() {
+        return items;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Location other = (Location) obj;
-        if (this.visited != other.visited) {
-            return false;
-        }
-        if (this.locationDescription != other.locationDescription) {
-            return false;
-        }
-        if (!Objects.equals(this.items, other.items)) {
-            return false;
-        }
-        if (!Objects.equals(this.difficulties, other.difficulties)) {
-            return false;
-        }
-        return true;
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 
-   
-    
+    public List<Difficulty> getDifficulties() {
+        return difficulties;
+    }
+
+    public void setDifficulties(List<Difficulty> difficulties) {
+        this.difficulties = difficulties;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+
+    public boolean isExplored() {
+        return explored;
+    }
+
+    public void setExplored(boolean explored) {
+        this.explored = explored;
+    }
     
 }
 

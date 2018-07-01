@@ -30,6 +30,8 @@ public class GameControl {
             case 1:
                 if (total > 10) {
                     System.out.println("You have found something");
+                    ItemControl.loadItemsCurrentGame();
+                    System.out.println(ItemControl.displayCurrentItems());                    
                 } else {
                     System.out.println("You did not find anything and got wounded");
                 }
@@ -37,6 +39,8 @@ public class GameControl {
             case 2:
                 if (total > 6) {
                     System.out.println("You have found something");
+                    ItemControl.loadItemsCurrentGame();
+                    System.out.println(ItemControl.displayCurrentItems());
                 } else {
                     System.out.println("You did not find anything and got wounded");
                 }
@@ -44,6 +48,8 @@ public class GameControl {
             case 3:
                 if (total > 2) {
                     System.out.println("You have found something");
+                    ItemControl.loadItemsCurrentGame();
+                    System.out.println(ItemControl.displayCurrentItems());
                 } else {
                     System.out.println("You did not find anything and got wounded");
                 }

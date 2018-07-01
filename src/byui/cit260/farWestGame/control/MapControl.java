@@ -31,6 +31,7 @@ public class MapControl {
         }
         return map;
     }
+    
 
     // added by giovanni
     public enum SceneType {
