@@ -49,7 +49,8 @@ public class ViewInventory extends View {
         System.out.println("Type:"+items[value].getTypeItem());
         System.out.println("Amount:"+items[value].getAmount());
         System.out.println("Weight:"+items[value].getWeight());
-                
+        menuPrompt = getInventoryString(); //if doAction changes the values to the item the value will 
+                                            //get updated with the new info thru this line
         return false;
     }
     
