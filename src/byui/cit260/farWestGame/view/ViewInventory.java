@@ -6,6 +6,7 @@
 package byui.cit260.farWestGame.view;
 
 import byui.cit260.farWestGame.model.Item;
+import farwestgame.FarWestGame;
 
 /**
  *
@@ -18,7 +19,7 @@ public class ViewInventory extends View {
 
     private String getInventoryString () {
     String inventoryItems = "";
-    Item[] items = pioneerTrails.getGame();
+    Item[] items = FarWestGame.getCurrentGame().getItems();
     
     return inventoryItems;
     }
