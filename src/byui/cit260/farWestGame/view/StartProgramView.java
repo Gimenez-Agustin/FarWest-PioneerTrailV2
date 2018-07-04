@@ -50,7 +50,7 @@ public class StartProgramView extends View{
                     + "We hope you have a lot of fun!\n"
                     + "=================================================");
             MainMenuView mainMenuView = new MainMenuView();
-            mainMenuView.display(mainMenuView.menu);
+            mainMenuView.display();
             return true;
         }
     }

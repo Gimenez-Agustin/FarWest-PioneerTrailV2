@@ -15,18 +15,42 @@ import farwestgame.FarWestGame;
 public class ViewInventory extends View {
 
     public ViewInventory() {
+        menuPrompt = getInventoryString(); //this builds menu
     }
 
     private String getInventoryString () {
     String inventoryItems = "";
     Item[] items = FarWestGame.getCurrentGame().getItems();
+    int heaviestItem = 0;
+    
+    for(int count = 0; count < items.length; count++){
+    inventoryItems += "\n"+count+" - "+items[count].getName(); //walk thru list of items
+    heaviestItem = Integer.max(heaviestItem, items[count].getWeight());
+    }
+    
+    inventoryItems += "\n\nThe Heaviest Item weighs "+heaviestItem;
+    inventoryItems += "\n\nWhat Item Would you Like to Look at?(Q to Quit)";
+    
     
     return inventoryItems;
     }
     
     @Override
     public boolean doAction(String inputs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Item[] items = FarWestGame.getCurrentGame().getItems();
+        int value = Integer.parseInt(inputs); //week 11 put a catch around this so it doesnt' throw an error
+        
+        if (value <0 || value >= items.length) {
+            System.out.println("\nPlease Select a number from the Menu");
+            return false;
+        }
+        
+        System.out.println("Name:"+items[value].getName());
+        System.out.println("Type:"+items[value].getTypeItem());
+        System.out.println("Amount:"+items[value].getAmount());
+        System.out.println("Weight:"+items[value].getWeight());
+                
+        return false;
     }
     
 }

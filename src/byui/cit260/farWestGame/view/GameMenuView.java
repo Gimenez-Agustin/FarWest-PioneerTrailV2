@@ -160,7 +160,8 @@ public class GameMenuView extends View{
     //done
     
     private void viewInventoryItems() {
-        System.out.println("View inventory items called");
+        ViewInventory viewInventory = new ViewInventory();
+        viewInventory.display();
     }
 
     private void purchaseSupplies() {
