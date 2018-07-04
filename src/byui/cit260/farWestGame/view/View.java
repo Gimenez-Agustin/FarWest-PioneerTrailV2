@@ -7,8 +7,18 @@ import java.util.Scanner;
  * @author Giovanni
  */
 public abstract class View implements ViewInterface{
-        
-    public View(){}
+  protected String menuPrompt;      
+    public View(){
+    menuPrompt = "";
+    }
+    public View(String menu){
+    menuPrompt = menu;
+    }
+    @Override
+    public String getInput(){
+    return getInputs(menuPrompt);
+    }
+    
     
     @Override
     public String getInputs(String menu) {
@@ -26,7 +36,11 @@ public abstract class View implements ViewInterface{
         }
         return inputs;
     }
-    
+    @Override
+     public void display() {
+     display(menuPrompt);
+     }
+     
     @Override
      public void display(String menu) {
         boolean endOfView = false;

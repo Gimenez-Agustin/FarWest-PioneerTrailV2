@@ -12,9 +12,28 @@ public class Game implements Serializable{
     private Family family;
     private Map map;
     private Player player;
+    private Person[] actors;
+    private Item[] items;
        
     public Game(){}
 
+    public Person[] getActors() {
+        return actors;
+    }
+
+    public void setActors(Person[] actors) {
+        this.actors = actors;
+    }
+
+    public Item[] getItems() {
+        return items;
+    }
+
+    public void setItems(Item[] items) {
+        this.items = items;
+    }
+
+    
     public Family getFamily() {
         return family;
     }

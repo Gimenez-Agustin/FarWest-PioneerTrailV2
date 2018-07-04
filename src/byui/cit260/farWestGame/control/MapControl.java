@@ -117,7 +117,7 @@ public class MapControl {
                 + "\n Get some rest, and wait for the other to"
                 + "\n catch up."
                 + "\n You are doing well!!");
-        charitonRiverCrossingScene.setMapSymbol("CRC");
+        charitonRiverCrossingScene.setMapSymbol("CR");
         charitonRiverCrossingScene.setFromNauvoo(80);
         scenes[SceneType.charitonRiverCrossing.ordinal()] = charitonRiverCrossingScene;
 
@@ -197,7 +197,7 @@ public class MapControl {
                 + "\n This is a major one as well."
                 + "\n Captain Dan Jones and Captain Silas Richards are"
                 + "\n awaiting your arrival.  Do what you can to stay warm.");
-        elkhornRiverCrossingScene.setMapSymbol("ERC");
+        elkhornRiverCrossingScene.setMapSymbol("ER");
         elkhornRiverCrossingScene.setFromNauvoo(293);
         scenes[SceneType.elkhornRiverCrossing.ordinal()] = elkhornRiverCrossingScene;
 
@@ -343,7 +343,7 @@ public class MapControl {
                 + "\n to have another entrance in to Salt Lake valley."
                 + "\n It got its nickname because of all the goldminers"
                 + "\n that used it to get to California.");
-        goldenPassRoadScene.setMapSymbol("GPR");
+        goldenPassRoadScene.setMapSymbol("GP");
         goldenPassRoadScene.setFromNauvoo(1281);
         scenes[SceneType.goldenPassRoad.ordinal()] = goldenPassRoadScene;
 

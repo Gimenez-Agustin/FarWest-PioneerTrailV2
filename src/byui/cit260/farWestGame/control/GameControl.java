@@ -21,6 +21,9 @@ public class GameControl {
         game.setFamily(FamilyControl.createFamily());
         game.setMap(MapControl.createMap());
         game.setPlayer(player);
+        game.setActors(createActors());
+        game.setItems(createItems());
+        
         return game;
     }
 
