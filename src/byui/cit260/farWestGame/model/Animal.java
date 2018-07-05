@@ -75,13 +75,7 @@ public class Animal implements Serializable{
             return false;
         }
         final Animal other = (Animal) obj;
-        if (this.bulletsNeededForHunt != other.bulletsNeededForHunt) {
-            return false;
-        }
-       if (this.animalAmount != other.animalAmount) {
-            return false;
-        }
-        if (this.itemWeight != other.itemWeight) {
+        if (this.animalAmount != other.animalAmount) {
             return false;
         }
         if (!Objects.equals(this.name, other.name)) {
@@ -90,6 +84,14 @@ public class Animal implements Serializable{
         if (!Objects.equals(this.itemName, other.itemName)) {
             return false;
         }
+        
+        if (this.bulletsNeededForHunt != other.bulletsNeededForHunt) {
+            return false;
+        }
+        if (this.itemWeight != other.itemWeight) {
+            return false;
+        }
+        
         return true;
         
 }

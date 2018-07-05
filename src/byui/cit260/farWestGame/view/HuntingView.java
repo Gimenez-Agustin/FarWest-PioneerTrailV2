@@ -5,8 +5,10 @@
  */
 package byui.cit260.farWestGame.view;
 
+import byui.cit260.farWestGame.enums.Animals;
 import byui.cit260.farWestGame.model.Animal;
 import farwestgame.FarWestGame;
+import java.util.Objects;
 /**
  *
  * @author Giovanni
@@ -21,7 +23,10 @@ public class HuntingView extends View {
    private String getAnimalString() {
        String animalsToHunt = "";
        Animal[] animals = FarWestGame.getCurrentGame().getAnimals();
+       
        int mostMeat = 0;
+       
+       System.out.println("Made it this far");
        
        for(int count = 0; count < animals.length; count++){
        animalsToHunt += "\n" + count + " - " + animals[count].getName(); //walk thru list of items
