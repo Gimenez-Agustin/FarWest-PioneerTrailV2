@@ -3,6 +3,7 @@ package farwestgame;
 import byui.cit260.farWestGame.model.Game;
 import byui.cit260.farWestGame.model.Item;
 import byui.cit260.farWestGame.model.Player;
+import byui.cit260.farWestGame.model.Animal;
 import byui.cit260.farWestGame.view.StartProgramView;
 import java.util.ArrayList;
 import java.util.List;

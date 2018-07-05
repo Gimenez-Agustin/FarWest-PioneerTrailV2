@@ -225,10 +225,9 @@ public class GameMenuView extends View{
         System.out.println("Navigate terrain called");
     }
 
-    //author Giovanni (L09 individual assignment)
     private void huntForResources() {
         HuntingView huntingView = new HuntingView();
-        huntingView.display(huntingView.menu);
+        huntingView.display();
     }
 
     private void saveGame() {
