@@ -1,8 +1,6 @@
 package byui.cit260.farWestGame.control;
 
-import byui.cit260.farWestGame.enums.Animals;
 import byui.cit260.farWestGame.enums.Items;
-import byui.cit260.farWestGame.model.Animal;
 import byui.cit260.farWestGame.model.Item;
 import farwestgame.FarWestGame;
 import java.util.ArrayList;
@@ -73,25 +71,6 @@ public class ItemControl {
         return null;
     }
 
-   /* public static Animal createAnimal(Animals animals, int animalAmount){
-        Animal animal = new Animal();
-        animal.setAnimalAmount(animalAmount);
-        animal.setName(animals.getName());
-        animal.setItemName(animals.getItemName());
-        animal.setBulletsNeededForHunt(animals.getBulletsNeededForHunt());
-        animal.setItemWeight(animals.getItemWeight());
-        return animal;
-    }
-    
-    public static Animals getAnimals(int i){
-        for (Animals animals : Animals.values()) {
-            if(animals.getId() == i) {
-                return animals;
-            }
-        }
-        return null;          
-    }
-    */
     // Author Giovanni (team assignment)
     public static double calNourishmentUsed(int numberActors, int milesTraveled) {
         // checks to make sure you don't have too many or not enough actors

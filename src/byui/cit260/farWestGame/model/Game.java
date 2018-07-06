@@ -38,7 +38,7 @@ public class Game implements Serializable{
         return animals;
     }
     
-    public void setAnimal(Animal[] animals) {
+    public void setAnimals(Animal[] animals) {
         this.animals = animals;
     }
     

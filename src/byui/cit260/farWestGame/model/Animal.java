@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package byui.cit260.farWestGame.model;
 
 import java.io.Serializable;
@@ -13,31 +8,30 @@ import java.util.Objects;
  * @author Giovanni
  */
 public class Animal implements Serializable{
-    private String name;
-    private String itemName;
+    private int animalId;
+    private String animalName;
     private int bulletsNeededForHunt;
-    private int animalAmount;
-    private int itemWeight;
+    private int animalMeat;
     
     
     public Animal() {}
+    
+    public int getAnimalId() {
+        return animalId;
+    }
+    
+    public void setAnimalId(int animalId){
+        this.animalId = animalId;
+    }
      
-    public String getName() {
-        return name;
+    public String getAnimalName() {
+        return animalName;
     }
     
-    public void setName(String name) {
-        this.name = name;        
+    public void setAnimalName(String animalName) {
+        this.animalName = animalName;        
     }
-    
-    public String getItemName() {
-        return itemName;
-    }
-    
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-    
+
     public int getBulletsNeededForHunt() {
         return bulletsNeededForHunt;
     }
@@ -46,20 +40,12 @@ public class Animal implements Serializable{
         this.bulletsNeededForHunt = bulletsNeededForHunt;
     }
     
-    public int getAnimalAmount() {
-        return animalAmount;
-    }
-
-    public void setAnimalAmount(int animalAmount) {
-        this.animalAmount = animalAmount;
+    public int getAnimalMeat() {
+        return animalMeat;
     }
     
-    public int getItemWeight() {
-        return itemWeight;
-    }
-    
-    public void setItemWeight (int itemWeight) {
-        this.itemWeight = itemWeight;
+    public void setAnimalMeat (int animalMeat) {
+        this.animalMeat = animalMeat;
     }
     
    
@@ -75,20 +61,16 @@ public class Animal implements Serializable{
             return false;
         }
         final Animal other = (Animal) obj;
-        if (this.animalAmount != other.animalAmount) {
+        if (this.animalId != other.animalId) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
+        if (!Objects.equals(this.animalName, other.animalName)) {
             return false;
         }
-        if (!Objects.equals(this.itemName, other.itemName)) {
-            return false;
-        }
-        
         if (this.bulletsNeededForHunt != other.bulletsNeededForHunt) {
             return false;
         }
-        if (this.itemWeight != other.itemWeight) {
+        if (this.animalMeat != other.animalMeat) {
             return false;
         }
         
@@ -99,11 +81,10 @@ public class Animal implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.name);
-        hash = 29 * hash + Objects.hashCode(this.itemName);
+        hash = 29 * hash + this.animalId;
+        hash = 29 * hash + Objects.hashCode(this.animalName);
         hash = 29 * hash + this.bulletsNeededForHunt;
-        hash = 29 * hash + this.animalAmount;
-        hash = 29 * hash + this.itemWeight;
+        hash = 29 * hash + this.animalMeat;
         return hash;
     }
 }

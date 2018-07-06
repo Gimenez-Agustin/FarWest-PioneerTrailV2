@@ -78,12 +78,7 @@ public class GameControl {
         return count > 2;
     }
 
-    //author Giovanni
-    public static void hunting(int animal) {
-        animal = 5;
-        System.out.println("you killed something");        
-    }
-    
+   
     //author Araceli Camarillo create Actors
     public static Person[] createActors() {
         //actors = create an array Actor objects
