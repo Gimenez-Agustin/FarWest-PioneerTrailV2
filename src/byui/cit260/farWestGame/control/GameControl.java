@@ -7,6 +7,7 @@ import byui.cit260.farWestGame.model.Illness;
 import byui.cit260.farWestGame.model.Item;
 import byui.cit260.farWestGame.model.ItemType;
 import byui.cit260.farWestGame.model.Game;
+import byui.cit260.farWestGame.exceptions.GameControlException;
 
 import java.util.List;
 
@@ -22,8 +23,7 @@ public class GameControl {
         game.setMap(MapControl.createMap());
         game.setPlayer(player);
         game.setActors(createActors());
-        game.setItems(createItems());
-        
+        game.setItems(createItems());        
         return game;
     }
 

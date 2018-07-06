@@ -8,6 +8,7 @@ package byui.cit260.farWestGame.view;
 import byui.cit260.farWestGame.enums.Animals;
 import byui.cit260.farWestGame.model.Animal;
 import farwestgame.FarWestGame;
+
 /**
  *
  * @author Giovanni
@@ -37,13 +38,14 @@ public class HuntingView extends View {
 
     @Override
     public boolean doAction(String inputs) {
+                
         Animals[] animals = Animals.values();
         int value = Integer.parseInt(inputs);
         
         if ( value < 0 || value >= animals.length) {
             System.out.println("\nMake sure to only select an animal from the menu.");
             return false;
-        }
+        } 
         // System.out.println(animals[value].getAnimalId());    
         //System.out.println("Animal" + animals[value].getAnimalName());
         //System.out.println("Bullets Needed" + animals[value].getBulletsNeededForHunt());
@@ -55,6 +57,7 @@ public class HuntingView extends View {
         menuPrompt = getAnimalString();  
         
         return false;
+        
     }
     
     

@@ -5,6 +5,7 @@ import byui.cit260.farWestGame.model.Item;
 import farwestgame.FarWestGame;
 import java.util.ArrayList;
 import java.util.Collections;
+import byui.cit260.farWestGame.exceptions.ItemControlException;
 
 /**
  *
@@ -72,34 +73,34 @@ public class ItemControl {
     }
 
     // Author Giovanni (team assignment)
-    public static double calNourishmentUsed(int numberActors, int milesTraveled) {
+    public static double calNourishmentUsed (int numberActors, int milesTraveled) throws ItemControlException {
         // checks to make sure you don't have too many or not enough actors
         if (numberActors < 1 || numberActors > 4) {
-            return -1;
+            throw new ItemControlException("There amount of family members is incorrect.");
         }
 
         /* checks to make sure the program did not return an 
            invalid number of miles traveled */
         if (milesTraveled < 0) {
-            return -1;
+            throw new ItemControlException("You can't go backwards in your journey.");
         }
 
         /*  following blocks of code will check to see if the miles traveled 
             caused the family to use more nourishment than the max allows */
         if (numberActors == 1 && milesTraveled > 500) {
-            return -1;
+            throw new ItemControlException("You don't have enough food to travel this far.  Game over.");
         }
 
         if (numberActors == 2 && milesTraveled > 333) {
-            return -1;
+            throw new ItemControlException("You don't have enough food to travel this far.  Game over.");
         }
 
         if (numberActors == 3 && milesTraveled > 250) {
-            return -1;
+            throw new ItemControlException("You don't have enough food to travel this far.  Game over.");
         }
 
         if (numberActors == 4 && milesTraveled > 200) {
-            return -1;
+            throw new ItemControlException("You don't have enough food to travel this far.  Game over.");
         }
 
         // code calculates the nourishment used by the group
@@ -109,26 +110,26 @@ public class ItemControl {
     }
 
     // Author Giovanni (individual assignment)
-    public static double calResource(int beginningWheel, int beginningBullets, int beginningWood, double remainingNourishment) {
+    public static double calResource(int beginningWheel, int beginningBullets, int beginningWood, double remainingNourishment) throws ItemControlException {
 
         // checks to make sure that beginning wheel does not exceed max
         if (beginningWheel < 0 || beginningWheel > 10) {
-            return -1;
+            throw new ItemControlException("You can't have more than 10 wheels, or less than none.");
         }
 
         // checks to make sure that beginning bullets do not exceed max
         if (beginningBullets < 0 || beginningBullets > 5000) {
-            return -1;
+            throw new ItemControlException("You can't have more than 5000 bullets, or less than none.");
         }
 
         // checks to make sure that beginning wood does not exceed max
         if (beginningWood < 0 || beginningWood > 50) {
-            return -1;
+            throw new ItemControlException("You can't have more than 50 pieces of wood, or less than none.");
         }
 
         // checks to make sure that beginning nourishment does not exceed max
         if (remainingNourishment < 0 || remainingNourishment > 500) {
-            return -1;
+            throw new ItemControlException("You can't have more than 500 lbs of food, or less than none.");
         }
 
         // calculates the total resource weight
@@ -136,36 +137,36 @@ public class ItemControl {
 
         // calculates if total resource weight exceeds limits
         if (totalResourceWeight > 500) {
-            return -1;
+            throw new ItemControlException("You have too much weight in the wagon.");
         } else {
             return totalResourceWeight;
         }
     }
 
     //Author Araceli Camarillo (Team Assignment)
-    public static double calSupplyUsed(int beginningWheel, int beginningBullets, int beginningWood, int wheelUsed, int bulletsUsed, int woodUsed) {
+    public static void /*double*/ calSupplyUsed(int beginningWheel, int beginningBullets, int beginningWood, int wheelUsed, int bulletsUsed, int woodUsed) throws ItemControlException {
         if (beginningWheel < 0 || beginningWheel > 10) {
-            return -1;
+            throw new ItemControlException("You can't have more than 10 wheels, or less than none.");
         }
 
         if (beginningBullets < 0 || beginningBullets > 5000) {
-            return -1;
+            throw new ItemControlException("You can't have more than 5000 bullets, or less than none.");
         }
 
         if (beginningWood < 0 || beginningWood > 50) {
-            return -1;
+            throw new ItemControlException("You can't have more than 50 pieces of wood, or less than none.");
         }
 
         if (wheelUsed > beginningWheel) {
-            return -1;
+            throw new ItemControlException("You can't use more wheels than you can have.");
         }
 
         if (bulletsUsed > beginningBullets) {
-            return -1;
+            throw new ItemControlException("You can't use more bullets than you can have.");
         }
 
         if (woodUsed > beginningWood) {
-            return -1;
+            throw new ItemControlException("You can't use more wood than you can have.");
         }
 
         beginningWheel = -wheelUsed;
@@ -181,47 +182,47 @@ public class ItemControl {
         supplyResult[2] = beginningWood;
         supplyResult[3] = supplyWeight;
 
-        return 1;
-
+        // return 1;
+        // return 1 and double changed per instructions in Lesson 11 Team assignment page 5
     }
 
     //Author Agustin Gimenez (FGL) (Team Assignment)
-    public static double calSupplyFound(int userWheel, int userBullets, int userWood, int beginningWheel, int beginningBullets, int beginningWood, int wheelAvailable, int bulletsAvailable, int woodAvailable) {
+    public static double calSupplyFound(int userWheel, int userBullets, int userWood, int beginningWheel, int beginningBullets, int beginningWood, int wheelAvailable, int bulletsAvailable, int woodAvailable) throws ItemControlException {
 
         if (beginningWheel < 0 || beginningWheel > 10) {
-            return -1;
+            throw new ItemControlException("You can't have more than 10 wheels, or less than none.");
         }
 
         if (beginningBullets < 0 || beginningBullets > 5000) {
-            return -1;
+            throw new ItemControlException("You can't have more than 5000 bullets, or less than none.");
         }
 
         if (beginningWood < 0 || beginningWood > 50) {
-            return -1;
+            throw new ItemControlException("You can't have more than 50 pieces of wood, or less than none.");
         }
 
         if (userWheel > wheelAvailable) {
-            return -1;
+            throw new ItemControlException("You can't request more wheels than are available.");
         }
 
         if (userBullets > bulletsAvailable) {
-            return -1;
+            throw new ItemControlException("You can't request more bullets than are available.");
         }
 
         if (userWood > woodAvailable) {
-            return -1;
+            throw new ItemControlException("You can't request more wood than is available.");
         }
 
         if (beginningWheel + userWheel > 10) {
-            return -1;
+            throw new ItemControlException("You can't request more than 10 wheels.");
         }
 
         if (beginningBullets + userBullets > 10) {
-            return -1;
+            throw new ItemControlException("You can't request more than 10 bullets.");
         }
 
         if (beginningWood + userWood > 10) {
-            return -1;
+            throw new ItemControlException("You can't request more than 10 pieces of wood.");
         }
 
         int wheel = 50;
@@ -235,7 +236,7 @@ public class ItemControl {
         double supplyWeight = (beginningWheel * wheel) + (beginningBullets * bullets) + (beginningWood * wood);
 
         if (supplyWeight > 500) {
-            return -1;
+            throw new ItemControlException("You have more than you can carry.");
         } else {
             return supplyWeight;
         }

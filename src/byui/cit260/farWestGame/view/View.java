@@ -1,7 +1,6 @@
 package byui.cit260.farWestGame.view;
 
 import java.util.Scanner;
-
 /**
  *
  * @author Giovanni
@@ -21,7 +20,7 @@ public abstract class View implements ViewInterface{
     
     
     @Override
-    public String getInputs(String menu) {
+    public String getInputs(String menu){
         String inputs = "";
         System.out.println(menu);
         boolean valid = false;
@@ -34,6 +33,7 @@ public abstract class View implements ViewInterface{
             valid = true;
 
         }
+        
         return inputs;
     }
     @Override
@@ -42,7 +42,7 @@ public abstract class View implements ViewInterface{
      }
      
     @Override
-     public void display(String menu) {
+     public void display(String menu){
         boolean endOfView = false;
         do {
             String inputs = getInputs(menu);
@@ -50,7 +50,8 @@ public abstract class View implements ViewInterface{
                 endOfView = true;
                 continue;
             }
-            endOfView = doAction(inputs);
+            endOfView = doAction(inputs);            
+            
         } while (endOfView != true);
     }
      
