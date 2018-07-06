@@ -14,7 +14,7 @@ public class Game implements Serializable{
     private Player player;
     private Person[] actors;
     private Item[] items;
-    private Animal[] animals;
+    //private Animal[] animals;
        
     public Game(){}
 
@@ -34,13 +34,13 @@ public class Game implements Serializable{
         this.items = items;
     }
 
-    public Animal[] getAnimals(){
+    /*public Animal[] getAnimals(){
         return animals;
     }
     
     public void setAnimals(Animal[] animals) {
         this.animals = animals;
-    }
+    }*/
     
     public Family getFamily() {
         return family;
