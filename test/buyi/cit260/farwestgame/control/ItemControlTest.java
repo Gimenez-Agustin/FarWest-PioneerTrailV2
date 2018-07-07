@@ -6,6 +6,10 @@
 package buyi.cit260.farwestgame.control;
 
 import byui.cit260.farWestGame.control.ItemControl;
+import byui.cit260.farWestGame.exceptions.ItemControlException;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -48,7 +52,11 @@ public class ItemControlTest {
         double expResult = 375;
         
         // call the method
+        try{
         double result = ItemControl.calNourishmentUsed(numberActors, milesTraveled);
+        } catch (ItemControlException ex) {
+            Logger.getLogger(ItemControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         //test to see if the result expected equals the expected result
         assertEquals(expResult, result, 0.0);
