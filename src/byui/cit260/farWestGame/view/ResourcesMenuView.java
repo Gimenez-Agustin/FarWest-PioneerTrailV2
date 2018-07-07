@@ -60,8 +60,7 @@ public class ResourcesMenuView extends View{
     @Override
     public boolean doAction(String inputs) {
         Item[] items = FarWestGame.getCurrentGame().getItems();
-      
-        
+              
         try {
             totalResourceWeight = calResource(beginningWheel, beginningBullets, beginningWood, remainingNourishment);            
         } catch (ResourceMenuViewException ex) {
@@ -164,7 +163,7 @@ public class ResourcesMenuView extends View{
         double valFood = Double.parseDouble( input );
         ResourcesMenuView.remainingNourishment = valFood + ResourcesMenuView.remainingNourishment;
         } catch (NumberFormatException e) {
-          System.out.println("Error for " + e.getMessage());
+          System.out.println("Error " + e.getMessage());
           System.out.println("\n\nThis is not a number!!! \nPlease try again.");
         }        
         return ResourcesMenuView.remainingNourishment;
@@ -179,7 +178,7 @@ public class ResourcesMenuView extends View{
         int valWheel = Integer.parseInt( input );
         ResourcesMenuView.beginningWheel = valWheel + ResourcesMenuView.beginningWheel;
         } catch (NumberFormatException e) {
-          System.out.println("Error for " + e.getMessage());
+          System.out.println("Error " + e.getMessage());
           System.out.println("\n\nThis is not a number!!! \nPlease try again.");
         } 
         return ResourcesMenuView.beginningWheel;
@@ -193,7 +192,7 @@ public class ResourcesMenuView extends View{
         int valBullets = Integer.parseInt( input );
         ResourcesMenuView.beginningBullets = valBullets + ResourcesMenuView.beginningBullets;
         } catch (NumberFormatException e) {
-          System.out.println("Error for " + e.getMessage());
+          System.out.println("Error " + e.getMessage());
           System.out.println("\n\nThis is not a number!!! \nPlease try again.");
         } 
         return ResourcesMenuView.beginningBullets;
@@ -207,7 +206,7 @@ public class ResourcesMenuView extends View{
         int valWood = Integer.parseInt( input );
         ResourcesMenuView.beginningWood = valWood + ResourcesMenuView.beginningWood;
         } catch (NumberFormatException e) {
-          System.out.println("Error for " + e.getMessage());
+          System.out.println("Error " + e.getMessage());
           System.out.println("\n\nThis is not a number!!! \nPlease try again.");
         } 
         return ResourcesMenuView.beginningWood;

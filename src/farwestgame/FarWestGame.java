@@ -8,12 +8,27 @@ import byui.cit260.farWestGame.view.StartProgramView;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  *
- * @author andres
+ * @author 
  */
 public class FarWestGame {
 
+    /**
+     * @param args the command line arguments
+     */
+   
+    
+    
+    public static void main(String[] args) {    
+
+        StartProgramView startProgramView = new StartProgramView();
+        startProgramView.display(startProgramView.menu);
+   
+    }
+    
+    
     private static Player player;
     private static Game currentGame;
     
@@ -32,13 +47,4 @@ public class FarWestGame {
     public static void setCurrentGame(Game game) {
         FarWestGame.currentGame = game;
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        StartProgramView startProgramView = new StartProgramView();
-        startProgramView.display(startProgramView.menu);
-    }
-    
 }
