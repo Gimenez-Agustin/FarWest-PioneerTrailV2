@@ -4,6 +4,7 @@ import byui.cit260.farWestGame.enums.Locations;
 import byui.cit260.farWestGame.model.Location;
 import byui.cit260.farWestGame.model.Map;
 import byui.cit260.farWestGame.model.Scene;
+import byui.cit260.farWestGame.exceptions.MapControlException;
 
 /**
  *
@@ -423,4 +424,13 @@ public class MapControl {
         return finalSymbol;
     }
 
+    public void movePlayerToStart() {
+        System.out.print("Player moved to start");      
+        movePlayer();
+    }
+    
+    public void movePlayer(){
+        System.out.print("Player moves to next spot, and scene details are shown "); 
+    }
+    
 }

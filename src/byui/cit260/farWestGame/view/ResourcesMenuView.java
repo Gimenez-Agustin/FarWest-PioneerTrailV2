@@ -70,7 +70,8 @@ public class ResourcesMenuView extends View{
 // This will let you choose which item you want to get.
         finally { 
             // System.out.println("\nYou have " + totalResourceWeight + " pounds of resources.\n");
-        int value = Integer.parseInt(inputs); //week 11 put a catch around this so it doesnt' throw an error
+
+            int value = Integer.parseInt(inputs); //week 11 put a catch around this so it doesnt' throw an error
         
         if (value < 0 || value >= items.length) {
             System.out.println("\nPlease Select a number from the Menu");

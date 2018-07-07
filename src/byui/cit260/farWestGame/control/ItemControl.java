@@ -22,10 +22,8 @@ public class ItemControl {
             }
             Collections.shuffle(list);
             for (int i = 0; i < 3; i++) {
-                int amount = UtilsControl.getRandom(5);
-                //int animalAmount = 1;
+                int amount = UtilsControl.getRandom(5);                
                 Item item = createItem(getItems(list.get(i)), amount);
-               // Animal animal = createAnimal(getAnimals(list.get(i)), animalAmount);
                 FarWestGame.getCurrentGame().getMap().getCurrentLocation().getItems().add(item);
             }
             LocationControl.updateVisited();
