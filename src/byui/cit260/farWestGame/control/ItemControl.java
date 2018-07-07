@@ -136,7 +136,7 @@ public class ItemControl {
         double totalResourceWeight = (beginningWheel * 50) + (beginningBullets * .10) + (beginningWood * 10) + remainingNourishment;
 
         // calculates if total resource weight exceeds limits
-        if (totalResourceWeight > 500) {
+        if (totalResourceWeight > 1500) {
             throw new ItemControlException("You have too much weight in the wagon.");
         } else {
             return totalResourceWeight;

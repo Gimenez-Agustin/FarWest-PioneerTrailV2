@@ -153,7 +153,7 @@ public class GameControl {
         Item resource = new Item();
         //Assign values to each attribute in the Item object
         resource.setName("Food");
-        resource.setAmount(1);
+        resource.setAmount(250);
         resource.setTypeItem("Resource");
         resource.setWeight(250);
         
@@ -180,9 +180,9 @@ public class GameControl {
         resource = new Item();
         //Assign values to each attribute in the Item object
         resource.setName("Spare Wheels");
-        resource.setAmount(4);
+        resource.setAmount(2);
         resource.setTypeItem("Resource");
-        resource.setWeight(200);
+        resource.setWeight(100);
         
         items [ItemType.SpareWheels.ordinal()] = resource;
         
@@ -198,7 +198,7 @@ public class GameControl {
         resource = new Item();
         //Assign values to each attribute in the Item object
         resource.setName("Wood");
-        resource.setAmount(50);
+        resource.setAmount(5);
         resource.setTypeItem("Resource");
         resource.setWeight(50);
         

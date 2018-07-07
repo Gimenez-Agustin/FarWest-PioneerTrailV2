@@ -10,13 +10,23 @@ package byui.cit260.farWestGame.enums;
  * @author agustin
  */
 public enum Items {
-    
+    /*
     food(0,"Food","Resource",250),
     axe(1,"Axe", "Tool", 50),
     hammer(2,"Hammer","Tool",50),
     spareWheels(3,"Spare Wheels","Resources",200),
     bullets(4,"Bullets","Resources",100),
     wood(5,"Wood","Resource",50),
+    rest(6,"Rest","Resource",0),
+    water(7,"Water","Resource",50);*/
+    
+    //Changing the last number from pounds to amount
+    food(0,"Food","Resource",250),
+    axe(1,"Axe", "Tool", 50),
+    hammer(2,"Hammer","Tool",50),
+    spareWheels(3,"Spare Wheels","Resources",4),
+    bullets(4,"Bullets","Resources",100),
+    wood(5,"Wood","Resource",5),
     rest(6,"Rest","Resource",0),
     water(7,"Water","Resource",50);
        

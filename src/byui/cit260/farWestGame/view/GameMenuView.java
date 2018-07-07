@@ -165,7 +165,8 @@ public class GameMenuView extends View{
     }
 
     private void purchaseSupplies() {
-        System.out.println("Purchase supplies called");
+        ResourcesMenuView resourcesMenuView = new ResourcesMenuView();
+        resourcesMenuView.display();
     }
 
     private void exploreLocation() {
