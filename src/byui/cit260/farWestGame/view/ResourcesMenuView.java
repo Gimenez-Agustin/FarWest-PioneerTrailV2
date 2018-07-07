@@ -160,8 +160,13 @@ public class ResourcesMenuView extends View{
         Scanner scanner = new Scanner( System.in );
         System.out.println("How much food do you want to get?");
         String input = scanner.nextLine();
-        double valFood = Integer.parseInt( input );         
+        try{
+        double valFood = Double.parseDouble( input );
         ResourcesMenuView.remainingNourishment = valFood + ResourcesMenuView.remainingNourishment;
+        } catch (NumberFormatException e) {
+          System.out.println("Error for " + e.getMessage());
+          System.out.println("\n\nThis is not a number!!! \nPlease try again.");
+        }        
         return ResourcesMenuView.remainingNourishment;
     }
         
@@ -170,8 +175,13 @@ public class ResourcesMenuView extends View{
         Scanner scanner = new Scanner( System.in );
         System.out.println("How many wheels do you want to get?");
         String input = scanner.nextLine();
+        try{
         int valWheel = Integer.parseInt( input );
         ResourcesMenuView.beginningWheel = valWheel + ResourcesMenuView.beginningWheel;
+        } catch (NumberFormatException e) {
+          System.out.println("Error for " + e.getMessage());
+          System.out.println("\n\nThis is not a number!!! \nPlease try again.");
+        } 
         return ResourcesMenuView.beginningWheel;
     }
     
@@ -179,8 +189,13 @@ public class ResourcesMenuView extends View{
         Scanner scanner = new Scanner( System.in );
         System.out.println("How many bullets do you want to get?");
         String input = scanner.nextLine();
+        try{
         int valBullets = Integer.parseInt( input );
         ResourcesMenuView.beginningBullets = valBullets + ResourcesMenuView.beginningBullets;
+        } catch (NumberFormatException e) {
+          System.out.println("Error for " + e.getMessage());
+          System.out.println("\n\nThis is not a number!!! \nPlease try again.");
+        } 
         return ResourcesMenuView.beginningBullets;
     }
     
@@ -188,8 +203,13 @@ public class ResourcesMenuView extends View{
         Scanner scanner = new Scanner( System.in );
         System.out.println("How much wood do you want to cut?");
         String input = scanner.nextLine();
+        try{
         int valWood = Integer.parseInt( input );
         ResourcesMenuView.beginningWood = valWood + ResourcesMenuView.beginningWood;
+        } catch (NumberFormatException e) {
+          System.out.println("Error for " + e.getMessage());
+          System.out.println("\n\nThis is not a number!!! \nPlease try again.");
+        } 
         return ResourcesMenuView.beginningWood;
     }
     
