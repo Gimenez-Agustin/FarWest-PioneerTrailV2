@@ -40,7 +40,7 @@ public class ItemControlTest {
     // Author Giovanni (team assignment)
     public void testCalNourishmentUsed() {
         System.out.println("calNourishmentUsed");
-        
+        try{
         // ---- calNourishmentUsed Test Case 1 ----
         System.out.println("\tTest case 1");
         
@@ -52,13 +52,10 @@ public class ItemControlTest {
         double expResult = 375;
         
         // call the method
-        try{
-        double result = ItemControl.calNourishmentUsed(numberActors, milesTraveled);
-        } catch (ItemControlException ex) {
-            Logger.getLogger(ItemControl.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
-        //test to see if the result expected equals the expected result
+        double result = ItemControl.calNourishmentUsed(numberActors, milesTraveled);
+       
+        //test to see if the result expected equals the expected result        
         assertEquals(expResult, result, 0.0);
         
         
@@ -73,6 +70,7 @@ public class ItemControlTest {
         expResult = 300;
         
         // call the method
+        
         result = ItemControl.calNourishmentUsed(numberActors, milesTraveled);
         
         //test to see if the result expected equals the expected result
@@ -162,13 +160,16 @@ public class ItemControlTest {
         
         //test to see if the result expected equals the expected result
         assertEquals(expResult, result, 0.0);
-        
+        } catch (ItemControlException ex) {
+            Logger.getLogger(ItemControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @Test
    
     // Author Giovanni (individual assignment)
     public void testCalResoure(){
+        try{
         // Prints out heading for the test
         System.out.println("calResource");
         
@@ -303,12 +304,16 @@ public class ItemControlTest {
         
         //test to see if the result expected equals the expected result
         assertEquals(expResult, result, 0.0);
-        
+        } catch (ItemControlException ex) {
+            Logger.getLogger(ItemControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     //Author Araceli Camarillo (Team Assignment)
     @Test
+    
     public void testCalSupplyUsed() {
+        try{
         System.out.println("calSupplyUsed");
         
        System.out.println("\tTest case 1");
@@ -321,7 +326,7 @@ public class ItemControlTest {
        int beginningWheel = 0;
        int beginningBullets = 100;
        int beginningWood = 1;
-       double expResult = -1;
+       double expResult = -1;       
        double result = ItemControl.calSupplyUsed(beginningWheel, beginningBullets, beginningWood, wheelUsed, bulletsUsed, woodUsed);
        assertEquals(expResult, result, 0.0);
        
@@ -408,11 +413,15 @@ public class ItemControlTest {
        expResult = -1;
        result = ItemControl.calSupplyUsed(beginningWheel, beginningBullets, beginningWood, wheelUsed, bulletsUsed, woodUsed);
        assertEquals(expResult, result, 0.0);
+       } catch (ItemControlException ex) {
+            Logger.getLogger(ItemControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
        
     //Author Agustin (FGL) (Team assignment)
     @Test
    public void testCalSupplyFound() {
+       try{
        System.out.println("calSupplyFound");
        
        System.out.println("\tTest case 1");
@@ -512,6 +521,9 @@ public class ItemControlTest {
        expResult = 70.2;
        result = ItemControl.calSupplyFound(userWheel, userBullets, userWood, beginningWheel, beginningBullets, beginningWood, wheelAvailable, bulletsAvailable, woodAvailable);
        assertEquals(expResult, result, 0.0);
-       
+       } catch (ItemControlException ex) {
+            Logger.getLogger(ItemControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+       
 }
