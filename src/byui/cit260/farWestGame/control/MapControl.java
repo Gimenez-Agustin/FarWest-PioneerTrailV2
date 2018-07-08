@@ -5,6 +5,7 @@ import byui.cit260.farWestGame.model.Location;
 import byui.cit260.farWestGame.model.Map;
 import byui.cit260.farWestGame.model.Scene;
 import byui.cit260.farWestGame.exceptions.MapControlException;
+import byui.cit260.farWestGame.model.Game;
 
 /**
  *
@@ -432,5 +433,36 @@ public class MapControl {
     public void movePlayer(){
         System.out.print("Player moves to next spot, and scene details are shown "); 
     }
+    
+    public static Location movePerson(String person, int row, int column) {
+        if (person==null ) {
+            throw new MapControlException("");
+        }
+        
+        
+       
+        game = get the currentGame in the main class
+        map = get the map in the game object
+        locations = get the locations in the map 
+        
+                
+        if (newRow < 1 || newRow > noOfRows in map || newColumn < 1 || newColumn > noOfColumns in map){
+        throw MapControlException("");
+        }
+        
+        currentRow = get the row from the actor
+        currentColumn = get the column from the actor
+        oldLocation = get the location from the locations
+        array at the current row and column
+        newLocation = get the location at the new row and column
+        set actor in the oldLocation to null
+        set actor in the newLocation to the actor
+        set row in actor to newRow
+        set column in actor to newColumn
+        
+        return newLocation; 
+        
+    }
+    
     
 }

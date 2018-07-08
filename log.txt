@@ -1,3 +1,0 @@
-FarWestGame - Exception:java.lang.NumberFormatException: For input string: "dfas"
-Cause: null
-Message: For input string: "dfas"
