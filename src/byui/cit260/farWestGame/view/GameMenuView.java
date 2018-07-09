@@ -241,6 +241,6 @@ public class GameMenuView extends View{
     
     private void exitGame() {
         ExitGameView exitGameView = new ExitGameView();
-        exitGameView.display(exitGameView.menu);
+        exitGameView.display();
     }
 }

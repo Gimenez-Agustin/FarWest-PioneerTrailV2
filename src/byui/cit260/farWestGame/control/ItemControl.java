@@ -142,7 +142,7 @@ public class ItemControl {
     }
 
     //Author Araceli Camarillo (Team Assignment)
-    public static void /*double*/ calSupplyUsed(int beginningWheel, int beginningBullets, int beginningWood, int wheelUsed, int bulletsUsed, int woodUsed) throws ItemControlException {
+    public static double calSupplyUsed(int beginningWheel, int beginningBullets, int beginningWood, int wheelUsed, int bulletsUsed, int woodUsed) throws ItemControlException {
         if (beginningWheel < 0 || beginningWheel > 10) {
             throw new ItemControlException("You can't have more than 10 wheels, or less than none.");
         }
@@ -180,7 +180,7 @@ public class ItemControl {
         supplyResult[2] = beginningWood;
         supplyResult[3] = supplyWeight;
 
-        // return 1;
+        return 1;
         // return 1 and double changed per instructions in Lesson 11 Team assignment page 5
     }
 

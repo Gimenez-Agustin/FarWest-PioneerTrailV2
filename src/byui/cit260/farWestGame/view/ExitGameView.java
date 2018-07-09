@@ -12,17 +12,9 @@ import byui.cit260.farWestGame.control.GameControl;
  * @author Giovanni
  */
 public class ExitGameView extends View {
-    public String menu = "\nAre you Sure you want to Quit"
-                + "\n If you end now, all progress will be lost\n"
-                + "\nE - End Game without Saving"
-                + "\nS - Save Game and exit"
-                + "\nQ - Return to main menu"
-                + "\n";
-            
-            
             
     public ExitGameView(){
-        
+        menuPrompt = getExitGameString(); //this builds menu
     }
     
    @Override    
@@ -53,9 +45,18 @@ public class ExitGameView extends View {
     
     public void saveGame() {
         //Need to call a function that saves the game.
+        System.out.println("Save game function needs to be called first.");
         System.out.println("Game is saved.\n  See you soon!!");
         System.exit(0);       
     }
-
     
+    private String getExitGameString() {
+            String exitGameString = "\nAre you Sure you want to Quit"
+                + "\n If you end now, all progress will be lost\n"
+                + "\nE - End Game without Saving"
+                + "\nS - Save Game and exit"
+                + "\nQ - Return to game menu"
+                + "\n";
+            return exitGameString;
+    }
 }

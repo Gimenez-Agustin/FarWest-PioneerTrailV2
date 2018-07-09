@@ -7,7 +7,7 @@ package byui.cit260.farWestGame.exceptions;
 
 /**
  *
- * @author Giovanni
+ * @author 
  */
 public class GameControlException extends Exception{
 

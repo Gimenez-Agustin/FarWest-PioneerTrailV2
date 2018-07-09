@@ -38,6 +38,7 @@ public class ViewInventory extends View {
     @Override
     public boolean doAction(String inputs) {
         Item[] items = FarWestGame.getCurrentGame().getItems();
+        try{   //This is being placed here to make sure the program doesn't error out if a letter is inputted.
         int value = Integer.parseInt(inputs); //week 11 put a catch around this so it doesnt' throw an error
         
         if (value <0 || value >= items.length) {
@@ -51,6 +52,10 @@ public class ViewInventory extends View {
         System.out.println("Weight:"+items[value].getWeight());
         menuPrompt = getInventoryString(); //if doAction changes the values to the item the value will 
                                             //get updated with the new info thru this line
+        } catch (NumberFormatException e) {  //This will catch the error if a letter is inputted and will ask the user to try again.
+                    System.out.println("\nError " + e.getMessage());
+                    System.out.println("\nThis is not a number!!! \nPlease try again.");
+          }                                    
         return false;
     }
     

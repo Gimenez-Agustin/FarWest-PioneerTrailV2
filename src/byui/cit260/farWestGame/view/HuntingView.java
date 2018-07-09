@@ -11,7 +11,7 @@ import farwestgame.FarWestGame;
 
 /**
  *
- * @author Giovanni
+ * @author 
  */
 // public class HuntingView {
 public class HuntingView extends View { 
@@ -40,22 +40,22 @@ public class HuntingView extends View {
     public boolean doAction(String inputs) {
                 
         Animals[] animals = Animals.values();
+        try{
         int value = Integer.parseInt(inputs);
         
         if ( value < 0 || value >= animals.length) {
             System.out.println("\nMake sure to only select an animal from the menu.");
             return false;
         } 
-        // System.out.println(animals[value].getAnimalId());    
-        //System.out.println("Animal" + animals[value].getAnimalName());
-        //System.out.println("Bullets Needed" + animals[value].getBulletsNeededForHunt());
-        //System.out.println("Will give you " + animals[value].getAnimalMeat() + " pounds of meat.");
-        
+                
         System.out.println("\n\nYou got a " + animals[value].getAnimalName() + "!!\n");
         System.out.println("You used up " + animals[value].getBulletsNeededForHunt() + " bullets, and it gave you " + animals[value].getAnimalMeat() + " pounds of meat.");
         
         menuPrompt = getAnimalString();  
-        
+        } catch (NumberFormatException e) {  
+                    System.out.println("\nError " + e.getMessage());
+                    System.out.println("\nThis is not a number!!! \nPlease try again.");
+          }
         return false;
         
     }

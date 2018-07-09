@@ -424,7 +424,7 @@ public class MapControl {
         
         return finalSymbol;
     }
-
+/*
     public void movePlayerToStart() {
         System.out.print("Player moved to start");      
         movePlayer();
@@ -441,9 +441,9 @@ public class MapControl {
         
         
        
-        game = get the currentGame in the main class
-        map = get the map in the game object
-        locations = get the locations in the map 
+        game = get the currentGame in the main class;
+        map = get the map in the game object;
+        locations = get the locations in the map ;
         
                 
         if (newRow < 1 || newRow > noOfRows in map || newColumn < 1 || newColumn > noOfColumns in map){
@@ -464,5 +464,5 @@ public class MapControl {
         
     }
     
-    
+    */
 }
