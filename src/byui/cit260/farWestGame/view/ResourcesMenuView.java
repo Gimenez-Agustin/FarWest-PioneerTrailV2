@@ -54,8 +54,8 @@ public class ResourcesMenuView extends View{
     System.out.println("\nCurrent Inventory"
                     + "\n----------------------------------"
                     + "\nFood = " + remainingNourishment + " pounds"
-                    + "\nBullets = " + beginningBullets
-                    + "\nSpare Wheels = " + beginningWheel
+                    + "\nSpare Wheels = " + beginningWheel        
+                    + "\nBullets = " + beginningBullets                    
                     + "\nWood = " + beginningWood + " cords of wood");
     try {
         totalResourceWeight = calResource(beginningWheel, beginningBullets, beginningWood, remainingNourishment);            
@@ -84,6 +84,7 @@ public class ResourcesMenuView extends View{
         
 // This will let you choose which item you want to get.
         finally {
+            try {
             int value = Integer.parseInt(inputs); //week 11 put a catch around this so it doesnt' throw an error
         
         if (value < 0 || value >= items.length) {
@@ -92,6 +93,7 @@ public class ResourcesMenuView extends View{
         }      
           
             String addValue = String.valueOf(value);
+        
             switch (addValue) {
                 case "0":
                         addFood(remainingNourishment);                  
@@ -101,13 +103,7 @@ public class ResourcesMenuView extends View{
                             Logger.getLogger(ResourcesMenuView.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         finally {                                
-                            System.out.println("\nNew Inventory"
-                                                + "\n----------------------------------"
-                                                + "\nFood = " + remainingNourishment + " pounds"
-                                                + "\nBullets = " + beginningBullets
-                                                + "\nSpare Wheels = " + beginningWheel
-                                                + "\nWood = " + beginningWood + " cords of wood");
-                            System.out.println("Total resource weight = " + totalResourceWeight + " pounds.");
+                            showNewInventory();
                         } 
                         break;
 
@@ -119,13 +115,7 @@ public class ResourcesMenuView extends View{
                             Logger.getLogger(ResourcesMenuView.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         finally {
-                                System.out.println("\nNew Inventory"
-                                                + "\n----------------------------------"
-                                                + "\nFood = " + remainingNourishment + " pounds"
-                                                + "\nBullets = " + beginningBullets
-                                                + "\nSpare Wheels = " + beginningWheel
-                                                + "\nWood = " + beginningWood + " cords of wood");
-                                System.out.println("Total resource weight = " + totalResourceWeight + " pounds.");
+                            showNewInventory();
                         } 
                         break;
                 
@@ -137,13 +127,7 @@ public class ResourcesMenuView extends View{
                             Logger.getLogger(ResourcesMenuView.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         finally {
-                                System.out.println("\nNew Inventory"
-                                                + "\n----------------------------------"
-                                                + "\nFood = " + remainingNourishment + " pounds"
-                                                + "\nBullets = " + beginningBullets
-                                                + "\nSpare Wheels = " + beginningWheel
-                                                + "\nWood = " + beginningWood + " cords of wood");
-                                System.out.println("Total resource weight = " + totalResourceWeight + " pounds.");
+                            showNewInventory();
                         } 
                         break;
                         
@@ -155,13 +139,7 @@ public class ResourcesMenuView extends View{
                             Logger.getLogger(ResourcesMenuView.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         finally {
-                                System.out.println("\nNew Inventory"
-                                                + "\n----------------------------------"
-                                                + "\nFood = " + remainingNourishment + " pounds"
-                                                + "\nBullets = " + beginningBullets
-                                                + "\nSpare Wheels = " + beginningWheel
-                                                + "\nWood = " + beginningWood + " cords of wood");
-                                System.out.println("Total resource weight = " + totalResourceWeight + " pounds.");
+                            showNewInventory();
                         } 
                         break;
                         
@@ -171,7 +149,12 @@ public class ResourcesMenuView extends View{
                 default:
                         System.out.println("Invalid option");
                 }
+            } catch (NumberFormatException e) {
+                    System.out.println("\nError " + e.getMessage());
+                    System.out.println("\nThis is not a number!!! \nPlease try again.");
+            }
         }
+            
         //menuPrompt = getPrimaryInventoryString(); //if doAction changes the values to the item the value will 
                                                     //get updated with the new info thru this line
                                                     // **** THIS IS NOT UPDATING ****
@@ -248,6 +231,16 @@ public class ResourcesMenuView extends View{
           System.out.println("\n\nThis is not a number!!! \nPlease try again.");
         } 
         return ResourcesMenuView.beginningWood;
+    }
+    
+    public void showNewInventory(){
+        System.out.println("\nNew Inventory"
+                            + "\n----------------------------------"
+                            + "\nFood = " + remainingNourishment + " pounds"
+                            + "\nSpare Wheels = " + beginningWheel                                                        
+                            + "\nBullets = " + beginningBullets
+                            + "\nWood = " + beginningWood + " cords of wood");
+                            System.out.println("Total resource weight = " + totalResourceWeight + " pounds.");
     }
     
     
