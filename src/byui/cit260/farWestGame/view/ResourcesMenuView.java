@@ -1,6 +1,8 @@
 package byui.cit260.farWestGame.view;
 
+import byui.cit260.farWestGame.control.ItemControl;
 import byui.cit260.farWestGame.exceptions.ResourceMenuViewException;
+import byui.cit260.farWestGame.exceptions.ItemControlException;
 import byui.cit260.farWestGame.model.Item;
 import farwestgame.FarWestGame;
 import java.util.Scanner;
@@ -21,6 +23,7 @@ public class ResourcesMenuView extends View{
            
     public ResourcesMenuView() {
         menuPrompt = getPrimaryInventoryString();
+        
     }  
     
     
@@ -58,8 +61,8 @@ public class ResourcesMenuView extends View{
                     + "\nBullets = " + beginningBullets                    
                     + "\nWood = " + beginningWood + " cords of wood");
     try {
-        totalResourceWeight = calResource(beginningWheel, beginningBullets, beginningWood, remainingNourishment);            
-        } catch (ResourceMenuViewException ex) {
+        totalResourceWeight = ItemControl.calResource(beginningWheel, beginningBullets, beginningWood, remainingNourishment);            
+        } catch (ItemControlException ex) {
             Logger.getLogger(ResourcesMenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
     System.out.println("Total resource weight = " + totalResourceWeight + " pounds.");
@@ -98,8 +101,8 @@ public class ResourcesMenuView extends View{
                 case "0":
                         addFood(remainingNourishment);                  
                         try {
-                            totalResourceWeight = calResource(beginningWheel, beginningBullets, beginningWood, remainingNourishment);            
-                        } catch (ResourceMenuViewException ex) {
+                            totalResourceWeight = ItemControl.calResource(beginningWheel, beginningBullets, beginningWood, remainingNourishment);            
+                        } catch (ItemControlException ex) {
                             Logger.getLogger(ResourcesMenuView.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         finally {                                

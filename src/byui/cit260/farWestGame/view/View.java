@@ -24,16 +24,22 @@ public abstract class View implements ViewInterface{
         String inputs = "";
         System.out.println(menu);
         boolean valid = false;
+        try {
         while (valid == false) {
             Scanner scanner = new Scanner(System.in);
             inputs = scanner.nextLine().trim();
             if (inputs.length() < 1) {
                 System.out.println("You must enter a non-blank value");
+                System.out.println("Please enter your name:  ");
+             continue;   
             }
-            valid = true;
-
+            // valid = true;
+            break;
         }
-        
+        } catch(Exception e) {
+            ErrorView.display(this.getClass().getName(), 
+                    "Error Reading Input: " + e.getMessage());
+        }
         return inputs;
     }
     @Override

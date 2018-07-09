@@ -38,9 +38,11 @@ public class StartProgramView extends View{
 
     @Override
     public boolean doAction(String inputs) {
-        String playerName = inputs;        
-        FarWestGame.setPlayer(PlayerControl.savePlayer(playerName));
+        String playerName = inputs; 
+     
         
+        FarWestGame.setPlayer(PlayerControl.savePlayer(playerName));
+       // try {
         if (FarWestGame.getPlayer() == null) {
             System.out.println("Could not create the player.+\n"
                     + "Enter a different name.");
@@ -54,7 +56,7 @@ public class StartProgramView extends View{
             mainMenuView.display();
             
         }
-            return true;
+        return true;
     }
 
 }

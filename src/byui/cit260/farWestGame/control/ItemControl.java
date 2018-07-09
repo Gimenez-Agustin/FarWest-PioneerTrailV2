@@ -134,7 +134,7 @@ public class ItemControl {
         double totalResourceWeight = (beginningWheel * 50) + (beginningBullets * .10) + (beginningWood * 10) + remainingNourishment;
 
         // calculates if total resource weight exceeds limits
-        if (totalResourceWeight > 1500) {
+        if (totalResourceWeight > 700) {
             throw new ItemControlException("You have too much weight in the wagon.");
         } else {
             return totalResourceWeight;
@@ -233,7 +233,7 @@ public class ItemControl {
 
         double supplyWeight = (beginningWheel * wheel) + (beginningBullets * bullets) + (beginningWood * wood);
 
-        if (supplyWeight > 500) {
+        if (supplyWeight > 700) {
             throw new ItemControlException("You have more than you can carry.");
         } else {
             return supplyWeight;
