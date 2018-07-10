@@ -9,11 +9,12 @@ import java.util.Objects;
 /**
  *
  * @author Agustin
+ * //has it been visited before? mark as visited that's all this class should do. Our traveling will be done linear
  */
 public class Location implements Serializable{
-    private Locations locationDescription;
-    private List<Item> items;
-    private List<Difficulty> difficulties;
+    //private Locations locationDescription; shouldn't have description that's for scene
+   // private List<Item> items;
+    //private List<Difficulty> difficulties;
     private boolean visited;
     private boolean explored;
     
@@ -21,21 +22,21 @@ public class Location implements Serializable{
 //    private int row;
 //    private int column;
 //    private int fromNauvoo;
-//    private Scene scene;
+    private Scene scene;
     //done
     
     public Location(){
-        items= new ArrayList<>();
-        difficulties = new ArrayList<>();
+        //items= new ArrayList<>();
+        //difficulties = new ArrayList<>();  THESE GO IN THE SCENE NOT THE LOCATION...maybe got time?
         explored = false;
     }  
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 23 * hash + Objects.hashCode(this.locationDescription);
-        hash = 23 * hash + Objects.hashCode(this.items);
-        hash = 23 * hash + Objects.hashCode(this.difficulties);
+        //hash = 23 * hash + Objects.hashCode(this.locationDescription);
+        //hash = 23 * hash + Objects.hashCode(this.items);
+        //hash = 23 * hash + Objects.hashCode(this.difficulties);
         hash = 23 * hash + (this.visited ? 1 : 0);
         hash = 23 * hash + (this.explored ? 1 : 0);
         return hash;

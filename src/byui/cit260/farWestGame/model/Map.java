@@ -11,45 +11,44 @@ import java.util.Objects;
  */
 public class Map implements Serializable{
     
-    private List<Location> locations;
+    private Location[][] locations;
     private Location currentLocation;
 //    private Scene currentScene;
 //    private String description;
     
     //author Giovanni
-//    private int rowCount;
-//    private int columnCount;
-//    private int currentRow;
-//    private int currentColumn;
+    private int rowCount;
+    private int columnCount;
+    private int currentRow;
+    private int currentColumn;
     
-//    private Location[][] locationS;
+//    private Location[][] locations;
     
     public Map(){
-        locations = new ArrayList<>();
+        //locations = new ArrayList<>();
     }
     
     
-//    public Map(int rowCount, int columnCount) {
-//        
-////        if (rowCount < 1 || columnCount < 1) {
-////            return;
-////        }
-//        
-////        this.rowCount = rowCount;
-////        this.columnCount = columnCount;
-//        
-////        this.locationS = new Location[rowCount][columnCount];
-////        
-////        for (int row = 0; row < rowCount; row++) {
-////            for (int column = 0; column < columnCount; column++) {
-////                Location location = new Location();
-////                location.setColumn(column);
-////                location.setRow(row);
-////                location.setVisited(false);
-////                locationS[row][column] = location;
-////            }
-////        }
-//    }
+    public Map(int rowCount, int columnCount) {
+        
+        if (rowCount < 1 || columnCount < 1) {
+            return;
+        }
+        this.currentRow = 0;
+        this.currentColumn = 0;
+        this.rowCount = rowCount;
+        this.columnCount = columnCount;
+        
+        this.locations = new Location[rowCount][columnCount];
+        
+        for (int row = 0; row < rowCount; row++) {
+            for (int column = 0; column < columnCount; column++) {
+                Location location = new Location();
+                location.setVisited(false);
+                locations[row][column] = location;
+            }
+        }
+    }
 
     //done
        
