@@ -1,12 +1,18 @@
 package byui.cit260.farWestGame.view;
 
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
+
 /**
  *
  * @author Giovanni
  */
 public abstract class View implements ViewInterface{
-  protected String menuPrompt;      
+  protected String menuPrompt;   
+  protected final BufferedReader keyboard = farwestgame.FarWestGame.getInFile();
+  protected final PrintWriter console = farwestgame.FarWestGame.getOutFile();
+  
     public View(){
     menuPrompt = "";
     }
@@ -29,8 +35,8 @@ public abstract class View implements ViewInterface{
             Scanner scanner = new Scanner(System.in);
             inputs = scanner.nextLine().trim();
             if (inputs.length() < 1) {
-                System.out.println("You must enter a non-blank value");
-                System.out.println("Please enter your name:  ");
+                ErrorView.display(this.getClass().getName(),
+                        "Name cannot be blank!! \n Please enter your name: ");
              continue;   
             }
             // valid = true;
