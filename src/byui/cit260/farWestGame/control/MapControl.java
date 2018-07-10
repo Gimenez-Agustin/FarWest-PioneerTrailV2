@@ -394,11 +394,11 @@ public class MapControl {
         }
     }
 
-    public static int moveToNextLocation(Map map) {
+    /*public static int moveToNextLocation(Map map) {
         if (map.) {}
         
         return 1; //it won't show errors
-    }
+    }CREATE THIS UNTIL EVERYTHING ELSE IS FIXED*/
     
     public static String currentVisited(boolean visited, boolean current, boolean begin) {
         if (current) {
