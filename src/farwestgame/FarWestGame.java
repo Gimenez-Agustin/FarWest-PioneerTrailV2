@@ -33,9 +33,7 @@ public class FarWestGame {
         
         FarWestGame.inFile = new BufferedReader(new InputStreamReader(System.in));        
         FarWestGame.outFile = new PrintWriter(System.out, true);
-        
-        String filePath = "log.txt";
-        FarWestGame.logFile = new PrintWriter(filePath);
+        FarWestGame.logFile = new PrintWriter("logFile.txt");
         
         StartProgramView startProgramView = new StartProgramView();
         startProgramView.display(startProgramView.menu);
@@ -49,15 +47,17 @@ public class FarWestGame {
      } 
      finally {
             try {
-                if (FarWestGame.inFile != null){
+                FarWestGame.inFile.close();
+                FarWestGame.outFile.close();
+                if (FarWestGame.inFile != null)
                     FarWestGame.inFile.close();
-                }
-                if (FarWestGame.outFile != null){
+                
+                if (FarWestGame.outFile != null)
                     FarWestGame.outFile.close();
-                }
-                if (FarWestGame.logFile != null){
+                
+                if (FarWestGame.logFile != null)
                     FarWestGame.logFile.close();
-                }
+                
             } catch (IOException ex) {
                 ErrorView.display("FarWestGame","Exception:");
                 return;
