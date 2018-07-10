@@ -394,6 +394,12 @@ public class MapControl {
         }
     }
 
+    /*public static int moveToNextLocation(Map map) {
+        if (map.) {}
+        
+        return 1; //it won't show errors
+    }CREATE THIS UNTIL EVERYTHING ELSE IS FIXED*/
+    
     public static String currentVisited(boolean visited, boolean current, boolean begin) {
         if (current) {
             if(begin){
@@ -424,7 +430,9 @@ public class MapControl {
         
         return finalSymbol;
     }
-/*
+
+    
+    /* Araceli Camarillo
     public void movePlayerToStart() {
         System.out.print("Player moved to start");      
         movePlayer();

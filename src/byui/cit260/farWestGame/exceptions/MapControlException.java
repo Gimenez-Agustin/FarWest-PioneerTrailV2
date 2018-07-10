@@ -7,7 +7,7 @@ package byui.cit260.farWestGame.exceptions;
 
 /**
  *
- * @author 
+ * @Araceli Camarillo 
  */
 public class MapControlException extends Exception{
 
