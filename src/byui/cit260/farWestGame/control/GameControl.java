@@ -7,6 +7,9 @@ import byui.cit260.farWestGame.model.Illness;
 import byui.cit260.farWestGame.model.Item;
 import byui.cit260.farWestGame.model.ItemType;
 import byui.cit260.farWestGame.model.Game;
+import byui.cit260.farWestGame.exceptions.GameControlException;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 
 import java.util.List;
 
@@ -223,6 +226,16 @@ public class GameControl {
         
         return items;
 }
+    
+    public static void saveGame(Game game, String fileName)throws GameControlException {
+        try( FileOutputStream fops = new FileOutputStream(fileName)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);            
+            output.writeObject(game);
+        }
+        catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+    }
     
     //added by giovanni
 //    static void assignScenes(Map map, Scene[] scenes){
