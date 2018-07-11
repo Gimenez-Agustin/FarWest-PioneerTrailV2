@@ -37,25 +37,25 @@ public class HelpMenuView extends View {
             case "Q":
                 return true;
             default:
-                System.out.println("Invalid Menu Item");
+                this.console.println("Invalid Menu Item");
         }
         return false;
     }
 
     public void goalOfGame() {
-        System.out.println("goal of the game called");
+        this.console.println("goal of the game called");
     }
 
     public void howToMove() {
-        System.out.println("how to move called");
+        this.console.println("how to move called");
     }
 
     public void useTheResources() {
-        System.out.println("use the resource called");
+        this.console.println("use the resource called");
     }
 
     public void estimateNumberOfResources() {
-        System.out.println("estimate number of resources called");
+        this.console.println("estimate number of resources called");
     }
 
 }

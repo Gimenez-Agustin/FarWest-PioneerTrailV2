@@ -14,7 +14,7 @@ public class GameMenuView extends View{
                 + "I - View list inventory items\n"
                 + "P - Purchase new supplies\n"
                 + "L - Explore a location\n"
-                + "M - Move to new location\n"
+                + "M - Move to next location\n"
                 + "E - Estimate the resources needed\n"
                 + "B - Repair Wagons\n"
                 + "C - Utilize tools\n"
@@ -81,7 +81,7 @@ public class GameMenuView extends View{
             case "Q":
                 return true;
             default:
-                System.out.println("Invalid option");
+                this.console.println("Invalid option");
         }
         return false;
     }
@@ -89,7 +89,7 @@ public class GameMenuView extends View{
     //added by giovanni
     private void viewMap() {        
 //       Game game = farwestgame.FarWestGame.getCurrentGame();
-        System.out.println(MapControl.displayMap());
+        this.console.println(MapControl.displayMap());
     }
     //done
     
@@ -109,27 +109,27 @@ public class GameMenuView extends View{
     }
 
     private void moveToLocation() {
-        System.out.println("Move to location called");
+        this.console.println("Move to location called");
     }
 
     private void estimateNumberOfResources() {
-        System.out.println("Estimate number of resources called");
+        this.console.println("Estimate number of resources called");
     }
 
     private void repairWagons() {
-        System.out.println("Repair wagons called");
+        this.console.println("Repair wagons called");
     }
 
     private void useTools() {
-        System.out.println("Use tools called");
+        this.console.println("Use tools called");
     }
 
     private void dealSickness() {
-        System.out.println("Deal with sickness called");
+        this.console.println("Deal with sickness called");
     }
 
     private void navigateTerrain() {
-        System.out.println("Navigate terrain called");
+        this.console.println("Navigate terrain called");
     }
 
     private void huntForResources() {
@@ -138,11 +138,11 @@ public class GameMenuView extends View{
     }
 
     private void saveGame() {
-        System.out.println("Save game called");
+        this.console.println("Save game called");
     }
 
     private void getHelp() {
-        System.out.println("Get help called");
+        this.console.println("Get help called");
     }
     
     private void exitGame() {

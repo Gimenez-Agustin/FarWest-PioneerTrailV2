@@ -34,12 +34,14 @@ public class AddRemoveItemAmountView extends View {
             default:
                 try {
                     int amount = ItemControl.getAmount(inputs);
-                    System.out.println(ItemControl.manageItems(item, amount, action));
+                    this.console.println(ItemControl.manageItems(item, amount, action));
                     return true;
                 } catch (NumberFormatException e) {
                     Logger.getLogger(ItemsMenuView.class.getName()).log(Level.SEVERE, null, e);
-                    System.out.println("\nError " + e.getMessage());
-                    System.out.println("\nThis is not a number!!! \nPlease try again.");
+                    //System.out.println("\nError " + e.getMessage()); //changed per Lesson 12 page 11 instructions
+                    ErrorView.display(this.getClass().getName(), "\nError " + e.getMessage());
+                    // System.out.println("\nThis is not a number!!! \nPlease try again."); //changed per Lesson 12 page 11 instructions
+                    ErrorView.display(this.getClass().getName(), "\nThis is not a number!!! \nPlease try again.");
                 }
         }
         return false;

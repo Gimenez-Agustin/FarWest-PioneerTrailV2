@@ -36,7 +36,7 @@ public class MainMenuView extends View{
             case "E":
                 return true;
             default:
-                System.out.println("Invalid menu item.");
+                this.console.println("Invalid menu item.");
         }
         return false;
     }
@@ -51,16 +51,16 @@ public class MainMenuView extends View{
     }
 
     private void createLocations() {
-       System.out.println("createLocations() called");        
+       this.console.println("createLocations() called");        
     }
     
     private void createScenes() {
-       System.out.println("createScenes() called");        
+       this.console.println("createScenes() called");        
     }
     
     
     private void restartGame() {
-        System.out.println("not implemented yet");
+        this.console.println("not implemented yet");
     }
 
     private void getHelp() {

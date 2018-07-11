@@ -38,7 +38,8 @@ public class AddRemoveItemView extends View {
             case "Q":
                 return true;
             default:
-                System.out.println("Invalid Menu Item");
+                // System.out.println("Invalid Menu Item");  //changed per Lesson 12 page 12 instructions
+                this.console.println("Invalid Menu Item");
         }
         return false;
     }

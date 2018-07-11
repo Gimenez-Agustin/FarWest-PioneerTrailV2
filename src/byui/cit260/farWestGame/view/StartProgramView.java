@@ -44,11 +44,11 @@ public class StartProgramView extends View{
         FarWestGame.setPlayer(PlayerControl.savePlayer(playerName));
        // try {
         if (FarWestGame.getPlayer() == null) {
-            System.out.println("Could not create the player.+\n"
+            this.console.println("Could not create the player.+\n"
                     + "Enter a different name.");
             return false;
         } else {
-            System.out.println("=================================================\n"
+            this.console.println("=================================================\n"
                     + "Welcome to the game " + FarWestGame.getPlayer().getName() + "\n"
                     + "We hope you have a lot of fun!\n"
                     + "=================================================");

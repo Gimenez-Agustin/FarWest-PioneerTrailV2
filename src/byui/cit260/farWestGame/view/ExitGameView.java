@@ -30,7 +30,7 @@ public class ExitGameView extends View {
             case "Q":
                 return true;
             default:
-                System.out.println("Invalid option");
+                this.console.println("Invalid option");
         }
         return false;
     }
@@ -38,14 +38,14 @@ public class ExitGameView extends View {
     
     
     public void exitGame() {
-        System.out.println("Game not saved.\n Thank you for playing\n Have a good day!!");
+        this.console.println("Game not saved.\n Thank you for playing\n Have a good day!!");
         System.exit(0);
     }
     
     public void saveGame() {
         //Need to call a function that saves the game.
-        System.out.println("Save game function needs to be called first.");
-        System.out.println("Game is saved.\n  See you soon!!");
+        this.console.println("Save game function needs to be called first.");
+        this.console.println("Game is saved.\n  See you soon!!");
         System.exit(0);       
     }
     

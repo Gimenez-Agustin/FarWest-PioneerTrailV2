@@ -42,17 +42,20 @@ public class HuntingView extends View {
         int value = Integer.parseInt(inputs);
         
         if ( value < 0 || value >= animals.length) {
-            System.out.println("\nMake sure to only select an animal from the menu.");
+            // System.out.println("\nMake sure to only select an animal from the menu."); //changed per Lesson 12 page 11 instructions
+            ErrorView.display(this.getClass().getName(), "\nMake sure to only select an animal from the menu.");
             return false;
         } 
                 
-        System.out.println("\n\nYou got a " + animals[value].getAnimalName() + "!!\n");
-        System.out.println("You used up " + animals[value].getBulletsNeededForHunt() + " bullets, and it gave you " + animals[value].getAnimalMeat() + " pounds of meat.");
+        this.console.println("\n\nYou got a " + animals[value].getAnimalName() + "!!\n");
+        this.console.println("You used up " + animals[value].getBulletsNeededForHunt() + " bullets, and it gave you " + animals[value].getAnimalMeat() + " pounds of meat.");
         
         menuPrompt = getAnimalString();  
         } catch (NumberFormatException e) {  
-                    System.out.println("\nError " + e.getMessage());
-                    System.out.println("\nThis is not a number!!! \nPlease try again.");
+                    //System.out.println("\nError " + e.getMessage()); //changed per Lesson 12 page 11 instructions
+                    ErrorView.display(this.getClass().getName(), "\nError " + e.getMessage());
+                    // System.out.println("\nThis is not a number!!! \nPlease try again."); //changed per Lesson 12 page 11 instructions
+                    ErrorView.display(this.getClass().getName(), "\nThis is not a number!!! \nPlease try again.");
           }
         return false;
         

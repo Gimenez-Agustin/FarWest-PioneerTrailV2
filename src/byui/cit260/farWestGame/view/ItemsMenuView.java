@@ -36,7 +36,7 @@ public class ItemsMenuView extends View {
             case "Q":
                 return true;
             default:
-                System.out.println("Invalid option");
+                this.console.println("Invalid option");
         }
         return false;
     }

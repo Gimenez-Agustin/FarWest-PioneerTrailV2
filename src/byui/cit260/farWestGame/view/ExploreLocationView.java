@@ -40,7 +40,7 @@ public class ExploreLocationView extends View {
             case "Q":
                 return true;
             default:
-                System.out.println("choose a correct option or choose Q to exit menu");
+                this.console.println("choose a correct option or choose Q to exit menu");
         }
         return false;
     }

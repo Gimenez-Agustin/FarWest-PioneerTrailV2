@@ -42,19 +42,22 @@ public class ViewInventory extends View {
         int value = Integer.parseInt(inputs); //week 11 put a catch around this so it doesnt' throw an error
         
         if (value <0 || value >= items.length) {
-            System.out.println("\nPlease Select a number from the Menu");
+            // System.out.println("\nPlease Select a number from the Menu"); //changed per Lesson 12 page 11 instructions
+            ErrorView.display(this.getClass().getName(), "\nPlease Select a number from the Menu");            
             return false;
         }
         
-        System.out.println("Name:"+items[value].getName());
-        System.out.println("Type:"+items[value].getTypeItem());
-        System.out.println("Amount:"+items[value].getAmount());
-        System.out.println("Weight:"+items[value].getWeight());
+        this.console.println("Name:"+items[value].getName());
+        this.console.println("Type:"+items[value].getTypeItem());
+        this.console.println("Amount:"+items[value].getAmount());
+        this.console.println("Weight:"+items[value].getWeight());
         menuPrompt = getInventoryString(); //if doAction changes the values to the item the value will 
                                             //get updated with the new info thru this line
         } catch (NumberFormatException e) {  //This will catch the error if a letter is inputted and will ask the user to try again.
-                    System.out.println("\nError " + e.getMessage());
-                    System.out.println("\nThis is not a number!!! \nPlease try again.");
+                    //System.out.println("\nError " + e.getMessage());
+                    //System.out.println("\nThis is not a number!!! \nPlease try again."); //changed per Lesson 12 page 11 instructions
+                    ErrorView.display(this.getClass().getName(), "\nError " + e.getMessage());                    
+                    ErrorView.display(this.getClass().getName(), "\nThis is not a number!!! \nPlease try again.");           
           }                                    
         return false;
     }

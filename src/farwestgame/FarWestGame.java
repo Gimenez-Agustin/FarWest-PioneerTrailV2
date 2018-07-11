@@ -54,7 +54,7 @@ public class FarWestGame {
                 if (FarWestGame.logFile != null)
                     FarWestGame.logFile.close();
                 
-            } catch (IOException ex) {
+            } catch (IOException ioe2) {  //Lesson 12 instructions showd } catch (IOException ex) { before the logFile was created
                 ErrorView.display("FarWestGame","Exception:");
                 return;
             }

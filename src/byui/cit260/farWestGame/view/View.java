@@ -28,12 +28,16 @@ public abstract class View implements ViewInterface{
     @Override
     public String getInputs(String menu){
         String inputs = "";
-        System.out.println(menu);
+        this.console.println(menu);
         boolean valid = false;
         try {
         while (valid == false) {
-            Scanner scanner = new Scanner(System.in);
-            inputs = scanner.nextLine().trim();
+            /*Scanner scanner = new Scanner(System.in);
+            inputs = scanner.nextLine().trim();*/ //removed per lesson 12 team assignment page 7
+            
+            inputs = this.keyboard.readLine();
+            inputs = inputs.trim();  //lines 38-39 per lesson 12 team assignment page 7
+            
             if (inputs.length() < 1) {
                 ErrorView.display(this.getClass().getName(),
                         "Name cannot be blank!! \n Please enter your name: ");
