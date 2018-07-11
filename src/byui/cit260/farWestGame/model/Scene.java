@@ -6,6 +6,7 @@
 package byui.cit260.farWestGame.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -13,12 +14,22 @@ import java.util.Objects;
  * @author Giovanni
  */
 public class Scene implements Serializable {
-
+   
+//    private int mapLocation;    
     private String name;
     private String description;
-    private int mapLocation;
-    private int fromNauvoo;
-    private String mapSymbol;
+    private List<Item> items;
+//    private List<Difficulty> difficulties;
+
+    public Scene() {
+    }
+
+    public Scene(String name, String description, int mapLocation, int fromNauvoo) {
+        this.name = name;
+        this.description = description;
+//        this.mapLocation = mapLocation;
+//        this.fromNauvoo = fromNauvoo;
+    }
 
     public String getName() {
         return name;
@@ -36,37 +47,29 @@ public class Scene implements Serializable {
         this.description = description;
     }
 
-    public int getMapLocation() {
-        return mapLocation;
+    public List<Item> getItems() {
+        return items;
     }
 
-    public void setMapLocation(int mapLocation) {
-        this.mapLocation = mapLocation;
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 
-    public int getFromNauvoo() {
-        return fromNauvoo;
-    }
-
-    public void setFromNauvoo(int fromNauvoo) {
-        this.fromNauvoo = fromNauvoo;
-    }
-
-    public String getMapSymbol() {
-        return mapSymbol;
-    }
-
-    public void setMapSymbol(String mapSymbol) {
-        this.mapSymbol = mapSymbol;
-    }
+//    public List<Difficulty> getDifficulties() {
+//        return difficulties;
+//    }
+//
+//    public void setDifficulties(List<Difficulty> difficulties) {
+//        this.difficulties = difficulties;
+//    }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 41 * hash + Objects.hashCode(this.name);
-        hash = 41 * hash + Objects.hashCode(this.description);
-        hash = 41 * hash + this.mapLocation;
-        hash = 41 * hash + this.fromNauvoo;
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.name);
+        hash = 89 * hash + Objects.hashCode(this.description);
+        hash = 89 * hash + Objects.hashCode(this.items);
+//        hash = 89 * hash + Objects.hashCode(this.difficulties);
         return hash;
     }
 
@@ -82,35 +85,26 @@ public class Scene implements Serializable {
             return false;
         }
         final Scene other = (Scene) obj;
-        if (this.mapLocation != other.mapLocation) {
-            return false;
-        }
-        if (this.fromNauvoo != other.fromNauvoo) {
-            return false;
-        }
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
+        if (!Objects.equals(this.items, other.items)) {
+            return false;
+        }
+//        if (!Objects.equals(this.difficulties, other.difficulties)) {
+//            return false;
+//        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Scene{" + "name=" + name + ", description=" + description + ", mapLocation=" + mapLocation + ", You have traveled " + fromNauvoo + " miles so far." + '}';
+        return "Scene{" + "name=" + name + ", description=" + description + ", items=" + items + '}';
     }
-
-
-    public Scene() {
-    }
-
-    public Scene(String name, String description, int mapLocation, int fromNauvoo) {
-        this.name = name;
-        this.description = description;
-        this.mapLocation = mapLocation;
-        this.fromNauvoo = fromNauvoo;
-    }
+    
+    
 
 }

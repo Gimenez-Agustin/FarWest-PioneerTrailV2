@@ -1,15 +1,11 @@
 package farwestgame;
 
 import byui.cit260.farWestGame.model.Game;
-import byui.cit260.farWestGame.model.Item;
 import byui.cit260.farWestGame.model.Player;
-import byui.cit260.farWestGame.model.Animal;
 import byui.cit260.farWestGame.view.StartProgramView;
 import byui.cit260.farWestGame.view.ErrorView;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import java.io.IOException;
 import java.io.InputStreamReader;
 

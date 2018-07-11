@@ -10,7 +10,7 @@ package byui.cit260.farWestGame.view;
  * @author Araceli Camarillo
  */
 public class IllnessView extends View {
-    public String menu = "\nYou Have been attacked by an illness, What would you like to do?\n"
+    public static String menu = "\nYou Have been attacked by an illness, What would you like to do?\n"
                 + "\nW - Drink Water"
                 + "\nR - Stop to Rest"
                 + "\nF - Eat some Food"
@@ -19,7 +19,7 @@ public class IllnessView extends View {
            
            
    public IllnessView(){
-       
+       super(menu);
    }
      
    @Override

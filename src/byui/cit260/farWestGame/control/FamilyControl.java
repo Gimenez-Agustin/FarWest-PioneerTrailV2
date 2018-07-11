@@ -3,6 +3,7 @@ package byui.cit260.farWestGame.control;
 import byui.cit260.farWestGame.enums.ActorType;
 import byui.cit260.farWestGame.model.Family;
 import byui.cit260.farWestGame.enums.FamilyType;
+import byui.cit260.farWestGame.model.Item;
 import byui.cit260.farWestGame.model.Person;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class FamilyControl {
         family.setCurrentLocation(0);
         family.setFood(0);
         family.setIsWagonBroken(false);
+        family.setItems(createItems());
         family.setFamilyMembers(createFamilyMembers());
         return family;
     }
@@ -37,5 +39,11 @@ public class FamilyControl {
         person = PersonControl.createPerson(FamilyType.Children.getDescription(), ActorType.Jane);
         family.add(person);
         return family;
+    }
+    
+    
+    private static List<Item> createItems(){
+        List<Item> items = new ArrayList<>();
+        return items;
     }
 }

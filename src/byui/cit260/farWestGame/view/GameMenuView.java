@@ -3,7 +3,6 @@ package byui.cit260.farWestGame.view;
 import byui.cit260.farWestGame.control.MapControl;
 import byui.cit260.farWestGame.model.Map;
 import byui.cit260.farWestGame.model.Game;
-import byui.cit260.farWestGame.model.Location;
 
 /**
  *
@@ -11,7 +10,7 @@ import byui.cit260.farWestGame.model.Location;
  */
 public class GameMenuView extends View{    
     
-    public String menu = "V - View Map\n"
+    public static String menu = "V - View Map\n"
                 + "I - View list inventory items\n"
                 + "P - Purchase new supplies\n"
                 + "L - Explore a location\n"
@@ -28,8 +27,8 @@ public class GameMenuView extends View{
                 + "Q - Quit\n"
                 + "Select an Option: ";
 
-    public void GameMenuView() {
-        
+    public GameMenuView() {
+        super(menu);
     }    
     
     @Override
@@ -88,74 +87,9 @@ public class GameMenuView extends View{
     }
     
     //added by giovanni
-    private void viewMap() {
-//        System.out.println("View map called");
-//        String leftChar;
-//        String rightChar;
-        
-       Game game = farwestgame.FarWestGame.getCurrentGame();
-//       game.setSeenMap(true);
-       Map map = game.getMap();
-
-
-        MapControl.displayMap(map);
-
-//        Map map = farwestgame.FarWestGame.getPlayer().getGames().get(0).getMap();
-//       int i=1;
-//       for(Location location: map.getLocations()){           
-//           System.out.println(i + "-" + location.getLocationDescription().getName());
-//           i++;
-//       }
-
-
-
-
-
-//       Location[][] locationS = map.getLocations();
-       
-//        System.out.println("       FAR WEST PIONEER TRAIL");
-//        System.out.println("  |");
-//          for( int column = 0; column < locationS[0].length; column++){
-//            if (column < 10)
-//                System.out.println("  " + column + " |");
-//            else
-//                System.out.println(" " + column + " |");
-//          }
-          
-          
-//        System.out.println();
-//          for( int row = 0; row < locationS.length; row++){
-//           System.out.println(row + " "); 
-//            for( int column = 0; column < locationS[row].length; column++){
-//              leftChar = " ";
-//              rightChar = " ";
-//              if(locationS[row][column] == map.getCurrentLocation()){
-//                leftChar = ">>"; 
-//                rightChar = "<<"; 
-//              } 
-//              else if(locationS[row][column].isVisited()){
-//                 leftChar = "**"; 
-//                 rightChar = "**"; 
-//              }
-//             System.out.println("|");
-//              if(locationS[row][column].getScene() == null)
-//              {
-//                   System.out.println(leftChar + "XXX" + rightChar);
-//              }
-//              else
-//                System.out.println(leftChar
-//                   + locationS[row][column].getScene().getMapSymbol()
-//                   + rightChar);
-//            }
-//           System.out.println("|");
-//          } 
-//          if (map.getCurrentLocation().getScene() != null)
-//              System.out.println("Your current location is: "
-//                + map.getCurrentLocation().getScene().getName()
-//                + "\nYou are " + map.getCurrentLocation().getScene().getFromNauvoo() + " miles from Nauvoo!"
-//                + "\n" + map.getCurrentLocation().getScene().getDescription()
-//                + "\nYou only have " + (1297 - map.getCurrentLocation().getScene().getFromNauvoo()) 
-//                + " miles left to go. \nKeep it up!!");  
+    private void viewMap() {        
+//       Game game = farwestgame.FarWestGame.getCurrentGame();
+        System.out.println(MapControl.displayMap());
     }
     //done
     
@@ -165,41 +99,13 @@ public class GameMenuView extends View{
     }
 
     private void purchaseSupplies() {
-        ResourcesMenuView resourcesMenuView = new ResourcesMenuView();
-        resourcesMenuView.display();
+        ItemsMenuView itemMenuView = new ItemsMenuView();
+        itemMenuView.display();
     }
 
     private void exploreLocation() {
         ExploreLocationView exploreLocationView = new ExploreLocationView();
         exploreLocationView.display(exploreLocationView.menu);
-//        int value = 0;
-//        while (value == 0) {
-//            System.out.println("how much do you want to explore?");
-//            System.out.println("a: 1 hour             Probability to find something:45%");
-//            System.out.println("b: 2 hours            Probability to find something:65%");
-//            System.out.println("c: more than 2 hours  Probability to find something:90%");
-//            Scanner scanner = new Scanner(System.in);
-//            String val = scanner.nextLine();
-//            switch (val.toUpperCase()) {
-//                case "A":
-//                    value = 1;
-//                    break;
-//                case "B":
-//                    value = 2;
-//                    break;
-//                case "C":
-//                    value = 3;
-//                    break;
-//                case "Q":
-//                    value = -1;
-//                default:
-//                    System.out.println("choose a correct option or choose Q to exit menu");
-//            }
-//            if (value > 0) {
-//                GameControl.exploreLocation(value);
-//            }
-//
-//        }
     }
 
     private void moveToLocation() {

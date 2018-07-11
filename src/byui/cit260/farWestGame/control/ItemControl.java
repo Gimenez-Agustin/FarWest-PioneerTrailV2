@@ -1,11 +1,13 @@
 package byui.cit260.farWestGame.control;
 
+import byui.cit260.farWestGame.cons.UtilsCons;
 import byui.cit260.farWestGame.enums.Items;
 import byui.cit260.farWestGame.model.Item;
 import farwestgame.FarWestGame;
 import java.util.ArrayList;
-import java.util.Collections;
 import byui.cit260.farWestGame.exceptions.ItemControlException;
+import java.util.Collections;
+import java.util.List;
 
 /**
  *
@@ -13,39 +15,39 @@ import byui.cit260.farWestGame.exceptions.ItemControlException;
  */
 public class ItemControl {
 
-    public static void loadItemsCurrentGame() {
-        if (!FarWestGame.getCurrentGame().getMap().getCurrentLocation().isVisited()) {
-            //example found in https://stackoverflow.com/questions/8115722/generating-unique-random-numbers-in-java
-            ArrayList<Integer> list = new ArrayList<>();
-            for (int i = 0; i < 8; i++) {
-                list.add(new Integer(i));
-            }
-            Collections.shuffle(list);
-            for (int i = 0; i < 3; i++) {
-                int amount = UtilsControl.getRandom(5);                
-                Item item = createItem(getItems(list.get(i)), amount);
-                FarWestGame.getCurrentGame().getMap().getCurrentLocation().getItems().add(item);
-            }
-            LocationControl.updateVisited();
-        }
-    }
-
-    public static String displayCurrentItems() {
-        int total=0;
-        String output="";
-        for (Item item : LocationControl.getCurrentLocation().getItems()) {
-            int subTotal=calTotalWieght(item);
-            output+="--------------------------------\n";
-            output+="Name:         " + item.getName() + "\n";
-            output+="Amount:       " + item.getAmount() + "\n";
-            output+="Weight:       " + item.getWeight() + "\n";
-            output+="Total Weight: " + subTotal + "\n";
-            total+=subTotal;
-            output+="--------------------------------\n";
-        }
-        output+="Total items Weight: " + total + "\n";
-        return output;
-    }
+//    public static void loadItemsCurrentGame(int number) {
+//        if (!FarWestGame.getCurrentGame().getMap().getCurrentLocation().isVisited()) {
+//            //example found in https://stackoverflow.com/questions/8115722/generating-unique-random-numbers-in-java
+//            ArrayList<Integer> list = new ArrayList<>();
+//            for (int i = 0; i < 8; i++) {
+//                list.add(new Integer(i));
+//            }
+//            Collections.shuffle(list);
+//            for (int i = 0; i < number; i++) {
+//                int amount = UtilsControl.getRandom(5);                
+//                Item item = createItem(getItems(list.get(i)), amount);
+//                FarWestGame.getCurrentGame().getMap().getCurrentLocation().getItems().add(item);
+//            }
+//            LocationControl.updateVisited();
+//        }
+//    }
+//
+//    public static String displayCurrentItems() {
+//        int total=0;
+//        String output="";
+//        for (Item item : LocationControl.getCurrentLocation().getItems()) {
+//            int subTotal=calTotalWieght(item);
+//            output+="--------------------------------\n";
+//            output+="Name:         " + item.getName() + "\n";
+//            output+="Amount:       " + item.getAmount() + "\n";
+//            output+="Weight:       " + item.getWeight() + "\n";
+//            output+="Total Weight: " + subTotal + "\n";
+//            total+=subTotal;
+//            output+="--------------------------------\n";
+//        }
+//        output+="Total items Weight: " + total + "\n";
+//        return output;
+//    }
 
     public static int calTotalWieght(Item item) {
         return (item.getAmount() * item.getWeight());
@@ -106,9 +108,23 @@ public class ItemControl {
 
         return nourishmentUsed;
     }
+    
+    public static double calResource(int beginningWheel, int beginningBullets, int beginningWood, double remainingNourishment) throws ItemControlException {
+
+        // calculates the total resource weight
+        double totalResourceWeight = (beginningWheel * 50) + (beginningBullets * .10) + (beginningWood * 10) + remainingNourishment;
+
+        // calculates if total resource weight exceeds limits
+        if (totalResourceWeight > 700) {
+            throw new ItemControlException("You have too much weight in the wagon.\nFor now, choose an item and enter a negative number\n to remove some of your items.\nYour limit is 700 pounds.");
+        } else {
+
+            return totalResourceWeight;
+        }
+    }
 
     // Author Giovanni (individual assignment)
-    public static double calResource(int beginningWheel, int beginningBullets, int beginningWood, double remainingNourishment) throws ItemControlException {
+    /*public static double calResource(int beginningWheel, int beginningBullets, int beginningWood, double remainingNourishment) throws ItemControlException {
 
         // checks to make sure that beginning wheel does not exceed max
         if (beginningWheel < 0 || beginningWheel > 10) {
@@ -139,7 +155,7 @@ public class ItemControl {
         } else {
             return totalResourceWeight;
         }
-    }
+    }*/
 
     //Author Araceli Camarillo (Team Assignment)
     public static double calSupplyUsed(int beginningWheel, int beginningBullets, int beginningWood, int wheelUsed, int bulletsUsed, int woodUsed) throws ItemControlException {
@@ -238,5 +254,43 @@ public class ItemControl {
         } else {
             return supplyWeight;
         }
+    }
+    
+    public static int getAmount(String amount) throws NumberFormatException{
+        try{
+            return Integer.parseInt(amount);
+        }catch(Exception ex){
+            throw new NumberFormatException(amount);
+        }
+    } 
+    
+    public static String manageItems(String itemName, int amount, String action) {
+        List<Item> items = new ArrayList<>();
+        int count=0;
+        String str="";
+        for (Item item : FarWestGame.getCurrentGame().getFamily().getItems()) {
+            if (item.getName().equals(itemName)) {
+                int subTotal = item.getAmount();
+                int total = 0;
+                if (action.equals(UtilsCons.ADD)) {
+                    total = subTotal + amount;
+                } else {
+                    total = subTotal - amount;
+                }
+                item.setAmount(total);
+            }
+            str= "Now you have " + item.getAmount() + " of "  + item.getName();
+            items.add(item);
+            count++;
+        }
+        if(count==0){
+            Item item= new Item();
+            item.setName(itemName);
+            item.setAmount(amount);
+            items.add(item);
+            str= "Now you have " + item.getAmount() + " of "  + item.getName();
+        }
+        FarWestGame.getCurrentGame().getFamily().setItems(items);
+        return str;
     }
 }

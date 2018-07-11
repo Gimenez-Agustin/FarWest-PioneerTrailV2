@@ -6,8 +6,6 @@
 package byui.cit260.farWestGame.view;
 
 import byui.cit260.farWestGame.enums.Animals;
-import byui.cit260.farWestGame.model.Animal;
-import farwestgame.FarWestGame;
 
 /**
  *

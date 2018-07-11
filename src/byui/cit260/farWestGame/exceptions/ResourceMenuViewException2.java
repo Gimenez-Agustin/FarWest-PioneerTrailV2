@@ -9,23 +9,23 @@ package byui.cit260.farWestGame.exceptions;
  *
  * @author
  */
-public class ResourceMenuViewException extends Exception {
-    public ResourceMenuViewException() {
+public class ResourceMenuViewException2 extends Exception {
+    public ResourceMenuViewException2() {
     }
 
-    public ResourceMenuViewException(String message) {
+    public ResourceMenuViewException2(String message) {
         super(message);
     }
 
-    public ResourceMenuViewException(String message, Throwable cause) {
+    public ResourceMenuViewException2(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public ResourceMenuViewException(Throwable cause) {
+    public ResourceMenuViewException2(Throwable cause) {
         super(cause);
     }
 
-    public ResourceMenuViewException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public ResourceMenuViewException2(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
     

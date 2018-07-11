@@ -9,18 +9,14 @@ import farwestgame.FarWestGame;
  */
 public class MainMenuView extends View{
     
-    public String menu="N - Start new game\n"
+    public static String menu="N - Start new game\n"
                 + "R - Restart existing game\n"
                 + "H - Get help on how to play the game\n"
                 + "E - Exit\n"
                 + "Select an Option: ";
 
     public MainMenuView() {
-        super("N - Start new game\n"
-                + "R - Restart existing game\n"
-                + "H - Get help on how to play the game\n"
-                + "E - Exit\n"
-                + "Select an Option: ");
+        super(menu);
     }
 
     

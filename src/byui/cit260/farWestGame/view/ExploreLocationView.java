@@ -13,13 +13,14 @@ import byui.cit260.farWestGame.control.GameControl;
  */
 public class ExploreLocationView extends View {
 
-    public String menu = "how much do you want to explore?\n"
+    public static String menu = "how much do you want to explore?\n"
             + "A: 1 hour             Probability to find something:45%\n"
             + "B: 2 hours            Probability to find something:65%\n"
             + "C: More than 2 hours  Probability to find something:90%\n"
             + "Q: Exit menu";
 
     public ExploreLocationView() {
+        super(menu);
     }
 
     @Override

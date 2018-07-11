@@ -1,9 +1,7 @@
 package byui.cit260.farWestGame.model;
 
-import byui.cit260.farWestGame.enums.Locations;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -12,33 +10,106 @@ import java.util.Objects;
  * //has it been visited before? mark as visited that's all this class should do. Our traveling will be done linear
  */
 public class Location implements Serializable{
-    //private Locations locationDescription; shouldn't have description that's for scene
-   // private List<Item> items;
-    //private List<Difficulty> difficulties;
-    private boolean visited;
-    private boolean explored;
     
-    //added by giovanni
-//    private int row;
-//    private int column;
-//    private int fromNauvoo;
-    private Scene scene;
-    //done
+    private int row;
+    private int column;    
+    private String mapSymbol;
+    private String name;
+    private String description;
+    private int fromNauvoo;
+    private boolean visited;
+    private boolean currentLocation;
+    private Scene[] scenes;
+    
     
     public Location(){
-        //items= new ArrayList<>();
-        //difficulties = new ArrayList<>();  THESE GO IN THE SCENE NOT THE LOCATION...maybe got time?
-        explored = false;
+        
     }  
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    public String getMapSymbol() {
+        return mapSymbol;
+    }
+
+    public void setMapSymbol(String mapSymbol) {
+        this.mapSymbol = mapSymbol;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getFromNauvoo() {
+        return fromNauvoo;
+    }
+
+    public void setFromNauvoo(int fromNauvoo) {
+        this.fromNauvoo = fromNauvoo;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+
+    public Scene[] getScenes() {
+        return scenes;
+    }
+
+    public void setScenes(Scene[] scenes) {
+        this.scenes = scenes;
+    }
+
+    public boolean isCurrentLocation() {
+        return currentLocation;
+    }
+
+    public void setCurrentLocation(boolean currentLocation) {
+        this.currentLocation = currentLocation;
+    }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        //hash = 23 * hash + Objects.hashCode(this.locationDescription);
-        //hash = 23 * hash + Objects.hashCode(this.items);
-        //hash = 23 * hash + Objects.hashCode(this.difficulties);
-        hash = 23 * hash + (this.visited ? 1 : 0);
-        hash = 23 * hash + (this.explored ? 1 : 0);
+        hash = 83 * hash + this.row;
+        hash = 83 * hash + this.column;
+        hash = 83 * hash + Objects.hashCode(this.mapSymbol);
+        hash = 83 * hash + Objects.hashCode(this.name);
+        hash = 83 * hash + Objects.hashCode(this.description);
+        hash = 83 * hash + this.fromNauvoo;
+        hash = 83 * hash + (this.visited ? 1 : 0);
+        hash = 83 * hash + (this.currentLocation ? 1 : 0);
+        hash = 83 * hash + Arrays.deepHashCode(this.scenes);
         return hash;
     }
 
@@ -54,19 +125,31 @@ public class Location implements Serializable{
             return false;
         }
         final Location other = (Location) obj;
+        if (this.row != other.row) {
+            return false;
+        }
+        if (this.column != other.column) {
+            return false;
+        }
+        if (this.fromNauvoo != other.fromNauvoo) {
+            return false;
+        }
         if (this.visited != other.visited) {
             return false;
         }
-        if (this.explored != other.explored) {
+        if (this.currentLocation != other.currentLocation) {
             return false;
         }
-        if (this.locationDescription != other.locationDescription) {
+        if (!Objects.equals(this.mapSymbol, other.mapSymbol)) {
             return false;
         }
-        if (!Objects.equals(this.items, other.items)) {
+        if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.difficulties, other.difficulties)) {
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.scenes, other.scenes)) {
             return false;
         }
         return true;
@@ -74,93 +157,10 @@ public class Location implements Serializable{
 
     @Override
     public String toString() {
-        return "Location{" + "locationDescription=" + locationDescription + ", items=" + items + ", difficulties=" + difficulties + ", visited=" + visited + ", explored=" + explored + '}';
+        return "Location{" + "row=" + row + ", column=" + column + ", mapSymbol=" + mapSymbol + ", name=" + name + ", description=" + description + ", fromNauvoo=" + fromNauvoo + ", visited=" + visited + ", currentLocation=" + currentLocation + ", scenes=" + scenes + '}';
     }
 
-    
-
-    
-    
-    
-//    //added by giovanni
-//    public int getRow() {
-//        return row;
-//    }
-//
-//    public void setRow(int row) {
-//        this.row = row;
-//    }
-//
-//    public int getColumn() {
-//        return column;
-//    }
-//
-//    public void setColumn(int column) {
-//        this.column = column;
-//    }
-//
-//    public boolean getVisited() {
-//        return visited;
-//    }
-//    
-//    public int getFromNauvoo() {
-//        return fromNauvoo;
-//    }
-//
-//    public void setFromNauvoo(int fromNauvoo) {
-//        this.fromNauvoo = fromNauvoo;
-//    }       
-    
-//    public void setScene(Scene scene) {
-//        this.scene = scene;
-//    }
-//    
-//    public Scene getScene() {
-//        return scene;
-//    }   
-    
-    
-    //done   
-
-    public Locations getLocationDescription() {
-        return locationDescription;
-    }
-
-    public void setLocationDescription(Locations locationDescription) {
-        this.locationDescription = locationDescription;
-    }
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
-
-    public List<Difficulty> getDifficulties() {
-        return difficulties;
-    }
-
-    public void setDifficulties(List<Difficulty> difficulties) {
-        this.difficulties = difficulties;
-    }
-
-    public boolean isVisited() {
-        return visited;
-    }
-
-    public void setVisited(boolean visited) {
-        this.visited = visited;
-    }
-
-    public boolean isExplored() {
-        return explored;
-    }
-
-    public void setExplored(boolean explored) {
-        this.explored = explored;
-    }
+          
     
 }
 

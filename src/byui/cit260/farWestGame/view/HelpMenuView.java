@@ -6,20 +6,15 @@ package byui.cit260.farWestGame.view;
  */
 public class HelpMenuView extends View {
 
-    public String menu = "G - What is the goal of the game?\n"
-            + "M - How to move\n"
-            + "E - Estimate the number of resources\n"
-            + "R - Use the resources\n"
-            + "Q - Quit\n"
-            + "Select an Option: ";
+    public static String menu =   "G - What is the goal of the game?\n"
+                                + "M - How to move\n"
+                                + "E - Estimate the number of resources\n"
+                                + "R - Use the resources\n"
+                                + "Q - Quit\n"
+                                + "Select an Option: ";
 
     public HelpMenuView() {
-        super("G - What is the goal of the game?\n"
-            + "M - How to move\n"
-            + "E - Estimate the number of resources\n"
-            + "R - Use the resources\n"
-            + "Q - Quit\n"
-            + "Select an Option: ");
+        super(menu);
     }
 
     @Override
