@@ -136,9 +136,10 @@ public class GameMenuView extends View{
         HuntingView huntingView = new HuntingView();
         huntingView.display();
     }
-
+    
     private void saveGame() {
-        this.console.println("Save game called");
+        SaveGameView saveGameView = new SaveGameView();
+        saveGameView.display();
     }
 
     private void getHelp() {

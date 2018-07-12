@@ -8,7 +8,10 @@ import byui.cit260.farWestGame.model.Item;
 import byui.cit260.farWestGame.model.ItemType;
 import byui.cit260.farWestGame.model.Game;
 import byui.cit260.farWestGame.exceptions.GameControlException;
+import farwestgame.FarWestGame;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import java.util.List;
@@ -235,7 +238,22 @@ public class GameControl {
         catch(Exception e) {
             throw new GameControlException(e.getMessage());
         }
+        
     }
+    
+    //instead of using on 231 fileoutputstream use fileInputStream instead of doing an ObjectOutputStream use ObjectiNputStream
+    public static void loadGame(String fileName)throws GameControlException {
+        try( FileInputStream fops = new FileInputStream(fileName)) {
+            ObjectInputStream input = new ObjectInputStream(fops);            
+            Game game = (Game) input.readObject();
+            FarWestGame.setCurrentGame(game);
+        }
+        catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+        
+    }
+    
     
     //added by giovanni
 //    static void assignScenes(Map map, Scene[] scenes){

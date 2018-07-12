@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 package byui.cit260.farWestGame.view;
+import byui.cit260.farWestGame.control.GameControl;
+import byui.cit260.farWestGame.exceptions.GameControlException;
 import farwestgame.FarWestGame;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,8 +27,14 @@ public class SaveGameView extends View {
     
     @Override
     public boolean doAction(String inputs) {
-        
-        
+        String fileName = inputs; 
+        try {
+            GameControl.saveGame(FarWestGame.getCurrentGame(), fileName);
+            console.println("You have Succesfully Saved Your Game to "+ fileName);
+            return true; //didn't throw error so it'll go back to previous menu
+        } catch (GameControlException ex) {
+            Logger.getLogger(SaveGameView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     return false;    
     }
     
