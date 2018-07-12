@@ -141,6 +141,7 @@ public class GameMenuView extends View{
         SaveGameView saveGameView = new SaveGameView();
         saveGameView.display();
     }
+    
 
     private void getHelp() {
         this.console.println("Get help called");

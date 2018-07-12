@@ -242,7 +242,7 @@ public class GameControl {
     }
     
     //instead of using on 231 fileoutputstream use fileInputStream instead of doing an ObjectOutputStream use ObjectiNputStream
-    public static void loadGame(String fileName)throws GameControlException {
+    public static void loadGame(String fileName)throws GameControlException { //same as getGame
         try( FileInputStream fops = new FileInputStream(fileName)) {
             ObjectInputStream input = new ObjectInputStream(fops);            
             Game game = (Game) input.readObject();
@@ -251,7 +251,6 @@ public class GameControl {
         catch(Exception e) {
             throw new GameControlException(e.getMessage());
         }
-        
     }
     
     

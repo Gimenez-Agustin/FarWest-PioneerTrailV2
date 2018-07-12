@@ -58,10 +58,14 @@ public class MainMenuView extends View{
        this.console.println("createScenes() called");        
     }
     
-    
     private void restartGame() {
-        this.console.println("not implemented yet");
+        StartSavedGameView startSavedGameView = new StartSavedGameView();
+        startSavedGameView.display();
     }
+    
+    //private void restartGame() {
+        //this.console.println("not implemented yet");
+    //}
 
     private void getHelp() {
         HelpMenuView helpMenuView = new HelpMenuView(); 
