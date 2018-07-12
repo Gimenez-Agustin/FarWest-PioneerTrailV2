@@ -32,10 +32,16 @@ public class StartSavedGameView extends View {
             try {
                 GameControl.loadGame(fileName);
             } catch (GameControlException ex) {
-                Logger.getLogger(StartSavedGameView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        console.println("OK. Restarting "+ fileName);
-        
-    return false;    
+                //Logger.getLogger(StartSavedGameView.class.getName()).log(Level.SEVERE, null, ex);
+                //console.println("File not found ");
+                ErrorView.display(this.getClass().getName(), "\nError " + ex.getMessage());
+                    ErrorView.display(this.getClass().getName(), "\nFile not found!!! \nPlease try again.");
+                    return false;
+            }            
+        console.println("\nOK. Restarting "+ fileName + "\nLet's continue!!\n");
+        GameMenuView gameMenuView = new GameMenuView();
+        gameMenuView.display(gameMenuView.menu);
+            
+        return false;    
     }    
 }
