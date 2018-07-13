@@ -9,6 +9,8 @@ import farwestgame.FarWestGame;
 import byui.cit260.farWestGame.model.Item;
 import byui.cit260.farWestGame.control.ItemControl;
 import byui.cit260.farWestGame.exceptions.GameControlException;
+import byui.cit260.farWestGame.model.Location;
+import byui.cit260.farWestGame.model.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -95,12 +97,12 @@ public class ReportsView extends View {
         
         
         
-        String inputs = null;      
-        String printMessage = "\n*** TO PRINT THIS REPORT, PLEASE ENTER A FILE NAME (or type 'Q' to Quit): ";
+        //String inputs = null;      
+        //console.println("\n*** TO PRINT THIS REPORT, PLEASE ENTER A FILE NAME (or type 'Q' to Quit): ");
         
-        String fileName = this.getInput();
+        String fileName = this.getInputs("\n*** TO PRINT THIS REPORT, PLEASE ENTER A FILE NAME (or type 'Q' to Quit): ");
         if (fileName.toUpperCase().equals("Q")) { // user wants to quit
-            printMessage = inputs;
+            //printMessage = inputs;
             return; // exit the view
         }
         try {
@@ -113,9 +115,31 @@ public class ReportsView extends View {
         
     }
     
-    private void printMap(){
     
-    }
+        private void printMap() {
+        int row = 0;
+        int column = 0;                         
+        String mapCo = "";
+        Map map = FarWestGame.getCurrentGame().getMap();
+        mapCo += ("| X |  0  |  1  |  2  |  3  |  4  |");
+        for (Location location : map.getLocations()) {
+            if (column == 0) {
+                mapCo+= ("| " + row + " |");
+            }
+            mapCo+= (currentVisited(location.isVisited(),isCurrent(location, map.getCurrentLocation()), true));
+            mapCo+= (createSymbol(location.getLocationDescription().getSymbol()));
+            mapCo+= (currentVisited(location.isVisited(),isCurrent(location, map.getCurrentLocation()),false));            
+            mapCo+= ("|");
+            column++;
+            if (column == 5) {               
+                mapCo+= ("");
+                column = 0;
+                row++;
+            }
+        
+        }
+      }
+
     
     
 }
