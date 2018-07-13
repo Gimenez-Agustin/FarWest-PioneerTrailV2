@@ -16,6 +16,7 @@ public class GameMenuView extends View{
                 + "L - Explore a location\n"
                 + "M - Move to next location\n"
                 + "E - Estimate the resources needed\n"
+                + "X - Print reports\n"
                 + "B - Repair Wagons\n"
                 + "C - Utilize tools\n"
                 + "D - Deal with Sickness\n"
@@ -53,6 +54,9 @@ public class GameMenuView extends View{
                 break;
             case "E":
                 estimateNumberOfResources();
+                break;
+            case "X":
+                printReports();
                 break;
             case "B":
                 repairWagons();
@@ -114,6 +118,11 @@ public class GameMenuView extends View{
 
     private void estimateNumberOfResources() {
         this.console.println("Estimate number of resources called");
+    }
+    
+    private void printReports() {
+        ReportsView reportsView = new ReportsView();
+        reportsView.display();
     }
 
     private void repairWagons() {

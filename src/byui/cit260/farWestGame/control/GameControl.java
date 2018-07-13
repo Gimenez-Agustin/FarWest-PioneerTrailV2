@@ -250,7 +250,19 @@ public class GameControl {
         }
         catch(Exception e) {
             throw new GameControlException(e.getMessage());
+        }        
+      
+    }
+    
+    public static void printReport(String myItems, String fileName)throws GameControlException {
+        try( FileOutputStream fops = new FileOutputStream(fileName)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);            
+            output.writeObject(myItems);
         }
+        catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+        
     }
     
     

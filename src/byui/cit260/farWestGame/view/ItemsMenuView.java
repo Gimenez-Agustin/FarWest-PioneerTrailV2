@@ -32,7 +32,7 @@ public class ItemsMenuView extends View {
                 break;
             case "W":
                 menuChoice("Wood");
-                break;
+                break;            
             case "Q":
                 return true;
             default:
@@ -44,8 +44,8 @@ public class ItemsMenuView extends View {
     public void menuChoice(String choice) {
         AddRemoveItemView addRemoveItemView = new AddRemoveItemView(choice);
         addRemoveItemView.display();
-    }
-    
+    }    
+   
 } /* @Override
     public boolean doAction(String inputs) {
 

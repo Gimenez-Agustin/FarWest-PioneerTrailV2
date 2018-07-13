@@ -14,6 +14,11 @@ import java.util.List;
  * @author agustin
  */
 public class ItemControl {
+    public static int beginningWheel = 0;
+    public static int beginningBullets = 0;
+    public static int beginningWood = 0;
+    public static double totalResourceWeight = 0;
+    public static double remainingNourishment = 0;
 
 //    public static void loadItemsCurrentGame(int number) {
 //        if (!FarWestGame.getCurrentGame().getMap().getCurrentLocation().isVisited()) {
