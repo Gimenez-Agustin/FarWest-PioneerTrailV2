@@ -41,7 +41,7 @@ public class StartSavedGameView extends View {
         console.println("\nOK. Restarting "+ fileName + "\nLet's continue!!\n");
         GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.display(gameMenuView.menu);
-            
+        
         return false;    
     }    
 }
