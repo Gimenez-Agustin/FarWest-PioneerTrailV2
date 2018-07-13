@@ -28,6 +28,7 @@ public class ReportsView extends View {
             + "\n| Reports Menu                                 |"
             + "\n------------------------------------------------"
             + "\nI - Print Inventory"
+            + "\nM - Print Map"   
             + "\nQ - Quit"
             + "\nPlease choose an option: ";
         
@@ -41,8 +42,11 @@ public class ReportsView extends View {
         value = value.toUpperCase(); // convert choice to upper case
         
         switch (value) {
-            case "I": // show the map
+            case "I": // show the inventory
                 this.printInventory();
+                break;
+                case "M": // show the map
+                this.printMap();
                 break;
             default:
                 this.console.println("\nInvalid Selection - Please choose an option from the menu.");
@@ -107,6 +111,10 @@ public class ReportsView extends View {
             Logger.getLogger(SaveGameView.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+    }
+    
+    private void printMap(){
+    
     }
     
     
