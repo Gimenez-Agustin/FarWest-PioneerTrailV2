@@ -144,9 +144,7 @@ public class ReportsView extends View {
                         }
                         }
                     }
-                    
-
-			//String content = "This is the content to write into file\n";
+                    //String content = "This is the content to write into file\n";
 
 			fw = new FileWriter(FILENAME);
 			bw = new BufferedWriter(fw);
