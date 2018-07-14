@@ -1,0 +1,32 @@
+| X |  0  |  1  |  2  |  3  |  4  |
+| 0 | ZN  || GG  || ERC || CR  || FB  |
+| 1 | SC  || NR  || PR  || SB  || EC  |
+| 2 | RP  || GE  || FK  || FL  || GPR |
+| 3 | CRC || CB  || CP  || SR  || EC  |
+| 4 | LC  || WQ  || AH  || IR  || ZN  |
+
+Zion
+Garden Grove
+Elkhorn River Crossing
+Chimney Rock
+Fort Bridger
+Sugar Creek
+Nishnabotna River
+Platte River
+Scotts Bluff
+Echo Canyon
+Richardson Point
+Grand Encampment
+Fort Kearny
+Fort Laramie
+Golden Pass Road
+Chariton River Crossing
+Council Bluffs
+Confluence Point
+Sweetwater River
+Emigration Canyon
+Locust Creek
+Winter Quarters
+Ash Hollow
+Independence Rock
+Zion

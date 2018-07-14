@@ -8,9 +8,15 @@ import byui.cit260.farWestGame.control.GameControl;
 import farwestgame.FarWestGame;
 import byui.cit260.farWestGame.model.Item;
 import byui.cit260.farWestGame.control.ItemControl;
+import byui.cit260.farWestGame.control.MapControl;
+import byui.cit260.farWestGame.control.LocationControl;
+import static byui.cit260.farWestGame.control.MapControl.displayMap;
 import byui.cit260.farWestGame.exceptions.GameControlException;
 import byui.cit260.farWestGame.model.Location;
 import byui.cit260.farWestGame.model.Map;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -42,13 +48,14 @@ public class ReportsView extends View {
     @Override
     public boolean doAction(String value) {
         value = value.toUpperCase(); // convert choice to upper case
+        Location location = new Location();//creating new object of locationControl
         
         switch (value) {
             case "I": // show the inventory
                 this.printInventory();
                 break;
                 case "M": // show the map
-                this.printMap();
+                this.printMap(MapControl.displayMap(), location.getName());
                 break;
             default:
                 this.console.println("\nInvalid Selection - Please choose an option from the menu.");
@@ -115,30 +122,82 @@ public class ReportsView extends View {
         
     }
     
-    
-        private void printMap() {
-        int row = 0;
-        int column = 0;                         
-        String mapCo = "";
-        Map map = FarWestGame.getCurrentGame().getMap();
-        mapCo += ("| X |  0  |  1  |  2  |  3  |  4  |");
-        for (Location location : map.getLocations()) {
-            if (column == 0) {
-                mapCo+= ("| " + row + " |");
-            }
-            mapCo+= (currentVisited(location.isVisited(),isCurrent(location, map.getCurrentLocation()), true));
-            mapCo+= (createSymbol(location.getLocationDescription().getSymbol()));
-            mapCo+= (currentVisited(location.isVisited(),isCurrent(location, map.getCurrentLocation()),false));            
-            mapCo+= ("|");
-            column++;
-            if (column == 5) {               
-                mapCo+= ("");
-                column = 0;
-                row++;
-            }
+    //Araceli Camarillo
+    private void printMap(String content, String location) {
+        String FILENAME = "Map.txt";
         
-        }
-      }
+        BufferedWriter bw = null;
+		FileWriter fw = null;
+                int i = 0;
+                int j = 0;
+                String Names = "";
+
+		try {
+                    
+                    Location [][] locations = FarWestGame.getCurrentGame().getMap().getLocations();
+                    for(i=0; i<locations.length; i++) {
+                        for(j=0; j<locations.length; j++){
+                        String locationName = locations[i][j].getName();//FarWestGame.getCurrentGame().getMap().getCurrentLocation().getName();
+                        console.println(locationName);
+                        if(locationName != "") {
+                        Names = Names+locationName+ "\n";
+                        }
+                        }
+                    }
+                    
+
+			//String content = "This is the content to write into file\n";
+
+			fw = new FileWriter(FILENAME);
+			bw = new BufferedWriter(fw);
+			bw.write(content+"\n"+ Names);
+
+			System.out.println("Done.File Map.txt Has Been Created");
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		} finally {
+
+			try {
+
+				if (bw != null)
+					bw.close();
+
+				if (fw != null)
+					fw.close();
+
+			} catch (IOException ex) {
+
+				ex.printStackTrace();
+
+			}
+                }
+        
+        
+    }    
+    
+    //private void printMap() {}
+         
+//MapPrint mapPrint = null;
+         //this.console.println(MapControl.displayMap());
+         
+         
+
+//            String fileName = this.("\n*** TO PRINT THIS REPORT, PLEASE ENTER A FILE NAME (or type 'Q' to Quit): ");
+//        if (fileName.toUpperCase().equals("Q")) { // user wants to quit
+////            //printMessage = inputs;
+//            return; // exit the view
+//        }
+//        try {
+//            GameControl.printReport(displayMap, fileName);
+//            console.println("Your Map has been printed to "+ fileName);
+//            
+//        } catch (GameControlException ex) {
+//            Logger.getLogger(SaveGameView.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//      }
 
     
     
