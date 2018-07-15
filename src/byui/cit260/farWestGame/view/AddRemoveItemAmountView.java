@@ -8,6 +8,7 @@ import java.util.logging.Logger;
  *
  * @author Agustin
  */
+//agustin individual
 public class AddRemoveItemAmountView extends View {
 
     public static String item;
@@ -34,6 +35,8 @@ public class AddRemoveItemAmountView extends View {
             default:
                 try {
                     int amount = ItemControl.getAmount(inputs);
+                    System.out.println(item);
+                    System.out.println(action);
                     this.console.println(ItemControl.manageItems(item, amount, action));
                     return true;
                 } catch (NumberFormatException e) {

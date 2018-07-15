@@ -6,7 +6,8 @@ import byui.cit260.farWestGame.model.Item;
 import farwestgame.FarWestGame;
 import java.util.ArrayList;
 import byui.cit260.farWestGame.exceptions.ItemControlException;
-import java.util.Collections;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 /**
@@ -14,6 +15,7 @@ import java.util.List;
  * @author agustin
  */
 public class ItemControl {
+
     public static int beginningWheel = 0;
     public static int beginningBullets = 0;
     public static int beginningWood = 0;
@@ -53,7 +55,6 @@ public class ItemControl {
 //        output+="Total items Weight: " + total + "\n";
 //        return output;
 //    }
-
     public static int calTotalWieght(Item item) {
         return (item.getAmount() * item.getWeight());
     }
@@ -66,7 +67,6 @@ public class ItemControl {
         item.setWeight(items.getWeight());
         return item;
     }
-    
 
     public static Items getItems(int i) {
         for (Items items : Items.values()) {
@@ -78,7 +78,7 @@ public class ItemControl {
     }
 
     // Author Giovanni (team assignment)
-    public static double calNourishmentUsed (int numberActors, int milesTraveled) throws ItemControlException {
+    public static double calNourishmentUsed(int numberActors, int milesTraveled) throws ItemControlException {
         // checks to make sure you don't have too many or not enough actors
         if (numberActors < 1 || numberActors > 4) {
             throw new ItemControlException("There amount of family members is incorrect.");
@@ -113,7 +113,7 @@ public class ItemControl {
 
         return nourishmentUsed;
     }
-    
+
     public static double calResource(int beginningWheel, int beginningBullets, int beginningWood, double remainingNourishment) throws ItemControlException {
 
         // calculates the total resource weight
@@ -161,7 +161,6 @@ public class ItemControl {
             return totalResourceWeight;
         }
     }*/
-
     //Author Araceli Camarillo (Team Assignment)
     public static double calSupplyUsed(int beginningWheel, int beginningBullets, int beginningWood, int wheelUsed, int bulletsUsed, int woodUsed) throws ItemControlException {
         if (beginningWheel < 0 || beginningWheel > 10) {
@@ -260,19 +259,19 @@ public class ItemControl {
             return supplyWeight;
         }
     }
-    
-    public static int getAmount(String amount) throws NumberFormatException{
-        try{
+
+    public static int getAmount(String amount) throws NumberFormatException {
+        try {
             return Integer.parseInt(amount);
-        }catch(Exception ex){
+        } catch (Exception ex) {
             throw new NumberFormatException(amount);
         }
-    } 
-    
+    }
+
     public static String manageItems(String itemName, int amount, String action) {
         List<Item> items = new ArrayList<>();
-        int count=0;
-        String str="";
+        int count = 0;
+        String str = "";
         for (Item item : FarWestGame.getCurrentGame().getFamily().getItems()) {
             if (item.getName().equals(itemName)) {
                 int subTotal = item.getAmount();
@@ -283,19 +282,81 @@ public class ItemControl {
                     total = subTotal - amount;
                 }
                 item.setAmount(total);
+                count++;
+                str = "Now you have " + item.getAmount() + " of " + item.getName();
             }
-            str= "Now you have " + item.getAmount() + " of "  + item.getName();
             items.add(item);
-            count++;
         }
-        if(count==0){
-            Item item= new Item();
+        if (count == 0) {
+            Item item = new Item();
             item.setName(itemName);
             item.setAmount(amount);
+            item.setWeight(returnWeight(item.getName()));
+            item.setTypeItem(returnType(itemName));
             items.add(item);
-            str= "Now you have " + item.getAmount() + " of "  + item.getName();
+            str = "Now you have " + item.getAmount() + " of " + item.getName();
         }
         FarWestGame.getCurrentGame().getFamily().setItems(items);
         return str;
+    }
+
+    public static void saveReport(String filePath) throws ItemControlException {
+        int totalWeight=0;
+        try (PrintWriter out = new PrintWriter(filePath)) {
+            out.println("-------------------------------\n");
+            out.println("-       Item Inventory        -\n");
+            out.println("-------------------------------\n");
+            out.printf("%n%-20s%5s%8s%8s%8s", "Name", "Type Item", " Amount ", " Weight ", " Total weight ");
+            out.printf("%n%-20s%5s%8s%8s%8s", "-------------------", "-----", "--------", "--------", "--------");
+            for (Item item : FarWestGame.getCurrentGame().getFamily().getItems()) {
+                out.printf("%n%-20s%5s%8s%8s%8s", item.getName(), item.getTypeItem(), item.getAmount(), item.getWeight(), returnTotalWeight(item.getWeight(), item.getAmount()));
+                totalWeight+=returnTotalWeight(item.getWeight(), item.getAmount());
+            }
+            out.printf("%n%-20s%5s%8s%8s%8s", "Total Weight: ", "", "", "", totalWeight);
+        } catch (IOException e) {
+            throw new ItemControlException(e.getMessage());
+        }
+    }
+
+    public static String printReport() throws ItemControlException {
+        int totalWeight=0;
+                String str = "-------------------------------\n";
+        str += String.format("-       Item Inventory        -\n");
+        str += String.format("-------------------------------\n");
+        str += String.format("%n%-20s%5s%8s%8s%8s", "Name", "Type Item", " Amount ", " Weight ", " Total weight ");
+        str += String.format("%n%-20s%5s%8s%8s%8s", "-------------------", "-----", "--------", "--------", "--------");
+        try {
+            for (Item item : FarWestGame.getCurrentGame().getFamily().getItems()) {
+                str += String.format("%n%-20s%5s%8s%8s%8s", item.getName(), item.getTypeItem(), item.getAmount(), item.getWeight(),String.valueOf(returnTotalWeight(item.getWeight(), item.getAmount())));
+                totalWeight+=returnTotalWeight(item.getWeight(), item.getAmount());
+            }
+            str += String.format("\n----------------------------------------\n");
+            str += String.format("%n%-20s%5s%8s%8s%8s", "Total Weight: ", " ", " ", " ", totalWeight);
+        } catch (Exception e) {
+            throw new ItemControlException(e.getMessage());
+        }
+        return str;
+    }
+
+    public static int returnWeight(String itemName) {
+        for (Items it : Items.values()) {
+            if (it.getName().equals(itemName)) {
+                return it.getWeight();
+            }
+        }
+        return 0;
+    }
+    
+    public static String returnType(String itemName) {
+        for (Items it : Items.values()) {
+            if (it.getName().equals(itemName)) {
+                return it.getTypeItem();
+            }
+        }
+        return "No Type";
+    }
+
+    public static int returnTotalWeight(int weight, int amount) {
+        return (weight * amount);
     }
 }
