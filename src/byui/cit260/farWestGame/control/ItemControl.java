@@ -313,9 +313,10 @@ public class ItemControl {
                 totalWeight+=returnTotalWeight(item.getWeight(), item.getAmount());
             }
             out.printf("%n%-20s%5s%8s%8s%8s", "Total Weight: ", "", "", "", totalWeight);
+            out.close();
         } catch (IOException e) {
             throw new ItemControlException(e.getMessage());
-        }
+        }        
     }
 
     public static String printReport() throws ItemControlException {
