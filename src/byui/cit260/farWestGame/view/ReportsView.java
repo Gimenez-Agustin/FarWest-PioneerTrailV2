@@ -102,6 +102,7 @@ public class ReportsView extends View {
         //String inputs = null;      
         //console.println("\n*** TO PRINT THIS REPORT, PLEASE ENTER A FILE NAME (or type 'Q' to Quit): ");
         String fileName = this.getInputs("\n*** TO PRINT THIS REPORT, PLEASE ENTER A FILE NAME (or type 'Q' to Quit): ");
+        fileName += ".txt";
         if (fileName.toUpperCase().equals("Q")) { // user wants to quit
             //printMessage = inputs;
             return; // exit the view
