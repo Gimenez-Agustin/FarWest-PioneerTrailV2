@@ -301,7 +301,8 @@ public class ItemControl {
     }
 
     public static void saveReport(String filePath) throws ItemControlException {
-        int totalWeight=0;
+        int totalWeight = 0;
+        filePath = CreateExtension(filePath);
         try (PrintWriter out = new PrintWriter(filePath)) {
             out.println("-------------------------------\n");
             out.println("-       Item Inventory        -\n");
@@ -310,26 +311,40 @@ public class ItemControl {
             out.printf("%n%-20s%5s%8s%8s%8s", "-------------------", "-----", "--------", "--------", "--------");
             for (Item item : FarWestGame.getCurrentGame().getFamily().getItems()) {
                 out.printf("%n%-20s%5s%8s%8s%8s", item.getName(), item.getTypeItem(), item.getAmount(), item.getWeight(), returnTotalWeight(item.getWeight(), item.getAmount()));
-                totalWeight+=returnTotalWeight(item.getWeight(), item.getAmount());
+                totalWeight += returnTotalWeight(item.getWeight(), item.getAmount());
             }
             out.printf("%n%-20s%5s%8s%8s%8s", "Total Weight: ", "", "", "", totalWeight);
             out.close();
         } catch (IOException e) {
             throw new ItemControlException(e.getMessage());
+        }
+    }
+
+    public static String CreateExtension(String filePath) {        
+        String[] parts = filePath.split(".");        
+        if(parts.length>0){
+            String part2 = parts[1]; 
+            if(!part2.equals(".txt")){               
+                filePath= parts[0];
+                filePath+=".txt";                
+            }
+        }else{
+            filePath+=".txt";
         }        
+        return filePath;
     }
 
     public static String printReport() throws ItemControlException {
-        int totalWeight=0;
-                String str = "-------------------------------\n";
+        int totalWeight = 0;
+        String str = "-------------------------------\n";
         str += String.format("-       Item Inventory        -\n");
         str += String.format("-------------------------------\n");
         str += String.format("%n%-20s%5s%8s%8s%8s", "Name", "Type Item", " Amount ", " Weight ", " Total weight ");
         str += String.format("%n%-20s%5s%8s%8s%8s", "-------------------", "-----", "--------", "--------", "--------");
         try {
             for (Item item : FarWestGame.getCurrentGame().getFamily().getItems()) {
-                str += String.format("%n%-20s%5s%8s%8s%8s", item.getName(), item.getTypeItem(), item.getAmount(), item.getWeight(),String.valueOf(returnTotalWeight(item.getWeight(), item.getAmount())));
-                totalWeight+=returnTotalWeight(item.getWeight(), item.getAmount());
+                str += String.format("%n%-20s%5s%8s%8s%8s", item.getName(), item.getTypeItem(), item.getAmount(), item.getWeight(), String.valueOf(returnTotalWeight(item.getWeight(), item.getAmount())));
+                totalWeight += returnTotalWeight(item.getWeight(), item.getAmount());
             }
             str += String.format("\n----------------------------------------\n");
             str += String.format("%n%-20s%5s%8s%8s%8s", "Total Weight: ", " ", " ", " ", totalWeight);
@@ -347,7 +362,7 @@ public class ItemControl {
         }
         return 0;
     }
-    
+
     public static String returnType(String itemName) {
         for (Items it : Items.values()) {
             if (it.getName().equals(itemName)) {
