@@ -20,7 +20,7 @@ public class LocationControl {
         row = ro;
         column = col;
         Location[][] locations = new Location[column][row];
-        locations[currentColumn][currentRow] = createLocation(Locations.zion);
+        locations[currentColumn][currentRow] = createLocation(Locations.nauvoo);
         locations[currentColumn][currentRow] = createLocation(Locations.sugarCreek);
         locations[currentColumn][currentRow] = createLocation(Locations.richardsonPoint);
         locations[currentColumn][currentRow] = createLocation(Locations.charitonRiverCrossing);
@@ -56,17 +56,18 @@ public class LocationControl {
             location.setDescription(loc.getDescription());
             location.setFromNauvoo(loc.getFromNauvoo());
             location.setMapSymbol(loc.getSymbol());
-            location.setName(loc.getName());            
-            if (currentColumn < column-1) {
+            location.setName(loc.getName());
+            location.setCurrentLocation(location.getName().equals("Nauvoo"));
+            if (currentColumn < column - 1) {
                 currentColumn++;
             } else {
-                if (currentRow < row-1) {
+                if (currentRow < row - 1) {
                     currentRow++;
                     currentColumn = 0;
-                }else{
-                    currentRow=-1;
+                } else {
+                    currentRow = -1;
                 }
-            }            
+            }
             return location;
         } else {
             return null;
@@ -76,12 +77,12 @@ public class LocationControl {
     public static String displayMap() {
         Location[][] locations = FarWestGame.getCurrentGame().getMap().getLocations();
         String map = "| X |  0  |  1  |  2  |  3  |  4  |\n";
-        for (int x = 0; x < column; x++) {            
+        for (int x = 0; x < column; x++) {
             for (int y = 0; y < row; y++) {
-            if (y == 0) {
-                map += "| " + x + " ";
-            }    
-                map +="|"+ currentVisited(locations[x][y].isVisited(), locations[x][y].isCurrentLocation(), true)
+                if (y == 0) {
+                    map += "| " + x + " |";
+                }
+                map += currentVisited(locations[x][y].isVisited(), locations[x][y].isCurrentLocation(), true)
                         + createSymbol(locations[x][y].getMapSymbol())
                         + currentVisited(locations[x][y].isVisited(), locations[x][y].isCurrentLocation(), false) + "|";
             }
@@ -117,29 +118,4 @@ public class LocationControl {
         }
     }
 
-//    public static Location getCurrentLocation(){
-//        if(FarWestGame.getCurrentGame()!=null){
-//            if(FarWestGame.getCurrentGame().getMap().getLocations().size()>0){
-//                if(FarWestGame.getCurrentGame().getMap().getCurrentLocation()!=null){
-//                    return FarWestGame.getCurrentGame().getMap().getCurrentLocation();
-//                }
-//            }
-//        }
-//        return null;
-//    }
-//    
-//    public static Item findItem(){
-//        Item item = getCurrentLocation().getItems().get(UtilsControl.getRandom(getCurrentLocation().getItems().size()));
-//        return item;
-//    }
-//    
-//    public void loadItemsCurrentLocation(){
-//        if(!getCurrentLocation().isExplored()){
-//                        
-//        }
-//    }
-//    
-//    public static void updateVisited(){
-//        getCurrentLocation().setVisited(true);
-//    }
 }
