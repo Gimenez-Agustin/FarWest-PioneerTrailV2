@@ -18,7 +18,6 @@ public class Location implements Serializable{
     private String description;
     private int fromNauvoo;
     private boolean visited;
-    private boolean currentLocation;
     private Scene[] scenes;
     
     
@@ -90,12 +89,8 @@ public class Location implements Serializable{
         this.scenes = scenes;
     }
 
-    public boolean isCurrentLocation() {
-        return currentLocation;
-    }
-
-    public void setCurrentLocation(boolean currentLocation) {
-        this.currentLocation = currentLocation;
+    public boolean isCurrentLocation(Location location) {
+        return this.getName().equals(location.getName());
     }
 
     @Override
@@ -107,8 +102,7 @@ public class Location implements Serializable{
         hash = 83 * hash + Objects.hashCode(this.name);
         hash = 83 * hash + Objects.hashCode(this.description);
         hash = 83 * hash + this.fromNauvoo;
-        hash = 83 * hash + (this.visited ? 1 : 0);
-        hash = 83 * hash + (this.currentLocation ? 1 : 0);
+        hash = 83 * hash + (this.visited ? 1 : 0);        
         hash = 83 * hash + Arrays.deepHashCode(this.scenes);
         return hash;
     }
@@ -136,10 +130,7 @@ public class Location implements Serializable{
         }
         if (this.visited != other.visited) {
             return false;
-        }
-        if (this.currentLocation != other.currentLocation) {
-            return false;
-        }
+        }        
         if (!Objects.equals(this.mapSymbol, other.mapSymbol)) {
             return false;
         }
@@ -157,7 +148,7 @@ public class Location implements Serializable{
 
     @Override
     public String toString() {
-        return "Location{" + "row=" + row + ", column=" + column + ", mapSymbol=" + mapSymbol + ", name=" + name + ", description=" + description + ", fromNauvoo=" + fromNauvoo + ", visited=" + visited + ", currentLocation=" + currentLocation + ", scenes=" + scenes + '}';
+        return "Location{" + "row=" + row + ", column=" + column + ", mapSymbol=" + mapSymbol + ", name=" + name + ", description=" + description + ", fromNauvoo=" + fromNauvoo + ", visited=" + visited + ", scenes=" + scenes + '}';
     }
 
           

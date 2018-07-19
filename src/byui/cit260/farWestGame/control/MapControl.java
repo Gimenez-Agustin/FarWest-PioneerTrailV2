@@ -1,5 +1,6 @@
 package byui.cit260.farWestGame.control;
 
+import byui.cit260.farWestGame.cons.UtilsCons;
 import byui.cit260.farWestGame.model.Location;
 import byui.cit260.farWestGame.model.Map;
 
@@ -19,7 +20,7 @@ public class MapControl {
     }
 
     private static Map asssignLocations(Map map) {
-        map.setLocations(LocationControl.createLocations(5, 5));
+        map.setLocations(LocationControl.createLocations(UtilsCons.one,UtilsCons.two));
         return map;
     }
     

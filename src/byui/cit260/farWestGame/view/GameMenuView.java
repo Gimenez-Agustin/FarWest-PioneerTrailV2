@@ -1,8 +1,7 @@
 package byui.cit260.farWestGame.view;
 
 import byui.cit260.farWestGame.control.MapControl;
-import byui.cit260.farWestGame.model.Map;
-import byui.cit260.farWestGame.model.Game;
+import farwestgame.FarWestGame;
 
 /**
  *
@@ -10,23 +9,19 @@ import byui.cit260.farWestGame.model.Game;
  */
 public class GameMenuView extends View{    
     
-    public static String menu = "V - View Map\n"
-                + "I - View list inventory items\n"
-                + "P - Purchase new supplies\n"
-                + "L - Explore a location\n"
-                + "M - Move to next location\n"
-                + "E - Estimate the resources needed\n"
-                + "X - Print reports\n"
-                + "B - Repair Wagons\n"
-                + "C - Utilize tools\n"
-                + "D - Deal with Sickness\n"
-                + "N - Navigate Terrain\n"
-                + "R - Hunt for Resources\n"
-                + "S - Save game\n"
-                + "G - Goodbye: Leave the game\n"
-                + "H - Help\n"
-                + "Q - Quit\n"
-                + "Select an Option: ";
+    public static String menu =   "V - View Map\n"
+                                + "I - View list inventory items\n"
+                                + "P - Purchase new supplies\n"
+                                + "L - Explore a location\n"
+                                + "M - Move to location\n"
+                                + "X - Print reports\n"
+                                + "B - Repair Wagons\n"
+                                + "D - Deal with Sickness\n"
+                                + "R - Hunt for Resources\n"
+                                + "S - Save game\n"
+                                + "H - Help\n"
+                                + "Q - Quit\n"
+                                + "Select an Option: ";
 
     public GameMenuView() {
         super(menu);
@@ -51,24 +46,15 @@ public class GameMenuView extends View{
                 break;
             case "M":
                 moveToLocation();
-                break;
-            case "E":
-                estimateNumberOfResources();
-                break;
+                break;            
             case "X":
                 printReports();
                 break;
             case "B":
                 repairWagons();
-                break;
-            case "C":
-                useTools();
-                break;
+                break;            
             case "D":
                 dealSickness();
-                break;
-            case "N":
-                navigateTerrain();
                 break;
             case "R":
                 huntForResources();
@@ -76,13 +62,12 @@ public class GameMenuView extends View{
             case "S":
                 saveGame();
                 break;
-            case "G":
-                exitGame();
-                break;
             case "H":
                 getHelp();
                 break;    
             case "Q":
+                FarWestGame.setCurrentGame(null);
+                FarWestGame.setPlayer(null);
                 return true;
             default:
                 this.console.println("Invalid option");
@@ -92,7 +77,6 @@ public class GameMenuView extends View{
     
     //added by giovanni
     private void viewMap() {        
-//       Game game = farwestgame.FarWestGame.getCurrentGame();
         this.console.println(MapControl.displayMap());
     }
     //done
@@ -113,11 +97,9 @@ public class GameMenuView extends View{
     }
 
     private void moveToLocation() {
-        this.console.println("Move to location called");
-    }
-
-    private void estimateNumberOfResources() {
-        this.console.println("Estimate number of resources called");
+        String menu = MapControl.displayMap() + "\n example: if you want to go to Platte River type 2-1" + "\n Select position: ";
+        LocationView locationView = new LocationView(menu);
+        locationView.display();
     }
     
     private void printReports() {
@@ -129,16 +111,8 @@ public class GameMenuView extends View{
         this.console.println("Repair wagons called");
     }
 
-    private void useTools() {
-        this.console.println("Use tools called");
-    }
-
     private void dealSickness() {
         this.console.println("Deal with sickness called");
-    }
-
-    private void navigateTerrain() {
-        this.console.println("Navigate terrain called");
     }
 
     private void huntForResources() {
@@ -150,14 +124,9 @@ public class GameMenuView extends View{
         SaveGameView saveGameView = new SaveGameView();
         saveGameView.display();
     }
-    
 
     private void getHelp() {
         this.console.println("Get help called");
     }
     
-    private void exitGame() {
-        ExitGameView exitGameView = new ExitGameView();
-        exitGameView.display();
-    }
 }

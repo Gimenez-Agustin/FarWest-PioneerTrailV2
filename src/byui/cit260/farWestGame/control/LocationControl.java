@@ -1,8 +1,11 @@
 package byui.cit260.farWestGame.control;
 
+import byui.cit260.farWestGame.cons.UtilsCons;
 import byui.cit260.farWestGame.enums.Locations;
 import byui.cit260.farWestGame.model.Location;
 import farwestgame.FarWestGame;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -57,7 +60,6 @@ public class LocationControl {
             location.setFromNauvoo(loc.getFromNauvoo());
             location.setMapSymbol(loc.getSymbol());
             location.setName(loc.getName());
-            location.setCurrentLocation(location.getName().equals("Nauvoo"));
             if (currentColumn < column - 1) {
                 currentColumn++;
             } else {
@@ -68,6 +70,7 @@ public class LocationControl {
                     currentRow = -1;
                 }
             }
+            location.setVisited(location.getName().equals("Nauvoo"));
             return location;
         } else {
             return null;
@@ -75,6 +78,7 @@ public class LocationControl {
     }
 
     public static String displayMap() {
+        Location loc = FarWestGame.getCurrentGame().getMap().getCurrentLocation();
         Location[][] locations = FarWestGame.getCurrentGame().getMap().getLocations();
         String map = "| X |  0  |  1  |  2  |  3  |  4  |\n";
         for (int x = 0; x < column; x++) {
@@ -82,9 +86,9 @@ public class LocationControl {
                 if (y == 0) {
                     map += "| " + x + " |";
                 }
-                map += currentVisited(locations[x][y].isVisited(), locations[x][y].isCurrentLocation(), true)
+                map += currentVisited(locations[x][y].isVisited(), locations[x][y].isCurrentLocation(loc), true)
                         + createSymbol(locations[x][y].getMapSymbol())
-                        + currentVisited(locations[x][y].isVisited(), locations[x][y].isCurrentLocation(), false) + "|";
+                        + currentVisited(locations[x][y].isVisited(), locations[x][y].isCurrentLocation(loc), false) + "|";
             }
             map += "\n";
         }
@@ -116,6 +120,54 @@ public class LocationControl {
                 return " ";
             }
         }
+    }
+
+    public static Map<String, Boolean> moveLocation(String input) {
+        Map<String, Boolean> data = new HashMap<String, Boolean>();
+        String[] parts = input.split("-");
+        String part1 = parts[0];
+        String part2 = parts[1];
+        if (UtilsControl.isInteger(part1) && UtilsControl.isInteger(part2)) {
+            if (checkCoord(Integer.valueOf(part1), Integer.valueOf(part2))) {
+                int one = Integer.valueOf(part2);
+                int two = Integer.valueOf(part1);
+                Location newLocations[][] = new Location[UtilsCons.one][UtilsCons.two];
+                Location oldLocations[][] = FarWestGame.getCurrentGame().getMap().getLocations();
+                for (int i = 0; i < UtilsCons.one; i++) {
+                    for (int h = 0; h < UtilsCons.two; h++) {
+                        if (i == one && h == two) {
+                            Location location = oldLocations[i][h];
+                            location.setVisited(true);
+                            FarWestGame.getCurrentGame().getMap().setCurrentLocation(location);
+                            newLocations[i][h] = location;
+                        } else {
+                            newLocations[i][h] = oldLocations[i][h];
+                        }
+                    }
+                }
+                FarWestGame.getCurrentGame().getMap().setLocations(newLocations);
+//                Location[][] locations=FarWestGame.getCurrentGame().getMap().getLocations();
+//                locations[one][two].setVisited(true);
+//                Location location = locations[one][two];                
+//                
+//                FarWestGame.getCurrentGame().getMap().setLocations(locations);
+//                FarWestGame.getCurrentGame().getMap().setCurrentLocation(location);
+            } else {
+
+            }
+        } else {
+
+        }
+        return null;
+    }
+
+    public static boolean checkCoord(int one, int two) {
+        if (one < UtilsCons.one && one > -1) {
+            if (two < UtilsCons.two && two > -1) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

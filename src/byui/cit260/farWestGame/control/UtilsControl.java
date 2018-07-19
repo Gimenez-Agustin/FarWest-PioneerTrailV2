@@ -13,4 +13,13 @@ public class UtilsControl {
         int result = r.nextInt(totalSize);
         return result;
     }
+    
+    public static boolean isInteger(String input){
+        try{
+            int number = Integer.valueOf(input);
+            return true;
+        }catch(NumberFormatException ex){
+            return false;
+        }
+    }
 }
