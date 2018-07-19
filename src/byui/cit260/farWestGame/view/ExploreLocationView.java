@@ -6,6 +6,9 @@
 package byui.cit260.farWestGame.view;
 
 import byui.cit260.farWestGame.control.GameControl;
+import byui.cit260.farWestGame.exceptions.GameControlException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -46,7 +49,12 @@ public class ExploreLocationView extends View {
     }
 
     public void exploreLocation(int value) {
-        GameControl.exploreLocation(value);
+        try {            
+            FoundItemsView foundItemsView = new FoundItemsView(GameControl.exploreLocation(value));
+            foundItemsView.display();
+        } catch (GameControlException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
 }

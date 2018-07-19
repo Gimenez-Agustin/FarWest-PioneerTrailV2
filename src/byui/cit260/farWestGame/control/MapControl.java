@@ -20,7 +20,7 @@ public class MapControl {
     }
 
     private static Map asssignLocations(Map map) {
-        map.setLocations(LocationControl.createLocations(UtilsCons.one,UtilsCons.two));
+        map.setLocations(LocationControl.createLocations(UtilsCons.ONE,UtilsCons.TWO));
         return map;
     }
     

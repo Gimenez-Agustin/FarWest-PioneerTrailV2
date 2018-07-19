@@ -32,39 +32,39 @@ public class GameControl {
         return game;
     }
 
-    public static void exploreLocation(int hours) {
-    //        int total = DiceControl.rollDices(3);
-    //        switch (hours) {
-    //            case 1:
-    //                if (total > 10) {
-    //                    System.out.println("You have found something");
-    //                    ItemControl.loadItemsCurrentGame(3);
-    //                    System.out.println(ItemControl.displayCurrentItems());                    
-    //                } else {
-    //                    System.out.println("You did not find anything and got wounded");
-    //                }
-    //                break;
-    //            case 2:
-    //                if (total > 6) {
-    //                    System.out.println("You have found something");
-    //                    ItemControl.loadItemsCurrentGame(3);
-    //                    System.out.println(ItemControl.displayCurrentItems());
-    //                } else {
-    //                    System.out.println("You did not find anything and got wounded");
-    //                }
-    //                break;
-    //            case 3:
-    //                if (total > 2) {
-    //                    System.out.println("You have found something");
-    //                    ItemControl.loadItemsCurrentGame(3);
-    //                    System.out.println(ItemControl.displayCurrentItems());
-    //                } else {
-    //                    System.out.println("You did not find anything and got wounded");
-    //                }
-    //                break;
-    //            default:
-    //                System.out.println("There was an error, please try again");
-    //        }
+    public static String exploreLocation(int hours) throws GameControlException {
+            int total = DiceControl.rollDices(3);
+            String output="";
+            switch (hours) {
+                case 1:
+                    if (total > 10) {
+                        output+="You have found something\n";
+                        output+=ItemControl.getItemsFound(ItemControl.findItems(3));                        
+                    } else {
+                        throw new GameControlException("You did not find anything and got wounded");           
+                    }
+                    break;
+                case 2:
+                    if (total > 6) {
+                        output+="You have found something\n";
+                        output+=ItemControl.getItemsFound(ItemControl.findItems(4));  
+                    } else {
+                       throw new GameControlException("You did not find anything and got wounded");
+                    }
+                    break;
+                case 3:
+                    if (total > 2) {
+                        output+="You have found something\n";
+                        output+=ItemControl.getItemsFound(ItemControl.findItems(5));
+                    } else {
+                        throw new GameControlException("You did not find anything and got wounded");
+                    }
+                    break;
+                default:
+                    throw new GameControlException("There was an error, please try again");                 
+            }
+            output+="\nSelect an option to add to your items: ";
+            return output;
     }
 
     /**

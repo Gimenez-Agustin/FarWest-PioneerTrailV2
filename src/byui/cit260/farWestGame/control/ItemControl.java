@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import byui.cit260.farWestGame.exceptions.ItemControlException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -22,39 +23,35 @@ public class ItemControl {
     public static double totalResourceWeight = 0;
     public static double remainingNourishment = 0;
 
-//    public static void loadItemsCurrentGame(int number) {
-//        if (!FarWestGame.getCurrentGame().getMap().getCurrentLocation().isVisited()) {
-//            //example found in https://stackoverflow.com/questions/8115722/generating-unique-random-numbers-in-java
-//            ArrayList<Integer> list = new ArrayList<>();
-//            for (int i = 0; i < 8; i++) {
-//                list.add(new Integer(i));
-//            }
-//            Collections.shuffle(list);
-//            for (int i = 0; i < number; i++) {
-//                int amount = UtilsControl.getRandom(5);                
-//                Item item = createItem(getItems(list.get(i)), amount);
-//                FarWestGame.getCurrentGame().getMap().getCurrentLocation().getItems().add(item);
-//            }
-//            LocationControl.updateVisited();
-//        }
-//    }
-//
-//    public static String displayCurrentItems() {
-//        int total=0;
-//        String output="";
-//        for (Item item : LocationControl.getCurrentLocation().getItems()) {
-//            int subTotal=calTotalWieght(item);
-//            output+="--------------------------------\n";
-//            output+="Name:         " + item.getName() + "\n";
-//            output+="Amount:       " + item.getAmount() + "\n";
-//            output+="Weight:       " + item.getWeight() + "\n";
-//            output+="Total Weight: " + subTotal + "\n";
-//            total+=subTotal;
-//            output+="--------------------------------\n";
-//        }
-//        output+="Total items Weight: " + total + "\n";
-//        return output;
-//    }
+    public static List<Item> findItems(int number) {
+        List<Item> items = new ArrayList<>();
+        //example found in https://stackoverflow.com/questions/8115722/generating-unique-random-numbers-in-java
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 0; i < UtilsCons.TOTAL_ITEMS; i++) {
+            list.add(i);
+        }
+        Collections.shuffle(list);
+        for (int i = 0; i < number; i++) {
+            int amount = UtilsControl.getRandom(5);
+            if(amount==0){
+                amount=1;
+            }
+            Item item = createItem(getItems(list.get(i)), amount);
+            items.add(item);
+        }
+        return items;
+    }
+    
+    public static String getItemsFound(List<Item> items){
+        String itemString="";
+        int i=1;
+        for(Item item: items){
+            itemString+= i + " " + item.getName() + " " + item.getAmount() + "\n";
+            i++;
+        }
+        return itemString;
+    }
+
     public static int calTotalWieght(Item item) {
         return (item.getAmount() * item.getWeight());
     }
@@ -320,17 +317,17 @@ public class ItemControl {
         }
     }
 
-    public static String CreateExtension(String filePath) {        
-        String[] parts = filePath.split(".");        
-        if(parts.length>0){
-            String part2 = parts[1]; 
-            if(!part2.equals(".txt")){               
-                filePath= parts[0];
-                filePath+=".txt";                
+    public static String CreateExtension(String filePath) {
+        String[] parts = filePath.split(".");
+        if (parts.length > 0) {
+            String part2 = parts[1];
+            if (!part2.equals(".txt")) {
+                filePath = parts[0];
+                filePath += ".txt";
             }
-        }else{
-            filePath+=".txt";
-        }        
+        } else {
+            filePath += ".txt";
+        }
         return filePath;
     }
 

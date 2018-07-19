@@ -131,10 +131,10 @@ public class LocationControl {
             if (checkCoord(Integer.valueOf(part1), Integer.valueOf(part2))) {
                 int one = Integer.valueOf(part2);
                 int two = Integer.valueOf(part1);
-                Location newLocations[][] = new Location[UtilsCons.one][UtilsCons.two];
+                Location newLocations[][] = new Location[UtilsCons.ONE][UtilsCons.TWO];
                 Location oldLocations[][] = FarWestGame.getCurrentGame().getMap().getLocations();
-                for (int i = 0; i < UtilsCons.one; i++) {
-                    for (int h = 0; h < UtilsCons.two; h++) {
+                for (int i = 0; i < UtilsCons.ONE; i++) {
+                    for (int h = 0; h < UtilsCons.TWO; h++) {
                         if (i == one && h == two) {
                             Location location = oldLocations[i][h];
                             location.setVisited(true);
@@ -162,8 +162,8 @@ public class LocationControl {
     }
 
     public static boolean checkCoord(int one, int two) {
-        if (one < UtilsCons.one && one > -1) {
-            if (two < UtilsCons.two && two > -1) {
+        if (one < UtilsCons.ONE && one > -1) {
+            if (two < UtilsCons.TWO && two > -1) {
                 return true;
             }
         }
