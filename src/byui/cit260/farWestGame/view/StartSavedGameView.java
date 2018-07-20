@@ -42,6 +42,6 @@ public class StartSavedGameView extends View {
         GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.display(gameMenuView.menu);
         
-        return false;    
+        return true;    
     }    
 }

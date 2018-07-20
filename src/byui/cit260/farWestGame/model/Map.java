@@ -1,5 +1,6 @@
 package byui.cit260.farWestGame.model;
 
+import byui.cit260.farWestGame.cons.UtilsCons;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
@@ -20,7 +21,10 @@ public class Map implements Serializable{
     private int currentColumn;
     
     public Map(){
-        
+       currentRow = 0;
+       currentColumn = 0;
+       rowCount = UtilsCons.ONE;
+       columnCount = UtilsCons.TWO;
     }
     
     

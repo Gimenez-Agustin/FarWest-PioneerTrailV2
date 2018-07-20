@@ -119,7 +119,7 @@ public class ReportsView extends View {
 
     //Araceli Camarillo
     private void printMap(String content, String location) {
-        String FILENAME = "Map.txt";
+        String fileName = getInputs("Please Enter a File Name or Press (Q) to Cancel");
 
         BufferedWriter bw = null;
         FileWriter fw = null;
@@ -135,17 +135,17 @@ public class ReportsView extends View {
                     String locationName = locations[i][j].getName();//FarWestGame.getCurrentGame().getMap().getCurrentLocation().getName();
                     console.println(locationName);
                     if (locationName != "") {
-                        Names = Names + locationName + "\n";
+                        Names = Names + locationName + "\r\n";
                     }
                 }
             }
             //String content = "This is the content to write into file\n";
 
-            fw = new FileWriter(FILENAME);
+            fw = new FileWriter(fileName);
             bw = new BufferedWriter(fw);
-            bw.write(content + "\n" + Names);
+            bw.write(content + "\r\n" + Names);
 
-            System.out.println("Done.File Map.txt Has Been Created");
+            System.out.println("Done.File "+ fileName+ " Has Been Created");
 
         } catch (IOException e) {
 
