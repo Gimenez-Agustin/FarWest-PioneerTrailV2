@@ -122,6 +122,7 @@ public class LocationControl {
         }
     }
 
+    //araceli
     public static Map<String, Boolean> moveLocation(String input) {
         Map<String, Boolean> data = new HashMap<String, Boolean>();
         String[] parts = input.split("-");
