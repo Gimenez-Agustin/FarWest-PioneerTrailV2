@@ -7,8 +7,6 @@ package byui.cit260.farWestGame.view;
 
 import byui.cit260.farWestGame.control.GameControl;
 import byui.cit260.farWestGame.exceptions.GameControlException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

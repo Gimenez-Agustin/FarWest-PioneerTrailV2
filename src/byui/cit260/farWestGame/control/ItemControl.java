@@ -6,6 +6,7 @@ import byui.cit260.farWestGame.model.Item;
 import farwestgame.FarWestGame;
 import java.util.ArrayList;
 import byui.cit260.farWestGame.exceptions.ItemControlException;
+import byui.cit260.farWestGame.model.ObjectDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collections;
@@ -23,6 +24,7 @@ public class ItemControl {
     public static double totalResourceWeight = 0;
     public static double remainingNourishment = 0;
 
+    //Agustin
     public static List<Item> findItems(int number) {
         List<Item> items = new ArrayList<>();
         //example found in https://stackoverflow.com/questions/8115722/generating-unique-random-numbers-in-java
@@ -42,20 +44,26 @@ public class ItemControl {
         return items;
     }
     
-    public static String getItemsFound(List<Item> items){
-        String itemString="";
+    //Agustin
+    public static ObjectDTO getItemsFound(List<Item> items){
+        ObjectDTO objectDTO= new ObjectDTO();
+        String itemString= "You have found something\n";
         int i=1;
         for(Item item: items){
             itemString+= i + " " + item.getName() + " " + item.getAmount() + "\n";
             i++;
         }
-        return itemString;
+        objectDTO.setMenu(itemString);
+        objectDTO.setItems(items);
+        return objectDTO;
     }
 
+    //Agustin
     public static int calTotalWieght(Item item) {
         return (item.getAmount() * item.getWeight());
     }
 
+    //Agustin
     public static Item createItem(Items items, int amount) {
         Item item = new Item();
         item.setAmount(amount);
@@ -265,6 +273,7 @@ public class ItemControl {
         }
     }
 
+    //Agustin
     public static String manageItems(String itemName, int amount, String action) {
         List<Item> items = new ArrayList<>();
         int count = 0;
@@ -297,6 +306,7 @@ public class ItemControl {
         return str;
     }
 
+    //Agustin
     public static void saveReport(String filePath) throws ItemControlException {
         int totalWeight = 0;
         filePath = CreateExtension(filePath);
@@ -317,6 +327,7 @@ public class ItemControl {
         }
     }
 
+    //Agustin
     public static String CreateExtension(String filePath) {
         String[] parts = filePath.split(".");
         if (parts.length > 0) {
@@ -331,6 +342,7 @@ public class ItemControl {
         return filePath;
     }
 
+    //Agustin
     public static String printReport() throws ItemControlException {
         int totalWeight = 0;
         String str = "-------------------------------\n";
@@ -351,6 +363,7 @@ public class ItemControl {
         return str;
     }
 
+    //Agustin
     public static int returnWeight(String itemName) {
         for (Items it : Items.values()) {
             if (it.getName().equals(itemName)) {
@@ -360,6 +373,7 @@ public class ItemControl {
         return 0;
     }
 
+    //Agustin
     public static String returnType(String itemName) {
         for (Items it : Items.values()) {
             if (it.getName().equals(itemName)) {
@@ -369,6 +383,7 @@ public class ItemControl {
         return "No Type";
     }
 
+    //Agustin
     public static int returnTotalWeight(int weight, int amount) {
         return (weight * amount);
     }
