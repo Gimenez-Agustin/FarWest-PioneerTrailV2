@@ -5,7 +5,12 @@
  */
 package byui.cit260.farWestGame.view;
 
+import byui.cit260.farWestGame.control.GameValues;
+import byui.cit260.farWestGame.control.ItemControl;
 import byui.cit260.farWestGame.enums.Animals;
+import byui.cit260.farWestGame.exceptions.ItemControlException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -29,7 +34,7 @@ public class HuntingView extends View {
        }
        
        animalsToHunt += "\n\nThe most meat one animal will give you is " + mostMeat + " pounds.";
-       animalsToHunt += "\n\nWhat would you like to hunt? (Q to Quit)";
+       animalsToHunt += "\n\nWhat would you like to hunt? (Press Q to not hunt for anything.)";
        
        return animalsToHunt;
    }
@@ -49,7 +54,13 @@ public class HuntingView extends View {
                 
         this.console.println("\n\nYou got a " + animals[value].getAnimalName() + "!!\n");
         this.console.println("You used up " + animals[value].getBulletsNeededForHunt() + " bullets, and it gave you " + animals[value].getAnimalMeat() + " pounds of meat.");
-        
+            try {
+                //GameValues.thisGameBullets = GameValues.thisGameBullets - animals[value].getBulletsNeededForHunt();
+                byui.cit260.farWestGame.control.ItemControl.hunt(animals[value].getBulletsNeededForHunt(), animals[value].getAnimalMeat());
+            } catch (ItemControlException ex) {
+                Logger.getLogger(HuntingView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        this.console.println("You have " + GameValues.thisGameBullets + " bullets left.\nYou have " + GameValues.thisGameNourishment + " pounds of food.");
         menuPrompt = getAnimalString();  
         } catch (NumberFormatException e) {  
                     //System.out.println("\nError " + e.getMessage()); //changed per Lesson 12 page 11 instructions

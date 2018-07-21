@@ -6,6 +6,7 @@
 package byui.cit260.farWestGame.view;
 
 import byui.cit260.farWestGame.control.GameControl;
+import byui.cit260.farWestGame.control.GameValues;
 import farwestgame.FarWestGame;
 import byui.cit260.farWestGame.model.Item;
 import byui.cit260.farWestGame.control.MapControl;
@@ -68,40 +69,18 @@ public class ReportsView extends View {
     //Giovanni
     private void printInventory() {
         String myItems = "";
-        Item[] items = FarWestGame.getCurrentGame().getItems();
-
-        double remainingNourishment = 0;
-        int beginningWheel = 0;
-        int beginningBullets = 0;
-        int beginningWood = 0;
-        double totalResourceWeight = 0;
-
-        // This will populate the primary resources variables with starting amounts
-        for (int count = 0; count < items.length; count++) {
-            if (items[count].getName() == "Food") {
-                remainingNourishment = items[count].getAmount();
-            }
-            if (items[count].getName() == "Spare Wheels") {
-                beginningWheel = items[count].getAmount();
-            }
-            if (items[count].getName() == "Bullets") {
-                beginningBullets = items[count].getAmount();
-            }
-            if (items[count].getName() == "Wood") {
-                beginningWood = items[count].getAmount();
-            }
-        }
-
+        
         myItems += "\nCurrent Inventory"
                 + "\n----------------------------------"
-                + "\nFood = " + remainingNourishment + " pounds"
-                + "\nSpare Wheels = " + beginningWheel
-                + "\nBullets = " + beginningBullets
-                + "\nWood = " + beginningWood + " cords of wood";
+                + "\nFood = " + GameValues.thisGameNourishment + " pounds"
+                + "\nSpare Wheels = " + GameValues.thisGameWheel
+                + "\nBullets = " + GameValues.thisGameBullets
+                + "\nWood = " + GameValues.thisGameWood + " cords of wood";
 
         //String inputs = null;      
         //console.println("\n*** TO PRINT THIS REPORT, PLEASE ENTER A FILE NAME (or type 'Q' to Quit): ");
-        String fileName = this.getInputs("\n*** TO PRINT THIS REPORT, PLEASE ENTER A FILE NAME (or type 'Q' to Quit): ");
+        console.println(myItems);
+        String fileName = this.getInputs("\n*** TO SAVE THIS REPORT, PLEASE ENTER A FILE NAME (or type 'Q' to not save it): ");
         fileName += ".txt";
         if (fileName.toUpperCase().equals("Q")) { // user wants to quit
             //printMessage = inputs;

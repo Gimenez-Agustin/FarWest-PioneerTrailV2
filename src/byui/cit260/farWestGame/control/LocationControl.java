@@ -3,6 +3,7 @@ package byui.cit260.farWestGame.control;
 import byui.cit260.farWestGame.cons.UtilsCons;
 import byui.cit260.farWestGame.enums.Locations;
 import byui.cit260.farWestGame.model.Location;
+import byui.cit260.farWestGame.view.ErrorView;
 import farwestgame.FarWestGame;
 import java.util.HashMap;
 import java.util.Map;
@@ -134,8 +135,10 @@ public class LocationControl {
     public static Map<String, Boolean> moveLocation(String input) {
         Map<String, Boolean> data = new HashMap<String, Boolean>();
         String[] parts = input.split("-");
+        
         String part1 = parts[0];
         String part2 = parts[1];
+        
         if (UtilsControl.isInteger(part1) && UtilsControl.isInteger(part2)) {
             if (checkCoord(Integer.valueOf(part1), Integer.valueOf(part2))) {
                 int one = Integer.valueOf(part1);

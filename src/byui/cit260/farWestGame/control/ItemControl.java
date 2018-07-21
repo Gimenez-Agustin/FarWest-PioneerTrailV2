@@ -23,6 +23,8 @@ public class ItemControl {
     public static int beginningWood = 0;
     public static double totalResourceWeight = 0;
     public static double remainingNourishment = 0;
+    
+    
 
     //Agustin
     public static List<Item> findItems(int number) {
@@ -387,4 +389,19 @@ public class ItemControl {
     public static int returnTotalWeight(int weight, int amount) {
         return (weight * amount);
     }
+    
+    public static int hunt(int neededBullets, int animalMeat) throws ItemControlException{
+        if (neededBullets > GameValues.thisGameBullets) {
+           GameValues.thisGameBullets = 0; 
+           throw new ItemControlException("You ran out of bullets!!\nYou need to find some more");
+        } else {        
+        GameValues.thisGameBullets = GameValues.thisGameBullets - neededBullets;
+        GameValues.thisGameNourishment = GameValues.thisGameNourishment + animalMeat;
+        calResource(GameValues.thisGameWheel, GameValues.thisGameBullets, GameValues.thisGameWood, GameValues.thisGameNourishment);
+        }
+        
+        return 1;
+    }   
+
+    
 }
