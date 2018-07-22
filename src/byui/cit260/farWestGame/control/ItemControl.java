@@ -7,10 +7,15 @@ import farwestgame.FarWestGame;
 import java.util.ArrayList;
 import byui.cit260.farWestGame.exceptions.ItemControlException;
 import byui.cit260.farWestGame.model.ObjectDTO;
+import byui.cit260.farWestGame.view.ErrorView;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -127,10 +132,10 @@ public class ItemControl {
         double totalResourceWeight = (beginningWheel * 50) + (beginningBullets * .10) + (beginningWood * 10) + remainingNourishment;
 
         // calculates if total resource weight exceeds limits
-        if (totalResourceWeight > 700) {
-            throw new ItemControlException("You have too much weight in the wagon.\nFor now, choose an item and enter a negative number\n to remove some of your items.\nYour limit is 700 pounds.");
+        if (totalResourceWeight > 530) {            
+            throw new ItemControlException("You have too much weight in the wagon.\nFor now, choose an item and enter a negative number\n to remove some of your items.\nYour limit is 550 pounds.");
+            
         } else {
-
             return totalResourceWeight;
         }
     }
@@ -397,11 +402,96 @@ public class ItemControl {
         } else {        
         GameValues.thisGameBullets = GameValues.thisGameBullets - neededBullets;
         GameValues.thisGameNourishment = GameValues.thisGameNourishment + animalMeat;
-        calResource(GameValues.thisGameWheel, GameValues.thisGameBullets, GameValues.thisGameWood, GameValues.thisGameNourishment);
+        try{
+        GameValues.thisGameResourceWeight = calResource(GameValues.thisGameWheel, GameValues.thisGameBullets, GameValues.thisGameWood, GameValues.thisGameNourishment);
+        } catch (ItemControlException ex) {
+          System.out.println("OOPS!!  You have too much food.\nYou will need to remove some items.");
+          removeItems();
+        }
+        
         }
         
         return 1;
     }   
+    // Giovanni - created to remove items, if too much food is hunted
+    public static int removeItems(){
+        String myItems = "";
+        
+        myItems += "\nCurrent Inventory"
+                + "\n----------------------------------"
+                + "\nF - Food = " + GameValues.thisGameNourishment + " pounds"
+                + "\nS - Spare Wheels = " + GameValues.thisGameWheel
+                + "\nB- Bullets = " + GameValues.thisGameBullets
+                + "\nW - Wood = " + GameValues.thisGameWood + " cords of wood"
+                + "\n TOTAL WEIGHT = " + GameValues.thisGameResourceWeight + " pounds"
+                + "\n----------------------------------"
+                + "\n What item do you want to remove?";
 
+        System.out.println(myItems);        
+        Scanner scanner = new Scanner(System.in);               
+        String value = scanner.nextLine(); 
+        value = value.toUpperCase();
+        
+
+        switch (value) {
+            case "F": // remove food
+                System.out.println("How much food do you want to remove?");        
+                //Scanner scanner = new Scanner(System.in);               
+                String remFood1 = scanner.nextLine();
+                int remFood = Integer.parseInt(remFood1); 
+                GameValues.thisGameNourishment = GameValues.thisGameNourishment - remFood;
+                break;
+            case "S": // remove spare wheels
+                System.out.println("How many spare wheels do you want to remove?");
+                String remWheel1 = scanner.nextLine();
+                int remWheel = Integer.parseInt(remWheel1); 
+                GameValues.thisGameWheel = GameValues.thisGameWheel - remWheel;
+        {
+            try {
+                GameValues.thisGameResourceWeight = calResource(GameValues.thisGameWheel, GameValues.thisGameBullets, GameValues.thisGameWood, GameValues.thisGameNourishment);
+            } catch (ItemControlException ex) {
+                Logger.getLogger(ItemControl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+                break;
+            case "B":  // remove bullets
+                System.out.println("How many bullets do you want to remove?");
+                String remBullets1 = scanner.nextLine();
+                int remBullets = Integer.parseInt(remBullets1); 
+                GameValues.thisGameBullets = GameValues.thisGameBullets - remBullets;
+        {
+            try {
+                GameValues.thisGameResourceWeight = calResource(GameValues.thisGameWheel, GameValues.thisGameBullets, GameValues.thisGameWood, GameValues.thisGameNourishment);
+            } catch (ItemControlException ex) {
+                Logger.getLogger(ItemControl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+                break;
+            case "W":  //remove wood
+                System.out.println("How much wood cords do you want to remove?");
+                String remWood1 = scanner.nextLine();
+                int remWood = Integer.parseInt(remWood1); 
+                GameValues.thisGameWood = GameValues.thisGameWood - remWood;
+                break;
+            default:
+                System.out.println("\nInvalid Selection - Please choose an option from the menu.");
+                break;
+        }
+        
+        String myNewItems = "";
+        
+        myNewItems += "\nNew Inventory"
+                + "\n----------------------------------"
+                + "\nF - Food = " + GameValues.thisGameNourishment + " pounds"
+                + "\nS - Spare Wheels = " + GameValues.thisGameWheel
+                + "\nB- Bullets = " + GameValues.thisGameBullets
+                + "\nW - Wood = " + GameValues.thisGameWood + " cords of wood"
+                + "\n TOTAL WEIGHT = " + GameValues.thisGameResourceWeight + " pounds"
+                + "\n----------------------------------";
+        System.out.println(myNewItems); 
+        return 1;
+    }
     
 }

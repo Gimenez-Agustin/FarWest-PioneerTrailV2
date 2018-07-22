@@ -1,5 +1,6 @@
 package byui.cit260.farWestGame.view;
 
+import byui.cit260.farWestGame.control.GameValues;
 import byui.cit260.farWestGame.control.LocationControl;
 
 /**
@@ -27,5 +28,6 @@ public class LocationView extends View {
 
     public static void moveLocation(String input) {
         LocationControl.moveLocation(input);
+        System.out.println("This is " + GameValues.thisGameDestinationMile + " miles from Nauvoo");
     }
 }

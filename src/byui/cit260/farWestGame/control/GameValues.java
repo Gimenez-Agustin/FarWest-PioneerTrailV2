@@ -16,6 +16,10 @@ public class GameValues {
     public static int thisGameWood;
     public static double thisGameResourceWeight;
     public static double thisGameNourishment;
+    public static int thisGameFamilyCount;
+    public static int thisGameCurrentMile;
+    public static int thisGameDestinationMile;
+    //public static int thisGameMilesTraveled;
     
     
 }

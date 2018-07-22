@@ -97,7 +97,7 @@ public class GameMenuView extends View{
     }
 
     private void moveToLocation() {
-        String menu = MapControl.displayMap() + "\n example: if you want to go to Platte River type 2-1" + "\n Select position: ";
+        String menu = MapControl.displayMap() + "\nTo move to a location do the following:\n Type the ROW Number '-' COLUMN number \n example: if you want to go to Platte River (PR) type 2-1" + "\n Select position: ";
         LocationView locationView = new LocationView(menu);
         locationView.display();
     }

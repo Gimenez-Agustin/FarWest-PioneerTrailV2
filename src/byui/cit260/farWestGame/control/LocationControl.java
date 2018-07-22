@@ -157,6 +157,8 @@ public class LocationControl {
                         } else {
                             newLocations[i][h] = oldLocations[i][h];
                         }
+                        //This next line is to hopefully get the distance from Nauvoo
+                GameValues.thisGameDestinationMile = byui.cit260.farWestGame.
                     }
                 }
                 FarWestGame.getCurrentGame().getMap().setLocations(newLocations);

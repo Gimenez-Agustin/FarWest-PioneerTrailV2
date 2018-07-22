@@ -75,14 +75,15 @@ public class ReportsView extends View {
                 + "\nFood = " + GameValues.thisGameNourishment + " pounds"
                 + "\nSpare Wheels = " + GameValues.thisGameWheel
                 + "\nBullets = " + GameValues.thisGameBullets
-                + "\nWood = " + GameValues.thisGameWood + " cords of wood";
+                + "\nWood = " + GameValues.thisGameWood + " cords of wood"
+                + "\n TOTAL WEIGHT = " + GameValues.thisGameResourceWeight + " pounds";
 
         //String inputs = null;      
         //console.println("\n*** TO PRINT THIS REPORT, PLEASE ENTER A FILE NAME (or type 'Q' to Quit): ");
         console.println(myItems);
         String fileName = this.getInputs("\n*** TO SAVE THIS REPORT, PLEASE ENTER A FILE NAME (or type 'Q' to not save it): ");
         fileName += ".txt";
-        if (fileName.toUpperCase().equals("Q")) { // user wants to quit
+        if (fileName.toUpperCase().equals("q.txt") || fileName.toUpperCase().equals("Q.txt")) { // user wants to quit
             //printMessage = inputs;
             return; // exit the view
         }

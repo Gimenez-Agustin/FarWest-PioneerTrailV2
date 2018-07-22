@@ -60,7 +60,8 @@ public class HuntingView extends View {
             } catch (ItemControlException ex) {
                 Logger.getLogger(HuntingView.class.getName()).log(Level.SEVERE, null, ex);
             }
-        this.console.println("You have " + GameValues.thisGameBullets + " bullets left.\nYou have " + GameValues.thisGameNourishment + " pounds of food.");
+        this.console.println("You have " + GameValues.thisGameBullets + " bullets left.\nYou have " + GameValues.thisGameNourishment + " pounds of food." + "\nThe wagon is carrying " + GameValues.thisGameResourceWeight + " pounds of supplies.");
+        
         menuPrompt = getAnimalString();  
         } catch (NumberFormatException e) {  
                     //System.out.println("\nError " + e.getMessage()); //changed per Lesson 12 page 11 instructions

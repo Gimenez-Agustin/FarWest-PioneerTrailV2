@@ -196,9 +196,9 @@ public class GameControl {
         resource = new Item();
         //Assign values to each attribute in the Item object
         resource.setName("Bullets");
-        resource.setAmount(1000);
+        resource.setAmount(500);
         resource.setTypeItem("Resource");
-        resource.setWeight(100);
+        resource.setWeight(50);
 
         items[ItemType.Bullets.ordinal()] = resource;
 
