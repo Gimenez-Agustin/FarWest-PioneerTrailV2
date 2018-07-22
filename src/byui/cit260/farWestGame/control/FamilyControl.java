@@ -3,10 +3,13 @@ package byui.cit260.farWestGame.control;
 import byui.cit260.farWestGame.enums.ActorType;
 import byui.cit260.farWestGame.model.Family;
 import byui.cit260.farWestGame.enums.FamilyType;
+import byui.cit260.farWestGame.exceptions.ItemControlException;
 import byui.cit260.farWestGame.model.Item;
 import byui.cit260.farWestGame.model.Person;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -45,5 +48,11 @@ public class FamilyControl {
     private static List<Item> createItems(){
         List<Item> items = new ArrayList<>();
         return items;
+    }
+    
+    public static int familySurvive (){
+        
+        
+        return 1;
     }
 }

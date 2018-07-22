@@ -9,7 +9,7 @@ import farwestgame.FarWestGame;
  */
 public class GameMenuView extends View{    
     
-    public static String menu =   "V - View Map\n"
+    public static String menu =   "\n\nV - View Map\n"
                                 + "I - View list inventory items\n"
                                 + "P - Purchase new supplies\n"
                                 + "L - Explore a location\n"

@@ -19,7 +19,7 @@ public class GameValues {
     public static int thisGameFamilyCount;
     public static int thisGameCurrentMile;
     public static int thisGameDestinationMile;
-    //public static int thisGameMilesTraveled;
+    public static int thisGameMilesTraveled;
     
     
 }

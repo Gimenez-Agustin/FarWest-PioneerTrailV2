@@ -57,21 +57,21 @@ public class MainMenuView extends View{
     private void startNewGame() throws ItemControlException {  //Giovanni added throws ItemControlException because thisGameStartingResources was added
         FarWestGame.setCurrentGame(GameControl.createNewGame(FarWestGame.getPlayer()));
         FarWestGame.getPlayer().getGames().add(FarWestGame.getCurrentGame());
-        createLocations();
-        createScenes();
+        //createLocations();
+        //createScenes();
         thisGameStartingResources();  //added by Giovanni
         GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.display(gameMenuView.menu);
         
     }
 
-    private void createLocations() {
+    /*private void createLocations() {
        this.console.println("createLocations() called");        
     }
     
     private void createScenes() {
        this.console.println("createScenes() called");        
-    }
+    }*/
     
     private void restartGame() {
         StartSavedGameView startSavedGameView = new StartSavedGameView();
@@ -108,7 +108,8 @@ public class MainMenuView extends View{
             }
         }
         GameValues.thisGameResourceWeight = calResource(GameValues.thisGameWheel, GameValues.thisGameBullets, GameValues.thisGameWood, GameValues.thisGameNourishment);
-   
+        GameValues.thisGameCurrentMile = 0;
+        GameValues.thisGameFamilyCount = 4;
     }
     
 }

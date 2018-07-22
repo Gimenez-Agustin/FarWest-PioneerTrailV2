@@ -90,7 +90,7 @@ public class ItemControl {
     }
 
     // Author Giovanni (team assignment)
-    public static double calNourishmentUsed(int numberActors, int milesTraveled) throws ItemControlException {
+    public static double calNourishmentUsedOld(int numberActors, int milesTraveled) throws ItemControlException {
         // checks to make sure you don't have too many or not enough actors
         if (numberActors < 1 || numberActors > 4) {
             throw new ItemControlException("There amount of family members is incorrect.");
@@ -98,9 +98,9 @@ public class ItemControl {
 
         /* checks to make sure the program did not return an 
            invalid number of miles traveled */
-        if (milesTraveled < 0) {
-            throw new ItemControlException("You can't go backwards in your journey.");
-        }
+        //if (milesTraveled < 0) {
+        //    throw new ItemControlException("You can't go backwards in your journey.");
+        //}
 
         /*  following blocks of code will check to see if the miles traveled 
             caused the family to use more nourishment than the max allows */
@@ -126,14 +126,21 @@ public class ItemControl {
         return nourishmentUsed;
     }
 
+    public static double calNourishmentUsed(int numberActors, int milesTraveled) throws ItemControlException {
+        // code calculates the nourishment used by the group
+        double nourishmentUsed = .25 * milesTraveled * (numberActors + 1);
+
+        return nourishmentUsed;
+    }
     public static double calResource(int beginningWheel, int beginningBullets, int beginningWood, double remainingNourishment) throws ItemControlException {
 
         // calculates the total resource weight
         double totalResourceWeight = (beginningWheel * 50) + (beginningBullets * .10) + (beginningWood * 10) + remainingNourishment;
 
         // calculates if total resource weight exceeds limits
-        if (totalResourceWeight > 530) {            
-            throw new ItemControlException("You have too much weight in the wagon.\nFor now, choose an item and enter a negative number\n to remove some of your items.\nYour limit is 550 pounds.");
+        if (totalResourceWeight > 500) {
+            GameValues.thisGameResourceWeight = totalResourceWeight;
+            throw new ItemControlException("You have too much weight in the wagon.\nFor now, choose an item and enter a negative number\n to remove some of your items.\nYour limit is 500 pounds.");
             
         } else {
             return totalResourceWeight;
@@ -396,7 +403,7 @@ public class ItemControl {
     }
     
     public static int hunt(int neededBullets, int animalMeat) throws ItemControlException{
-        if (neededBullets > GameValues.thisGameBullets) {
+       if (neededBullets > GameValues.thisGameBullets) {
            GameValues.thisGameBullets = 0; 
            throw new ItemControlException("You ran out of bullets!!\nYou need to find some more");
         } else {        
@@ -440,6 +447,13 @@ public class ItemControl {
                 String remFood1 = scanner.nextLine();
                 int remFood = Integer.parseInt(remFood1); 
                 GameValues.thisGameNourishment = GameValues.thisGameNourishment - remFood;
+        {
+            try {
+                GameValues.thisGameResourceWeight = calResource(GameValues.thisGameWheel, GameValues.thisGameBullets, GameValues.thisGameWood, GameValues.thisGameNourishment);
+            } catch (ItemControlException ex) {
+                Logger.getLogger(ItemControl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
             case "S": // remove spare wheels
                 System.out.println("How many spare wheels do you want to remove?");
@@ -452,8 +466,7 @@ public class ItemControl {
             } catch (ItemControlException ex) {
                 Logger.getLogger(ItemControl.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        
+        }        
                 break;
             case "B":  // remove bullets
                 System.out.println("How many bullets do you want to remove?");
@@ -466,14 +479,20 @@ public class ItemControl {
             } catch (ItemControlException ex) {
                 Logger.getLogger(ItemControl.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        
+        }        
                 break;
             case "W":  //remove wood
                 System.out.println("How much wood cords do you want to remove?");
                 String remWood1 = scanner.nextLine();
                 int remWood = Integer.parseInt(remWood1); 
                 GameValues.thisGameWood = GameValues.thisGameWood - remWood;
+        {            
+            try {
+                GameValues.thisGameResourceWeight = calResource(GameValues.thisGameWheel, GameValues.thisGameBullets, GameValues.thisGameWood, GameValues.thisGameNourishment);
+            } catch (ItemControlException ex) {
+                Logger.getLogger(ItemControl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
             default:
                 System.out.println("\nInvalid Selection - Please choose an option from the menu.");
@@ -491,6 +510,7 @@ public class ItemControl {
                 + "\n TOTAL WEIGHT = " + GameValues.thisGameResourceWeight + " pounds"
                 + "\n----------------------------------";
         System.out.println(myNewItems); 
+        
         return 1;
     }
     

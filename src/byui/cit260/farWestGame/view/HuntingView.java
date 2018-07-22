@@ -7,6 +7,8 @@ package byui.cit260.farWestGame.view;
 
 import byui.cit260.farWestGame.control.GameValues;
 import byui.cit260.farWestGame.control.ItemControl;
+import static byui.cit260.farWestGame.control.ItemControl.calResource;
+import static byui.cit260.farWestGame.control.ItemControl.removeItems;
 import byui.cit260.farWestGame.enums.Animals;
 import byui.cit260.farWestGame.exceptions.ItemControlException;
 import java.util.logging.Level;
@@ -19,11 +21,17 @@ import java.util.logging.Logger;
 // public class HuntingView {
 public class HuntingView extends View { 
          
-   public HuntingView(){
+   public HuntingView(){       
        menuPrompt = getAnimalString();
    }
    
    private String getAnimalString() {
+       try{
+        GameValues.thisGameResourceWeight = calResource(GameValues.thisGameWheel, GameValues.thisGameBullets, GameValues.thisGameWood, GameValues.thisGameNourishment);
+        } catch (ItemControlException ex) {
+          System.out.println("OOPS!!  You have too much weight.\nYou will need to remove some items.");
+          removeItems();
+        }
        String animalsToHunt = "";
        Animals[] animals = Animals.values();
        int mostMeat = 0;
@@ -41,7 +49,7 @@ public class HuntingView extends View {
 
     @Override
     public boolean doAction(String inputs) {
-                
+       
         Animals[] animals = Animals.values();
         try{
         int value = Integer.parseInt(inputs);

@@ -157,11 +157,23 @@ public class LocationControl {
                         } else {
                             newLocations[i][h] = oldLocations[i][h];
                         }
-                        //This next line is to hopefully get the distance from Nauvoo
-                GameValues.thisGameDestinationMile = byui.cit260.farWestGame.
                     }
                 }
                 FarWestGame.getCurrentGame().getMap().setLocations(newLocations);
+                
+                
+                //Giovanni - Hopefully gets the correct distance from Nauvoo=====================
+                Location[][] locations = FarWestGame.getCurrentGame().getMap().getLocations();
+                GameValues.thisGameDestinationMile = locations[one][two].getFromNauvoo();                
+                // ==============================================================================
+                
+                //Giovanni - Calculate the distance traveled=====================================
+                calDistanceTraveled();
+                //===============================================================================
+                
+                
+                
+                
 //                Location[][] locations=FarWestGame.getCurrentGame().getMap().getLocations();
 //                locations[one][two].setVisited(true);
 //                Location location = locations[one][two];                
@@ -184,6 +196,12 @@ public class LocationControl {
             }
         }
         return false;
+    }
+    
+    public static int calDistanceTraveled(){
+        GameValues.thisGameMilesTraveled = Math.abs(GameValues.thisGameDestinationMile - GameValues.thisGameCurrentMile);
+        GameValues.thisGameCurrentMile = GameValues.thisGameDestinationMile;
+        return 1;
     }
 
 }
